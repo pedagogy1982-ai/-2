@@ -6,8 +6,11 @@
 \documentclass[11pt,a4paper]{article}
 
 \usepackage{kotex}
-\setmainhangulfont{Noto Serif CJK KR}
-\setsanshangulfont{Noto Sans CJK KR}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
 
 \usepackage[margin=2.1cm]{geometry}
 \usepackage{parskip}
@@ -15,6 +18,7 @@
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{xcolor}
+\usepackage{amssymb}
 \usepackage{tikz}
 \usepackage[most]{tcolorbox}
 \usepackage{fancyhdr}
@@ -45,16 +49,13 @@
   arc=3pt, left=11pt, right=11pt, top=9pt, bottom=9pt
 }
 
-% ---------- 줄쳐진 기록 공간 (실제 cm 단위, 0.7cm 줄간격) ----------
-% #1 = 높이(cm)
+% ---------- 줄쳐진 기록 공간 (일반 텍스트 흐름 -- 페이지 넘김에 안전, tikz 그림 아님) ----------
+% #1 = 줄 개수
 \newcommand{\writespace}[1]{%
-  \begin{tikzpicture}
-    \useasboundingbox (0,0) rectangle (\linewidth,-#1 cm);
-    \draw[writeline, rounded corners=2pt] (0,0) rectangle (\linewidth,-#1 cm);
-    \foreach \y in {0.7,1.4,...,#1} {
-      \draw[writeline, dash pattern=on 2pt off 2pt] (0.15,-\y cm) -- (\linewidth-0.15cm,-\y cm);
-    }
-  \end{tikzpicture}
+  \par\nobreak\vspace{3pt}
+  \foreach \n in {1,...,#1} {%
+    \noindent\textcolor{writeline}{\rule{\linewidth}{0.4pt}}\par\vspace{7pt}%
+  }
 }
 
 \newcommand{\fillblank}[1]{\makebox[#1]{\dotfill}}
@@ -123,11 +124,11 @@ A는 버스 터미널, B는 올림픽 공원, C는 성산구청 근처의 한 �
   \item 두 점 A, B 사이의 거리와 두 점 B, C 사이의 거리를 각각 구해 보자.
   \item $\overline{AB}:\overline{BC}$를 가장 간단한 자연수의 비로 나타내 보자.
 \end{enumerate}
-\writespace{2.1}
+\writespace{3}
 
 \vspace{6pt}
 \textbf{확장 질문} --- 우리가 사는 지평선 지역(김제·만경 일대)에도 이렇게 곧게 뻗은 길이나 둑길이 있을까? 있다면 어떤 길인지, 실제로 어떻게 확인할 수 있을지 적어 보자.
-\writespace{1.1}
+\writespace{2}
 \end{sheetbox}
 
 \section{개념 정리 --- 내분이란?}
@@ -157,12 +158,12 @@ A는 버스 터미널, B는 올림픽 공원, C는 성산구청 근처의 한 �
 \begin{sheetbox}
 \textbf{1.} 다음 두 점 사이의 거리를 구하시오.\\
 \hspace*{1.6em}⑴ A($-3$), B($3$) \qquad ⑵ A($6$), B($-2$)
-\writespace{1.6}
+\writespace{2}
 
 \vspace{8pt}
 \textbf{2.} 두 점 A($-6$), B($8$)에 대하여 다음 점의 좌표를 구하시오.\\
 \hspace*{1.6em}⑴ 선분 AB를 $2:5$로 내분하는 점 \qquad ⑵ 선분 AB의 중점
-\writespace{2.4}
+\writespace{3}
 \end{sheetbox}
 
 \section{사고의 가시화 --- See · Think · Wonder}
@@ -174,20 +175,20 @@ A는 버스 터미널, B는 올림픽 공원, C는 성산구청 근처의 한 �
 \textbf{\footnotesize\color{indigoc} Wonder --- 무엇이 궁금한가?} \\[4pt]
 \end{tabularx}
 \noindent
-\begin{minipage}[t]{0.32\linewidth}\writespace{2.6}\end{minipage}\hfill
-\begin{minipage}[t]{0.32\linewidth}\writespace{2.6}\end{minipage}\hfill
-\begin{minipage}[t]{0.32\linewidth}\writespace{2.6}\end{minipage}
+\begin{minipage}[t]{0.32\linewidth}\writespace{4}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{4}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{4}\end{minipage}
 
 \section{마무리 성찰}
 
 \begin{sheetbox}
 \begin{minipage}[t]{0.48\linewidth}
 {\footnotesize\color{inksoft} 오늘 배운 것을 한 문장으로}
-\writespace{1.1}
+\writespace{2}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.48\linewidth}
 {\footnotesize\color{inksoft} 감사 일기 / 유념 한 줄}
-\writespace{1.1}
+\writespace{2}
 \end{minipage}
 \end{sheetbox}
 

@@ -7,8 +7,11 @@
 
 % ---------- 한글 ----------
 \usepackage{kotex}
-\setmainhangulfont{Noto Serif CJK KR}
-\setsanshangulfont{Noto Sans CJK KR}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
 
 % ---------- 레이아웃 ----------
 \usepackage[margin=2.1cm]{geometry}
