@@ -1,0 +1,143 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅱ. 집합과 명제 · 1. 집합 · 03 교집합과 합집합 · 1/2차시
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{notebox}{enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]{\sffamily\bfseries\Large #2}\\[3pt]{\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+\lessonbanner{공통수학2 · Ⅱ. 집합과 명제 · 1. 집합}{03 교집합과 합집합 --- 1/2차시}{교집합·합집합의 뜻과 서로소 · 교사용 지도안 (2026학년도 2학기)}
+\vspace{10pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 10 · 전개 30 · 정리 10) \\
+성취기준 & 집합의 연산을 수행하고, 벤 다이어그램을 이용하여 나타낼 수 있다. \\
+선행 학습 & 20차시 --- 집합 사이의 포함 관계 \\
+\bottomrule
+\end{tabularx}
+
+\section{학습 목표 \& Big Idea}
+\begin{ideabox}
+\textbf{\color{goldstrong}영속적 이해 (Big Idea)}\\
+두 집합을 `그리고'(공통)와 `또는'(전체)이라는 두 가지 접속사로 새롭게 조합하면, 완전히 새로운 집합이 만들어진다. 언어의 논리가 집합의 연산이 된다.
+\vspace{4pt}
+\small\color{inksoft} 핵심개념: \textbf{교집합·합집합} \quad\textbullet\quad 핵심개념: \textbf{서로소} \quad\textbullet\quad 일반화: `그리고'와 `또는'은 서로 다른 연산을 만든다
+\end{ideabox}
+\begin{calloutbox}
+\textbf{차시 학습 목표}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt, topsep=4pt]
+  \item 교집합과 합집합의 뜻을 알고, 구하여 벤 다이어그램으로 나타낼 수 있다.
+  \item 서로소의 뜻을 이해하고 판단할 수 있다.
+\end{itemize}
+\end{calloutbox}
+
+\section{질문의 연결}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}\small}p{2.4cm}X@{}}
+사실적 질문 & 두 집합에 `공통으로' 속하는 원소의 모임과, `합쳐서' 만든 모임은 각각 어떻게 구할까? \\[6pt]
+개념적 질문 & 왜 `그리고'(교집합)는 원소를 줄이고, `또는'(합집합)은 원소를 늘릴까? \\[6pt]
+논쟁적 질문 & 두 집합에 공통 원소가 전혀 없는 것(서로소)은 `관계가 없다'는 뜻일까, 아니면 그 자체로 하나의 명확한 관계일까? \\
+\end{tabularx}
+
+\section{수업 흐름}
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 10분 &
+\textbf{마음공부 (2분)} --- 유무념 대조.\newline
+\textbf{생각 열기 (8분)} --- 볶음밥 재료(밥, 버섯, 당근, 양파, 소고기, 계란)와 계란말이 재료(계란, 당근, 버섯, 파, 치즈) 제시 $\to$ 공통 재료(교집합), 전체 준비 재료(합집합)를 각각 찾아보게 한다. &
+ATL: 사고(실생활 연결)\newline VTR: See-Think-Wonder \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{개념 형성 (15분)} --- 교집합 $A\cap B=\{x\mid x\in A$ 그리고 $x\in B\}$, 합집합 $A\cup B=\{x\mid x\in A$ 또는 $x\in B\}$ 정의 $\to$ 벤 다이어그램으로 시각화 $\to$ 문제 1(구체적 계산).\newline
+\textbf{서로소 (15분)} --- $A\cap B=\varnothing$일 때 서로소로 정의 $\to$ 문제 2(수직선 부등식·도형 조건) 짝 활동 $\to$ ``모든 집합과 서로소인 집합은?'' 발문(공집합 도출). &
+ATT: 촉진자 역할\newline ATL: 사고·판별 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{개념 연결 질문 (5분)} --- ``교집합과 합집합, 벤 다이어그램에서 어느 부분을 색칠하는지 그림으로 설명해 보면?''\newline
+\textbf{성찰 (5분)} --- 감사 일기 1문장 + 다음 차시 예고(원소의 개수 공식, 연산 법칙). &
+마음공부 · 감사 일기 \\
+\bottomrule
+\end{tabularx}
+
+\begin{calloutbox}
+\textbf{지도상의 유의점} --- `그리고'(교집합)와 `또는'(합집합)의 일상어 의미와 수학적 의미가 정확히 일치함을 강조한다. 서로소는 `공통 원소가 전혀 없음'이지 `아무 관계가 없음'이 아님을 짚어 준다 --- 서로소도 하나의 명확히 정의된 관계이다.
+\end{calloutbox}
+
+\section{형성평가 \& 답안}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 1}\\
+\small ⑴ $A=\{1,3,9,27\}$, $B=\{3,9,15,21,27\}$\\
+⑵ $A=\{x\mid x^2-3x-4=0\}$, $B=\{x\mid x$는 5 이하 자연수$\}$\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $A\cap B=\{3,9,27\}$, $A\cup B=\{1,3,9,15,21,27\}$\\
+⑵ $A=\{-1,4\}$, $A\cap B=\{4\}$, $A\cup B=\{-1,1,2,3,4,5\}$
+\end{answerbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 2} \quad 서로소인지 확인\\
+\small ⑴ $A=\{x\mid|x|\ge1\}$, $B=\{x\mid x^2=1\}$\\
+⑵ $A=\{x\mid x$는 정삼각형$\}$, $B=\{x\mid x$는 직각삼각형$\}$\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $B=\{-1,1\}\subset A$이므로 $A\cap B=B\neq\varnothing$ $\to$ 서로소 아님\\
+⑵ 정삼각형은 직각삼각형이 될 수 없음 $\to$ 서로소
+\end{answerbox}
+\end{minipage}
+
+\section{성취수준 (이 차시 범위)}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{0.9cm}X@{}}
+\toprule
+A & 교집합과 합집합의 연산을 체계적으로 수행하고 벤 다이어그램으로 나타낼 수 있다. \\
+B & 교집합과 합집합의 연산을 수행하고 벤 다이어그램으로 나타낼 수 있다. \\
+C & 교집합과 합집합의 연산을 수행하고, 벤 다이어그램으로 나타낼 수 있다. \\
+D & 간단한 교집합과 합집합의 연산을 수행할 수 있다. \\
+E & 간단한 두 집합의 교집합과 합집합을 구할 수 있다. \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 차시}
+\begin{calloutbox}
+\textbf{03 교집합과 합집합 --- 2/2차시.} 합집합의 원소의 개수 공식 $n(A\cup B)=n(A)+n(B)-n(A\cap B)$와 집합의 연산 법칙(교환·결합·분배법칙)을 다룬다.
+\end{calloutbox}
+\end{document}

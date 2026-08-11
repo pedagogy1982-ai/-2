@@ -1,0 +1,144 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅱ. 집합과 명제 · 1. 집합 · 03 교집합과 합집합 · 1/2차시
+% 학생용 활동지 (답안 없음)
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{writeline}{HTML}{C7CCBA}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{14pt}{6pt}
+\newtcolorbox{goalbox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{sheetbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.6pt, arc=3pt, left=11pt, right=11pt, top=9pt, bottom=9pt}
+\newcommand{\writespace}[1]{%
+  \par\nobreak\vspace{3pt}
+  \foreach \n in {1,...,#1} {%
+    \noindent\textcolor{writeline}{\rule{\linewidth}{0.4pt}}\par\vspace{0.62cm}%
+  }
+}
+\newcommand{\fillblank}[1]{\makebox[#1]{\hrulefill}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 다음 시간 --- 03 교집합과 합집합(2)}
+
+\begin{document}
+
+\noindent
+\begin{minipage}[b]{0.62\linewidth}
+  {\sffamily\footnotesize\color{indigosoft} 공통수학2 · Ⅱ. 집합과 명제 · 1. 집합}\\[2pt]
+  {\sffamily\bfseries\Large 03 교집합과 합집합 \textperiodcentered\ 21차시}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.36\linewidth}
+  \raggedleft\small\color{inksoft}
+  반\ \fillblank{1.6cm} \quad 번호\ \fillblank{1.6cm}\\[4pt]
+  이름\ \fillblank{3.6cm}
+\end{minipage}
+
+\vspace{4pt}
+\noindent{\color{goldc}\rule{\linewidth}{2.2pt}}
+\vspace{10pt}
+
+\begin{goalbox}
+\textbf{오늘의 목표}\\
+교집합과 합집합의 뜻을 알고 구할 수 있으며, 서로소를 판별할 수 있다.
+\vspace{4pt}
+\small\color{inksoft}
+$\square$ 자신 있음 \quad $\square$ 조금 헷갈림 \quad $\square$ 처음 봄 \hfill (수업 전 나의 상태에 표시)
+\end{goalbox}
+
+\section{생각 열기 --- 요리 재료 두 집합}
+
+\begin{sheetbox}
+볶음밥 재료: 밥, 버섯, 당근, 양파, 소고기, 계란\\
+계란말이 재료: 계란, 당근, 버섯, 파, 치즈
+
+\begin{enumerate}[leftmargin=1.4em, itemsep=2pt]
+  \item 두 음식에 공통으로 들어가는 재료를 모두 말해 보자.
+  \item 두 음식을 만들기 위해 준비해야 하는 재료를 모두 말해 보자.
+\end{enumerate}
+\writespace{3}
+\end{sheetbox}
+
+\section{개념 정리 --- 교집합과 합집합}
+
+\begin{sheetbox}
+두 집합 $A$, $B$에 대하여
+
+\begin{itemize}[leftmargin=1.6em, itemsep=4pt]
+  \item $A$에도 속하고 $B$에도 속하는 모든 원소로 이루어진 집합을 \textbf{교집합}이라 하고, $A\cap B = \{x\mid x\in A\ \fillblank{2.4cm}\ x\in B\}$
+  \item $A$에 속하거나 $B$에 속하는 모든 원소로 이루어진 집합을 \textbf{합집합}이라 하고, $A\cup B = \{x\mid x\in A\ \fillblank{2.4cm}\ x\in B\}$
+\end{itemize}
+
+\vspace{6pt}
+두 집합 $A$, $B$에서 공통인 원소가 하나도 없을 때, 즉 $A\cap B=\ \fillblank{2cm}$ 일 때, $A$와 $B$는 \textbf{서로소}라고 한다.
+
+\vspace{8pt}
+\textbf{생각해보기} --- 모든 집합과 서로소인 집합은 무엇일까?
+\writespace{1}
+\end{sheetbox}
+
+\section{연습 문제}
+
+\begin{sheetbox}
+\textbf{1.} 다음 두 집합 $A$, $B$에 대하여 $A\cap B$와 $A\cup B$를 구하시오.\\
+\hspace*{1.6em}⑴ $A=\{1,3,9,27\}$, $B=\{3,9,15,21,27\}$\\
+\hspace*{1.6em}⑵ $A=\{x\mid x^2-3x-4=0\}$, $B=\{x\mid x$는 5 이하의 자연수$\}$
+\writespace{5}
+
+\vspace{6pt}
+\textbf{2.} 다음 두 집합 $A$, $B$가 서로소인지 아닌지 확인하시오.\\
+\hspace*{1.6em}⑴ $A=\{x\mid |x|\ge1\}$, $B=\{x\mid x^2=1\}$\\
+\hspace*{1.6em}⑵ $A=\{x\mid x$는 정삼각형$\}$, $B=\{x\mid x$는 직각삼각형$\}$
+\writespace{4}
+\end{sheetbox}
+
+\section{사고의 가시화 --- See · Think · Wonder}
+
+\noindent{\footnotesize\color{inksoft} 오늘 배운 `교집합과 합집합'을 떠올리며 아래 세 칸을 채워 보자.}\\[6pt]
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\textbf{\footnotesize\color{indigoc} See --- 무엇을 보았나?} &
+\textbf{\footnotesize\color{indigoc} Think --- 무엇을 생각했나?} &
+\textbf{\footnotesize\color{indigoc} Wonder --- 무엇이 궁금한가?} \\[4pt]
+\end{tabularx}
+\noindent
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}
+
+\section{마무리 성찰}
+
+\begin{sheetbox}
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 오늘 배운 것을 한 문장으로}
+\writespace{2}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 감사 일기 / 유념 한 줄}
+\writespace{2}
+\end{minipage}
+\end{sheetbox}
+
+\end{document}
