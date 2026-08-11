@@ -122,20 +122,20 @@ G\left(\ \fillblank{4.5cm}\ ,\ \ \fillblank{4.5cm}\ \right)
 \section{탐구 활동 --- 무게중심은 변하지 않는다?}
 
 \begin{sheetbox}
-삼각형 A$(0,0)$, B$(6,0)$, C$(3,9)$가 아래와 같이 좌표평면 위에 있다.
+세 점 A$(6,3)$, B$(0,-3)$, C$(-3,9)$가 아래와 같이 좌표평면 위에 있다.
 
 \begin{center}
 \begin{tikzpicture}[scale=0.42]
-  \draw[step=1cm, linec, very thin] (-1,-1) grid (7,10);
-  \draw[->, thick, indigosoft] (-1,0) -- (7.4,0) node[right, font=\small]{$x$};
-  \draw[->, thick, indigosoft] (0,-1) -- (0,10.4) node[above, font=\small]{$y$};
-  \draw[thick, goldstrong] (0,0) -- (6,0) -- (3,9) -- cycle;
-  \filldraw[indigoc] (0,0) circle (3.5pt);
-  \node[below left, font=\small] at (0,0) {A$(0,0)$};
-  \filldraw[indigoc] (6,0) circle (3.5pt);
-  \node[below right, font=\small] at (6,0) {B$(6,0)$};
-  \filldraw[indigoc] (3,9) circle (3.5pt);
-  \node[above, font=\small] at (3,9) {C$(3,9)$};
+  \draw[step=1cm, linec, very thin] (-4,-4) grid (7,10);
+  \draw[->, thick, indigosoft] (-4,0) -- (7.4,0) node[right, font=\small]{$x$};
+  \draw[->, thick, indigosoft] (0,-4) -- (0,10.4) node[above, font=\small]{$y$};
+  \draw[thick, goldstrong] (6,3) -- (0,-3) -- (-3,9) -- cycle;
+  \filldraw[indigoc] (6,3) circle (3.5pt);
+  \node[right, font=\small] at (6,3) {A$(6,3)$};
+  \filldraw[indigoc] (0,-3) circle (3.5pt);
+  \node[below, font=\small] at (0,-3) {B$(0,-3)$};
+  \filldraw[indigoc] (-3,9) circle (3.5pt);
+  \node[above left, font=\small] at (-3,9) {C$(-3,9)$};
 \end{tikzpicture}
 \end{center}
 
@@ -145,12 +145,12 @@ G\left(\ \fillblank{4.5cm}\ ,\ \ \fillblank{4.5cm}\ \right)
 \writespace{2}
 
 \begin{enumerate}[leftmargin=1.4em, itemsep=2pt, start=2]
-  \item 변 AB를 $2:1$로 내분하는 점 P, 변 BC를 $2:1$로 내분하는 점 Q, 변 CA를 $2:1$로 내분하는 점 R의 좌표를 각각 구해 보자.
+  \item 세 변 AB, BC, CA를 각각 $2:1$로 내분하는 점을 차례대로 D, E, F라 할 때, 세 점의 좌표를 각각 구해 보자.
 \end{enumerate}
 \writespace{4}
 
 \begin{enumerate}[leftmargin=1.4em, itemsep=2pt, start=3]
-  \item 삼각형 PQR의 무게중심을 구하고, 1번에서 구한 G와 비교해 보자. 무엇을 발견했는가?
+  \item 삼각형 DEF의 무게중심을 구하고, 1번에서 구한 G와 비교해 보자. 무엇을 발견했는가?
 \end{enumerate}
 \writespace{3}
 \end{sheetbox}
@@ -160,11 +160,22 @@ G\left(\ \fillblank{4.5cm}\ ,\ \ \fillblank{4.5cm}\ \right)
 \begin{sheetbox}
 선분 AB 위의 점 P가
 \[
-\overline{AP} : \overline{PB} = \overline{AB} : \overline{AP}
+\overline{AB} : \overline{AP} = \overline{AP} : \overline{PB}
 \]
-를 만족시킬 때, 점 P는 선분 AB를 \textbf{황금분할}한다고 하며, 이때의 비 $\overline{AB}:\overline{AP}$를 \textbf{황금비}라고 한다 (약 $1.618\,{:}\,1$). 파르테논 신전, 명함, 신용카드 등 여러 디자인에서 이 비율이 발견된다고 한다.
+를 만족시킬 때, 이렇게 선분 AB를 나누는 것을 \textbf{황금 분할}이라 하고, 이때의 비 $\dfrac{\overline{AB}}{\overline{AP}}$를 \textbf{황금비}라고 한다. 이 비율은 레오나르도 다 빈치의 「모나리자」, 파리의 에펠탑(지면$\sim$2층 : 2층$\sim$안테나) 등 여러 곳에서 발견된다고 한다.
 
 \vspace{8pt}
+\textbf{황금비 값 직접 구하기} --- $\overline{AB}=1$, $\overline{AP}=x$라 하면 $\overline{PB}=1-x$이므로, 위 식은
+\[
+1 : x = x : (\fillblank{2.4cm})
+\]
+즉 $x^2+x-\fillblank{0.8cm}=0$이 된다. 이 이차방정식을 풀어 $x>0$인 근을 구하면 $x=\fillblank{3.2cm}$이고, 따라서 황금비는
+\[
+\dfrac{\overline{AB}}{\overline{AP}} = \dfrac{1}{x} = \fillblank{3.2cm} \approx 1.618
+\]
+\writespace{2}
+
+\vspace{4pt}
 \textbf{직접 측정해 보기} --- 가지고 있는 명함, 신용카드, 교통카드, 스마트폰 화면 중 하나를 골라 가로·세로 길이를 재고, 그 비율이 황금비($1.618$)에 얼마나 가까운지 확인해 보자.
 
 \begin{center}
