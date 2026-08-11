@@ -1,0 +1,118 @@
+% !TEX program = xelatex
+% 공통수학2 · 2026학년도 2학기 진도표 (총 43차시 = 오리엔테이션 1 + 내용 42, 14주 × 3차시)
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[most]{tcolorbox}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}
+  {\normalfont\sffamily\bfseries\large\color{indigoc}}
+  {\thesection}{0.6em}{}
+
+\newcommand{\unitrow}[1]{\multicolumn{4}{@{}l}{\rule{0pt}{2.4ex}\textbf{\color{indigoc} #1}}\\}
+
+\begin{document}
+
+\begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+  left=14pt, right=14pt, top=12pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc},
+  fontupper=\color{white}]
+  {\sffamily\footnotesize\color{white!85!black} 공통수학2 · 2026학년도 2학기}\\[3pt]
+  {\sffamily\bfseries\Large 학기 진도표 --- 총 43차시}\\[2pt]
+  {\sffamily\small\color{white!88!black} 3단위 · 주 3차시 · 14주 완결 · 수행평가 70\% : 지필평가 30\%}
+\end{tcolorbox}
+
+\vspace{10pt}
+\small\color{inksoft}
+전체 43차시 $=$ 오리엔테이션 1차시 $+$ 내용 42차시. 소단원별 차시 표기(예: 1/3)는 각 지도안·활동지 파일명의 번호와 일치한다.
+\normalsize\color{black}
+
+\vspace{8pt}
+\begin{longtable}{@{}p{1.3cm}p{1.1cm}p{5.6cm}X@{}}
+\toprule
+\textbf{전체차시} & \textbf{소단원 내} & \textbf{내용} & \textbf{비고} \\
+\midrule
+\endhead
+1 & -- & 오리엔테이션 --- 2학기 수업 안내, 평가 계획, 1학기 복습 진단 & \\
+\unitrow{Ⅰ. 도형의 방정식 (17차시)}
+\unitrow{\quad 1. 평면좌표와 직선의 방정식}
+2 & 1/3 & 01 선분의 내분 --- 수직선 위 & 완료 \\
+3 & 2/3 & 01 선분의 내분 --- 좌표평면 위 & 완료 \\
+4 & 3/3 & 01 선분의 내분 --- 무게중심, 탐구\&융합 & \\
+5 & 1/2 & 02 직선의 위치 관계 --- 평행 조건 & \\
+6 & 2/2 & 02 직선의 위치 관계 --- 수직 조건 & \\
+7 & 1/2 & 03 점과 직선 사이의 거리 & \\
+8 & 2/2 & 03 점과 직선 사이의 거리 --- 적용 & \\
+9 & -- & 중단원 마무리 (평면좌표와 직선의 방정식) & \\
+\unitrow{\quad 2. 원의 방정식}
+10 & 1/2 & 01 원의 방정식 & \\
+11 & 2/2 & 01 원의 방정식 --- 일반형 & \\
+12 & 1/2 & 02 원과 직선의 위치 관계 & \\
+13 & 2/2 & 02 원과 직선의 위치 관계 --- 접선의 방정식 & \\
+14 & -- & 중단원 마무리 (원의 방정식) & \\
+\unitrow{\quad 3. 도형의 이동}
+15 & 1/1 & 01 평행이동 & \\
+16 & 1/2 & 02 대칭이동 --- 점, 원점·좌표축 & \\
+17 & 2/2 & 02 대칭이동 --- 직선 $y=x$ & \\
+18 & -- & 중단원·대단원 마무리 (도형의 이동 / Ⅰ) & \\
+\unitrow{Ⅱ. 집합과 명제 (15차시)}
+\unitrow{\quad 1. 집합}
+19 & 1/2 & 01 집합 & \\
+20 & 2/2 & 01 집합 --- 표현 방법 & \\
+21 & 1/1 & 02 집합 사이의 포함 관계 & \\
+22 & 1/2 & 03 교집합과 합집합 & \\
+23 & 2/2 & 03 교집합과 합집합 --- 성질 & \\
+24 & 1/2 & 04 여집합과 차집합 & \\
+25 & 2/2 & 04 여집합과 차집합 --- 드모르간 법칙 & \\
+26 & -- & 중단원 마무리 (집합) & \\
+\unitrow{\quad 2. 명제}
+27 & 1/2 & 01 명제와 조건 & \\
+28 & 2/2 & 01 명제와 조건 --- `모든', `어떤' & \\
+29 & 1/2 & 02 명제 사이의 관계 --- 역, 대우 & \\
+30 & 2/2 & 02 명제 사이의 관계 --- 충분·필요조건 & \\
+31 & 1/2 & 03 명제의 증명 --- 대우, 귀류법 & \\
+32 & 2/2 & 03 명제의 증명 --- 절대부등식 & \\
+33 & -- & 중단원·대단원 마무리 (명제 / Ⅱ) & \\
+\unitrow{Ⅲ. 함수와 그래프 (10차시)}
+\unitrow{\quad 1. 함수}
+34 & 1/2 & 01 함수 & \\
+35 & 2/2 & 01 함수 --- 여러 가지 함수 & \\
+36 & 1/1 & 02 합성함수 & \\
+37 & 1/2 & 03 역함수 & \\
+38 & 2/2 & 03 역함수 --- 그래프 & \\
+39 & -- & 중단원 마무리 (함수) & \\
+\unitrow{\quad 2. 유리함수와 무리함수}
+40 & 1/2 & 01 유리함수 & \\
+41 & 2/2 & 01 유리함수 --- 그래프 & \\
+42 & 1/1 & 02 무리함수 & \\
+43 & -- & 중단원·대단원 마무리 (유리함수와 무리함수 / Ⅲ) $\cdot$ 기말 총정리 & \\
+\bottomrule
+\end{longtable}
+
+\vspace{6pt}
+\begin{tcolorbox}[enhanced, colback=surface2, colframe=linec, boxrule=0.5pt, arc=2pt,
+  left=10pt, right=10pt, top=7pt, bottom=7pt]
+\footnotesize
+\textbf{주의} --- 이 표는 학사일정(공휴일, 중간·기말고사 기간)을 아직 반영하지 않은 \textbf{내용 순서 기준} 배분표이다. 실제 달력에 배치할 때는 2026학년도 2학기 학사일정을 확인하여 시험 기간과 겹치지 않도록 주차를 조정해야 한다.
+\end{tcolorbox}
+
+\end{document}
