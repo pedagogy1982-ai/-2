@@ -1,0 +1,150 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅰ. 도형의 방정식 · 3. 도형의 이동 · 02 대칭이동 · 2/2차시
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{notebox}{enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]{\sffamily\bfseries\Large #2}\\[3pt]{\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+\lessonbanner{공통수학2 · Ⅰ. 도형의 방정식 · 3. 도형의 이동}{02 대칭이동 --- 2/2차시}{도형의 대칭이동 · 교사용 지도안 (2026학년도 2학기)}
+\vspace{10pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 10 · 전개 30 · 정리 10) \\
+성취기준 & 대칭이동을 탐구하고, 실생활과 연결하여 문제를 해결할 수 있다. \\
+선행 학습 & 15차시 --- 점의 대칭이동 \\
+\bottomrule
+\end{tabularx}
+
+\section{학습 목표 \& Big Idea}
+\begin{ideabox}
+\textbf{\color{goldstrong}영속적 이해 (Big Idea)}\\
+점의 대칭이동 공식을 알면, 도형 전체의 대칭이동도 `점의 관계를 방정식에 그대로 대입'하는 같은 논리로 얻어진다. 당구공의 반사 각도조차 이 원리로 정확히 예측할 수 있다.
+\vspace{4pt}
+\small\color{inksoft} 핵심개념: \textbf{반사} \quad\textbullet\quad 핵심개념: \textbf{합성(이동의 연속)} \quad\textbullet\quad 일반화: \textbf{점에서 성립하는 원리는 도형 전체로 확장된다}
+\end{ideabox}
+\begin{calloutbox}
+\textbf{차시 학습 목표}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt, topsep=4pt]
+  \item 방정식 $f(x,y)=0$이 나타내는 도형을 $x$축, $y$축, 원점, 직선 $y=x$에 대하여 대칭이동한 방정식을 구할 수 있다.
+  \item 평행이동과 대칭이동을 결합한 문제, 실생활(반사) 문제를 해결할 수 있다.
+\end{itemize}
+\end{calloutbox}
+
+\section{질문의 연결}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}\small}p{2.4cm}X@{}}
+사실적 질문 & 방정식 $f(x,y)=0$을 각 기준에 대하여 대칭이동하면 어떤 식이 될까? \\[6pt]
+개념적 질문 & 당구공이 벽에 부딪히는 반사 문제를, 왜 `대칭이동'으로 바꾸어 생각하면 직선 문제로 단순해질까? \\[6pt]
+논쟁적 질문 & 앰비그램(뒤집어도 같은 글자)처럼, 관점을 바꿔도 본질이 같은 것들이 우리 삶에는 무엇이 있을까? \\
+\end{tabularx}
+
+\section{수업 흐름}
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 10분 &
+\textbf{마음공부 (2분)} --- 유무념 대조.\newline
+\textbf{생각 열기 (8분)} --- ``도형을 $x$축에 대하여 대칭이동한 다음 $y$축에 대하여 대칭이동하면, 원점에 대하여 대칭이동한 것과 같을까?'' 예측 후 토론. &
+ATL: 사고(예측·검증)\newline VTR: Connect-Extend-Challenge \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{개념 형성 (12분)} --- 함께하기(도형 위의 점 대칭이동 $\to$ $f(x,-y)=0$ 유도)를 빈칸 채우기로 완성 $\to$ 나머지 세 공식도 같은 논리로 정리 $\to$ 예제 1.\newline
+\textbf{적용 (10분)} --- 문제 2 짝 활동 $\to$ 문제 3(평행이동 후 대칭이동, 순서 중요성 확인) $\to$ 예제 2($y=x$ 대칭).\newline
+\textbf{실생활 적용 (8분)} --- 문제 5(당구대 반사 문제)를 대칭이동으로 `펼쳐서' 직선 문제로 바꾸는 전략을 함께 탐구. &
+ATT: 촉진자 역할\newline ATL: 전략적 사고 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{개념 연결 질문 (5분)} --- ``오늘 배운 것 중 가장 `아하!' 했던 순간은?''\newline
+\textbf{성찰 (5분)} --- 감사 일기 1문장 + `도형의 이동' 소단원 마무리 + 다음 차시 예고(중단원·대단원 마무리). &
+마음공부 · 감사 일기 \\
+\bottomrule
+\end{tabularx}
+
+\begin{calloutbox}
+\textbf{지도상의 유의점} --- 문제 3처럼 평행이동과 대칭이동이 결합될 때는 반드시 순서대로(문제에 주어진 순서) 적용해야 함을 강조한다 --- 순서를 바꾸면 다른 결과가 나올 수 있음을 간단한 반례로 보여 줄 수 있다. 당구대 문제는 실제로 자를 대고 그려 보게 하여 직관을 함께 형성한다.
+\end{calloutbox}
+
+\section{형성평가 \& 답안}
+\begin{answerbox}
+\textbf{예제 1} \quad 원 $(x-4)^2+(y+3)^2=4$의 대칭이동\\
+\small ⑴ $x$축 \quad ⑵ $y$축 \quad ⑶ 원점\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $(x-4)^2+(y-3)^2=4$ \quad ⑵ $(x+4)^2+(y+3)^2=4$ \quad ⑶ $(x+4)^2+(y-3)^2=4$
+\end{answerbox}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 3} \quad 원 $(x-3)^2+(y+2)^2=5$를 $(2,1)$만큼 평행이동 후 $x$축 대칭\\[4pt]
+\textbf{\color{goldstrong}답} \; $(x-5)^2+(y-1)^2=5$
+\end{answerbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{예제 2} \quad 원 $x^2+(y-3)^2=9$를 $y=x$ 대칭\\[4pt]
+\textbf{\color{goldstrong}답} \; $(x-3)^2+y^2=9$
+\end{answerbox}
+\end{minipage}
+
+\vspace{6pt}
+\begin{answerbox}
+\textbf{문제 5} \quad 당구대(가로 80, 세로 40)에서 P$(10,30)$을 쳐서 $y$축, $x$축 순서로 반사시켜 Q$(70,10)$을 맞힐 때, 두 반사점 A(y축 위), B(x축 위)의 좌표\\
+\textbf{풀이 전략} \; Q를 $x$축에 대하여 대칭이동 $\to$ Q$_1(70,-10)$. P를 $y$축에 대하여 대칭이동 $\to$ P$'(-10,30)$. 직선 P$'$Q$_1$: $y=-\dfrac12x+25$가 두 좌표축과 만나는 점이 각각 A, B.\\
+\textbf{\color{goldstrong}답} \; A$(0,25)$, B$(50,0)$
+\end{answerbox}
+
+\section{성취수준 (이 차시 범위)}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{0.9cm}X@{}}
+\toprule
+A & 대칭이동을 탐구하고 대칭이동한 도형의 방정식을 구하며, 실생활과 연결하여 문제를 해결할 수 있다. \\
+B & 대칭이동한 도형의 방정식을 구하고, 실생활과 연결할 수 있다. \\
+C & 대칭이동한 도형의 방정식을 구할 수 있다. \\
+D & 대칭이동한 점의 좌표를 구할 수 있다. \\
+E & $x$축, $y$축에 대하여 대칭이동한 점의 좌표를 구할 수 있다. \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 차시}
+\begin{calloutbox}
+\textbf{중단원·대단원 마무리 --- 3. 도형의 이동 / Ⅰ. 도형의 방정식 (17차시).} 도형의 이동을 정리하는 동시에, 대단원 Ⅰ 전체(1$\sim$16차시)를 총정리한다.
+\end{calloutbox}
+\end{document}
