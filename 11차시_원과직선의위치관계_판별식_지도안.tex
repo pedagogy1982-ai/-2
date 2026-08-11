@@ -1,0 +1,142 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅰ. 도형의 방정식 · 2. 원의 방정식 · 02 원과 직선의 위치 관계 · 1/2차시
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{notebox}{enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]{\sffamily\bfseries\Large #2}\\[3pt]{\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+\lessonbanner{공통수학2 · Ⅰ. 도형의 방정식 · 2. 원의 방정식}{02 원과 직선의 위치 관계 --- 1/2차시}{판별식으로 위치 관계 판단하기 · 교사용 지도안 (2026학년도 2학기)}
+\vspace{10pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 10 · 전개 30 · 정리 10) \\
+성취기준 & 좌표평면에서 원과 직선의 위치 관계를 판단하고, 이를 활용하여 문제를 해결할 수 있다. \\
+선행 학습 & 9$\sim$10차시 --- 원의 방정식 \\
+\bottomrule
+\end{tabularx}
+
+\section{학습 목표 \& Big Idea}
+\begin{ideabox}
+\textbf{\color{goldstrong}영속적 이해 (Big Idea)}\\
+원과 직선의 `만남'이라는 기하적 사건은 연립방정식의 해의 개수, 즉 이차방정식의 판별식이라는 대수적 질문으로 정확히 번역된다.
+\vspace{4pt}
+\small\color{inksoft} 핵심개념: \textbf{판별식} \quad\textbullet\quad 핵심개념: \textbf{두 가지 방법} \quad\textbullet\quad 일반화: \textbf{같은 질문을 여러 도구로 풀 수 있다}
+\end{ideabox}
+\begin{calloutbox}
+\textbf{차시 학습 목표}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt, topsep=4pt]
+  \item 원과 직선의 방정식을 연립하여 얻은 이차방정식의 판별식으로 위치 관계를 판단할 수 있다.
+  \item 원의 중심과 직선 사이의 거리($d$)와 반지름($r$)의 대소 비교로도 같은 판단을 할 수 있음을 안다.
+\end{itemize}
+\end{calloutbox}
+
+\section{질문의 연결}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}\small}p{2.4cm}X@{}}
+사실적 질문 & 원과 직선이 만나는 점의 개수는 어떻게 판단할 수 있을까? \\[6pt]
+개념적 질문 & 판별식 부호(대수)와 $d$, $r$의 대소(기하), 두 방법은 왜 항상 같은 결론에 도달할까? \\[6pt]
+논쟁적 질문 & 별똥별이 보름달을 스치듯 지나가는 순간처럼, `접한다'는 것은 `만난다'와 `만나지 않는다' 그 경계에서 어떤 의미를 가질까? \\
+\end{tabularx}
+
+\section{수업 흐름}
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 10분 &
+\textbf{마음공부 (2분)} --- 유무념 대조.\newline
+\textbf{생각 열기 (8분)} --- 반지름 $r$인 원과 세 직선(각각 원의 중심에서 거리 $d$가 다름)을 제시 $\to$ $d$와 $r$의 대소에 따라 $>,=,<$ 중 알맞은 것을 채우며 직관적으로 위치 관계를 판단. &
+ATL: 사고(패턴 발견)\newline VTR: See-Think-Wonder \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{개념 형성 (15분)} --- 원 $x^2+y^2=r^2$과 직선 $y=mx+n$을 연립하여 이차방정식 $(m^2+1)x^2+2mnx+n^2-r^2=0$을 얻고, 판별식 $D$의 부호로 교점의 개수가 정해짐을 유도 $\to$ 예제 1을 두 가지 방법(판별식, 거리 비교)으로 함께 풀이.\newline
+\textbf{적용 (15분)} --- 예제 2(만나도록 하는 $k$의 범위) 함께 풀이 $\to$ 문제 1, 2 짝 활동(두 방법 모두 시도해 보기). &
+ATT: 촉진자 역할\newline ATL: 사고·비교 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{개념 연결 질문 (5분)} --- ``판별식 방법과 거리 비교 방법, 각각 언제 더 편리할까?''\newline
+\textbf{성찰 (5분)} --- 감사 일기 1문장 + 다음 차시 예고(원의 접선의 방정식). &
+마음공부 · 감사 일기 \\
+\bottomrule
+\end{tabularx}
+
+\begin{calloutbox}
+\textbf{지도상의 유의점} --- 두 방법(판별식, 거리 비교)이 결국 같은 결론임을 예제 1에서 나란히 보여 주어, 학생이 상황에 맞게 방법을 선택할 수 있게 한다. 접한다(=한 점에서 만난다)는 것이 $D=0$ 또는 $d=r$과 정확히 대응됨을 강조한다.
+\end{calloutbox}
+
+\section{형성평가 \& 답안}
+\begin{answerbox}
+\textbf{예제 2} \quad 원 $x^2+y^2=9$와 직선 $y=x+k$가 서로 다른 두 점에서 만나는 $k$의 범위\\
+\textbf{\color{goldstrong}답} \; $-3\sqrt2 < k < 3\sqrt2$
+\end{answerbox}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 1}\\
+\small ⑴ $x^2+y^2=1$, $y=-2x+3$ \quad ⑵ $x^2+y^2=8$, $x+y=4$\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ 만나지 않는다 \quad ⑵ 접한다(한 점에서 만난다)
+\end{answerbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 2} \quad 원 $x^2+y^2=4$와 직선 $y=2x+k$가 만나지 않는 $k$의 범위\\[4pt]
+\textbf{\color{goldstrong}답} \; $k<-2\sqrt5$ 또는 $k>2\sqrt5$
+\end{answerbox}
+\end{minipage}
+
+\section{성취수준 (이 차시 범위)}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{0.9cm}X@{}}
+\toprule
+A & 원과 직선의 위치 관계를 다양한 방법으로 판단하고, 문제를 해결할 수 있다. \\
+B & 원과 직선의 위치 관계를 다양한 방법으로 판단하고, 간단한 문제를 해결할 수 있다. \\
+C & 원과 직선의 위치 관계를 다양한 방법으로 판단할 수 있다. \\
+D & 판별식을 이용해 원과 직선의 위치 관계를 판단할 수 있다. \\
+E & 원과 직선의 위치 관계를 안다. \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 차시}
+\begin{calloutbox}
+\textbf{02 원과 직선의 위치 관계 --- 2/2차시.} 원의 접선의 방정식(기울기가 주어진 경우, 원 위의 한 점에서의 경우, 원 밖의 한 점에서 그은 경우)을 다룬다.
+\end{calloutbox}
+\end{document}
