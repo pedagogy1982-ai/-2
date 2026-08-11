@@ -1,0 +1,182 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅰ. 도형의 방정식 · 01 선분의 내분 · 2/3차시
+% 학생용 활동지 (답안 없음)
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{writeline}{HTML}{C7CCBA}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}
+  {\normalfont\sffamily\bfseries\large\color{indigoc}}
+  {\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{14pt}{6pt}
+
+\newtcolorbox{goalbox}{
+  enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt,
+  leftrule=3pt, colframe=goldc, arc=2pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt
+}
+\newtcolorbox{sheetbox}{
+  enhanced, breakable, colback=white, colframe=linec, boxrule=0.6pt,
+  arc=3pt, left=11pt, right=11pt, top=9pt, bottom=9pt
+}
+
+% 줄쳐진 기록 공간 -- 일반 텍스트 흐름, 페이지 넘김에 안전, 줄간격 0.5cm 이상
+\newcommand{\writespace}[1]{%
+  \par\nobreak\vspace{3pt}
+  \foreach \n in {1,...,#1} {%
+    \noindent\textcolor{writeline}{\rule{\linewidth}{0.4pt}}\par\vspace{0.62cm}%
+  }
+}
+\newcommand{\fillblank}[1]{\makebox[#1]{\hrulefill}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 다음 시간 --- 01 선분의 내분(3) 무게중심 \& 탐구\,\&\,융합}
+
+\begin{document}
+
+\noindent
+\begin{minipage}[b]{0.62\linewidth}
+  {\sffamily\footnotesize\color{indigosoft} 공통수학2 · Ⅰ. 도형의 방정식}\\[2pt]
+  {\sffamily\bfseries\Large 01 선분의 내분 \textperiodcentered\ 2차시}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.36\linewidth}
+  \raggedleft\small\color{inksoft}
+  반\ \fillblank{1.6cm} \quad 번호\ \fillblank{1.6cm}\\[4pt]
+  이름\ \fillblank{3.6cm}
+\end{minipage}
+
+\vspace{4pt}
+\noindent{\color{goldc}\rule{\linewidth}{2.2pt}}
+\vspace{10pt}
+
+\begin{goalbox}
+\textbf{오늘의 목표}\\
+좌표평면 위의 두 점 사이의 거리를 구하고, 선분을 $m:n$으로 내분하는 점(과 중점)의 좌표를 계산할 수 있다.
+\vspace{4pt}
+
+\small\color{inksoft}
+$\square$ 자신 있음 \quad $\square$ 조금 헷갈림 \quad $\square$ 처음 봄 \hfill (수업 전 나의 상태에 표시)
+\end{goalbox}
+
+\section{생각 열기 --- 운동장 위의 두 지점}
+
+\begin{sheetbox}
+아래는 우리 학교 운동장을 좌표평면으로 나타낸 것이다. 급수대는 A$(1,1)$, 골대는 B$(5,4)$에 있다 (단위: 10\,m).
+
+\begin{center}
+\begin{tikzpicture}[scale=0.62]
+  \draw[step=1cm, linec, very thin] (0,0) grid (6,5);
+  \draw[->, thick, indigosoft] (0,0) -- (6.4,0) node[right, font=\small]{$x$};
+  \draw[->, thick, indigosoft] (0,0) -- (0,5.4) node[above, font=\small]{$y$};
+  \draw[dashed, inksoft, thick] (1,1) -- (5,1) -- (5,4);
+  \filldraw[goldc] (1,1) circle (3.2pt);
+  \node[below=3pt, font=\small] at (1,1) {A$(1,1)$ 급수대};
+  \filldraw[goldc] (5,4) circle (3.2pt);
+  \node[above=3pt, font=\small] at (5,4) {B$(5,4)$ 골대};
+  \node[below=2pt, font=\footnotesize, inksoft] at (3,1) {?};
+  \node[right=2pt, font=\footnotesize, inksoft] at (5,2.5) {?};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}[leftmargin=1.4em, itemsep=2pt]
+  \item 점선을 따라 만들어진 직각삼각형에서, 가로 방향과 세로 방향으로 각각 몇 칸씩 떨어져 있는지 구해 보자.
+  \item 피타고라스 정리를 이용하여 급수대와 골대 사이의 실제 거리 $\overline{AB}$를 구해 보자. (단, 한 칸 $=10$\,m)
+\end{enumerate}
+\writespace{3}
+\end{sheetbox}
+
+\section{개념 정리 --- 좌표평면으로 확장하기}
+
+\begin{sheetbox}
+\textbf{두 점 사이의 거리} --- 두 점 A$(x_1,y_1)$, B$(x_2,y_2)$에서 각각 좌표축에 평행한 직선을 그어 만나는 점을 C라 하면 삼각형 ABC는 직각삼각형이다.
+\[
+\overline{AC} = \fillblank{2.6cm}\,,\qquad \overline{BC} = \fillblank{2.6cm}
+\]
+피타고라스 정리에 의하여
+\[
+\overline{AB} = \fillblank{6.5cm}
+\]
+특히, 원점 O와 점 A$(x_1,y_1)$ 사이의 거리는 $\overline{OA}=\fillblank{4.5cm}$
+
+\vspace{10pt}
+\textbf{내분점의 좌표} --- 1차시에서 배운 수직선 위의 내분점 공식을 $x$좌표, $y$좌표에 각각 적용하면, 두 점 A$(x_1,y_1)$, B$(x_2,y_2)$에 대하여 선분 AB를 $m:n$으로 내분하는 점 P의 좌표는
+\[
+\left(\ \fillblank{3.2cm}\ ,\ \ \fillblank{3.2cm}\ \right)
+\]
+특히, 중점 M의 좌표는 $\left(\ \fillblank{2.6cm}\ ,\ \ \fillblank{2.6cm}\ \right)$
+\end{sheetbox}
+
+\section{연습 문제}
+
+\begin{sheetbox}
+\textbf{3.} 다음 두 점 사이의 거리를 구하시오.\\
+\hspace*{1.6em}⑴ A($1,5$), B($-3,3$) \qquad ⑵ O($0,0$), A($3,-4$)
+\writespace{2}
+
+\vspace{8pt}
+\textbf{4.} 세 점 A($-2,9$), B($6,7$), C($5,3$)을 꼭짓점으로 하는 삼각형 ABC는 어떤 삼각형인지, 세 변의 길이를 모두 구해서 말하시오.
+\writespace{3}
+
+\vspace{8pt}
+\textbf{5.} 두 점 A($6,-7$), B($-4,3$)에 대하여 다음 점의 좌표를 구하시오.\\
+\hspace*{1.6em}⑴ 선분 AB를 $3:2$로 내분하는 점 \qquad ⑵ 선분 AB의 중점
+\writespace{3}
+\end{sheetbox}
+
+\section{사고의 가시화 --- Connect · Extend · Challenge}
+
+\noindent{\footnotesize\color{inksoft} 1차시(수직선)와 오늘(좌표평면)을 비교하며 아래 세 칸을 채워 보자.}\\[6pt]
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\textbf{\footnotesize\color{indigoc} Connect --- 1차시와 어떻게 연결되나?} &
+\textbf{\footnotesize\color{indigoc} Extend --- 새롭게 확장된 것은?} &
+\textbf{\footnotesize\color{indigoc} Challenge --- 아직 헷갈리는 것은?} \\[4pt]
+\end{tabularx}
+\noindent
+\begin{minipage}[t]{0.32\linewidth}\writespace{4}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{4}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{4}\end{minipage}
+
+\section{마무리 성찰}
+
+\begin{sheetbox}
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 오늘 배운 것을 한 문장으로}
+\writespace{3}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 감사 일기 / 유념 한 줄}
+\writespace{3}
+\end{minipage}
+\end{sheetbox}
+
+\end{document}

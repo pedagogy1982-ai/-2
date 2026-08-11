@@ -1,0 +1,209 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅰ. 도형의 방정식 · 01 선분의 내분 · 2/3차시
+% 교사용 지도안
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{goodbg}{HTML}{E7EEE0}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}
+  {\normalfont\sffamily\bfseries\large\color{indigoc}}
+  {\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+
+\newtcolorbox{ideabox}{
+  enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt,
+  leftrule=3pt, colframe=goldc, arc=2pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt
+}
+\newtcolorbox{calloutbox}{
+  enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt,
+  leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt
+}
+\newtcolorbox{notebox}{
+  enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt,
+  leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt
+}
+\newtcolorbox{answerbox}{
+  enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt,
+  arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt
+}
+
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc,
+    boxrule=0pt, arc=0pt, left=14pt, right=14pt, top=14pt, bottom=10pt,
+    borderline south={2.4pt}{0pt}{goldc},
+    fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]
+    {\sffamily\bfseries\Large #2}\\[3pt]
+    {\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+
+\lessonbanner{공통수학2 · Ⅰ. 도형의 방정식 · 1. 평면좌표와 직선의 방정식}%
+  {01 선분의 내분 --- 2/3차시}%
+  {좌표평면 위의 선분의 내분 · 교사용 지도안 (2026학년도 2학기)}
+
+\vspace{10pt}
+
+\noindent
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 10 · 전개 30 · 정리 10) \\
+성취기준 & 좌표평면 위의 선분의 내분을 이해하고 내분점의 좌표를 구할 수 있다. \\
+선행 학습 & 1차시 --- 수직선 위의 선분의 내분 \\
+\bottomrule
+\end{tabularx}
+
+\section{학습 목표 \& Big Idea}
+
+\begin{ideabox}
+\textbf{\color{goldstrong}영속적 이해 (Big Idea)}\\
+1차원(수직선)에서 세운 비례 관계는 형태를 바꾸지 않고 2차원(평면)으로 그대로 확장된다 --- 좌표 하나가 둘이 되어도 원리는 같다.
+\vspace{4pt}
+
+\small\color{inksoft}
+핵심개념: \textbf{전이(transfer)} \quad\textbullet\quad 핵심개념: \textbf{차원의 확장} \quad\textbullet\quad
+일반화: \textbf{구조는 차원에 무관하게 보존된다}
+\end{ideabox}
+
+\begin{calloutbox}
+\textbf{차시 학습 목표}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt, topsep=4pt]
+  \item 좌표평면 위의 두 점 사이의 거리를 구할 수 있다.
+  \item 좌표평면 위에서 선분을 $m:n$으로 내분하는 점(과 중점)의 좌표를 계산할 수 있다.
+  \item 거리 공식을 활용해 삼각형의 변의 길이를 비교하고 그 종류를 판별할 수 있다.
+\end{itemize}
+\end{calloutbox}
+
+\section{질문의 연결}
+
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}\small}p{2.4cm}X@{}}
+사실적 질문 & 좌표평면 위의 두 점 A$(x_1,y_1)$, B$(x_2,y_2)$ 사이의 거리는 어떻게 구할까? \\[6pt]
+개념적 질문 & 1차원에서 얻은 내분점 공식이 2차원에서도 그대로 통할까? 왜 그럴까? \\[6pt]
+논쟁적 질문 & 두 사람(또는 두 지역) 사이의 `거리'를 숫자 하나로 표현하는 것으로 충분할까? 수학적 거리가 놓치는 것은 무엇일까? \\
+\end{tabularx}
+
+\section{수업 흐름}
+
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 10분 &
+\textbf{마음공부 · 유무념 대조 (2분)} --- ``지난 시간 배운 내분을 오늘 하루 어디서 떠올렸는가?''\newline
+\textbf{복습 (3분)} --- 수직선 위 내분점 공식 빠르게 재확인 (1문항 미니 퀴즈).\newline
+\textbf{생각 열기 (5분)} --- ``두 지점이 이제 평면 위에 있다면, 거리는 어떻게 구할까?'' 학교 운동장에 흩어진 두 지점을 좌표로 나타낸 그림 제시 $\to$ 피타고라스 정리와 연결 짓기. &
+ATL: 사고(연결)\newline VTR: Connect-Extend-Challenge \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{개념 형성 (12분)} --- 두 점 A, B에서 각각 축에 평행선을 내려 직각삼각형을 만들고, 피타고라스 정리로 거리 공식 $\overline{AB}=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$ 유도. 원점과의 거리는 특수한 경우로 짚기.\newline
+\textbf{적용 (10분)} --- 문제 3(거리) $\to$ 문제 4(삼각형 ABC의 종류 판별 --- 세 변의 길이를 비교해 직각삼각형임을 발견하는 탐구형 문제) 짝 활동.\newline
+\textbf{개념 확장 (8분)} --- 수직선의 내분점 공식을 $x$좌표·$y$좌표에 각각 적용 $\to$ 좌표평면 내분점 공식 유도 $\to$ 문제 5 적용. &
+ATT: 촉진자 역할\newline ATL: 사고·협업\newline VTR: See-Think-Wonder \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{개념 연결 질문 (5분)} --- ``오늘 무엇이 1차시와 똑같고, 무엇이 새로웠는가?'' $\to$ ``좌표 하나가 둘이 되었을 뿐, 구조는 같다'' 도출.\newline
+\textbf{성찰 (5분)} --- 감사 일기 1문장 + 다음 차시 예고(무게중심, 탐구\&융합). &
+마음공부 · 감사 일기 \\
+\bottomrule
+\end{tabularx}
+
+\vspace{8pt}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{calloutbox}
+\textbf{지도상의 유의점}
+\begin{itemize}[leftmargin=1.2em, itemsep=2pt, topsep=4pt]
+  \item 거리 공식은 암기 이전에 피타고라스 정리에서 유도되는 과정을 반드시 눈으로 따라가게 한다.
+  \item 내분점 공식은 $x$축에 내린 수선의 발을 이용해 1차시의 수직선 공식을 그대로 재사용한다는 점을 강조 --- 새 공식이 아니라 같은 원리의 반복임을 알게 한다.
+  \item 문제 4는 정답(직각삼각형)을 바로 알려주지 말고, 세 변의 길이를 각각 구한 뒤 피타고라스 역정리로 스스로 발견하게 한다.
+\end{itemize}
+\end{calloutbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{notebox}
+\textbf{인문학적 탐구 연결}\\
+1차원의 원리가 2차원에서도 형태를 잃지 않고 이어진다는 사실은, 사람 사이의 관계 맺는 방식이 상황(가정·학교·사회)이 바뀌어도 본질은 이어진다는 은유로 확장할 수 있다.
+\end{notebox}
+\end{minipage}
+
+\section{형성평가 \& 답안}
+
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 3} --- 두 점 사이의 거리\\
+\small ⑴ A($1,5$), B($-3,3$) \quad ⑵ O($0,0$), A($3,-4$)\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $2\sqrt{5}$ \quad ⑵ $5$
+\end{answerbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 4} --- 삼각형의 종류\\
+\small A($-2,9$), B($6,7$), C($5,3$)\\[4pt]
+\textbf{\color{goldstrong}답} \; $\angle$B$=90^\circ$인 직각삼각형
+\end{answerbox}
+\end{minipage}
+
+\vspace{6pt}
+\begin{answerbox}
+\textbf{문제 5} --- 내분점과 중점 \quad A($6,-7$), B($-4,3$)\\
+\small ⑴ $3:2$로 내분하는 점 \quad ⑵ 선분 AB의 중점\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $(0,-1)$ \quad ⑵ $(1,-2)$
+\end{answerbox}
+
+\section{성취수준 (이 차시 범위)}
+
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{0.9cm}X@{}}
+\toprule
+A & 좌표평면 위 거리·내분점 공식을 유도 과정과 함께 설명하고, 삼각형의 변의 길이를 비교해 그 종류를 판별할 수 있다. \\
+B & 좌표평면 위 거리·내분점 공식을 이해하고 정확히 계산할 수 있다. \\
+C & 공식을 이용해 좌표평면 위 거리·내분점을 계산할 수 있다. \\
+D & 안내에 따라 거리 또는 내분점을 계산할 수 있다. \\
+E & 원점과 한 점 사이의 거리를 계산할 수 있다. \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 차시}
+
+\begin{calloutbox}
+\textbf{3/3차시 --- 무게중심과 탐구\&융합.} 삼각형의 각 변을 $2:1$로 내분하는 점을 꼭짓점으로 하는 삼각형의 무게중심이 원래 삼각형의 무게중심과 일치함을 확인하며 01 소단원을 마무리한다. 이후 4차시부터 ``02 직선의 위치 관계''로 넘어간다.
+\end{calloutbox}
+
+\end{document}
