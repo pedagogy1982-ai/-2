@@ -1,0 +1,125 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅰ. 도형의 방정식 · 3. 도형의 이동 중단원 마무리 + 대단원Ⅰ 총정리 (17차시)
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]{\sffamily\bfseries\Large #2}\\[3pt]{\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+\lessonbanner{공통수학2}{Ⅰ. 도형의 방정식 --- 중단원(도형의 이동)·대단원 총정리 (17차시)}{교사용 지도안 (2026학년도 2학기)}
+\vspace{10pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 5 · 전개 30 · 정리 15) \\
+목적 & 14$\sim$16차시(도형의 이동)를 정리하고, 대단원 Ⅰ 전체(1$\sim$16차시)를 하나의 이야기로 총정리한다. \\
+\bottomrule
+\end{tabularx}
+
+\section{대단원 Ⅰ 총정리 지도}
+\begin{ideabox}
+\textbf{\color{goldstrong}대단원을 관통하는 하나의 질문}\\
+``위치와 관계를 어떻게 수와 식으로 표현할 것인가?'' --- 점(내분) $\to$ 직선(기울기·거리) $\to$ 원(정의의 번역) $\to$ 이동(변환) 순으로, 도형이 점점 복잡해져도 같은 도구(거리 공식, 대입)가 반복해서 쓰였다.
+\end{ideabox}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\small}p{4.6cm}X@{}}
+\toprule
+\textbf{중단원} & \textbf{핵심 한 줄} \\
+\midrule
+1. 평면좌표와 직선의 방정식 & 위치의 관계는 비(내분)와 기울기로 수량화된다 \\
+2. 원의 방정식 & 도형의 정의를 그대로 옮기면 방정식이 된다 \\
+3. 도형의 이동 & 점의 이동 규칙을 알면 도형 전체, 나아가 방정식 전체가 함께 움직인다 \\
+\bottomrule
+\end{tabularx}
+
+\section{수업 흐름}
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 5분 &
+\textbf{마음공부 (2분)} --- 대단원 전체를 돌아보는 유무념 대조.\newline
+\textbf{총정리 지도 확인 (3분)} --- 위 표로 3개 중단원의 연결 복습. &
+ATL: 자기관리 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{도형의 이동 마무리 문제 (15분)} --- 01$\sim$06(기본) 개별 풀이 후 교차 채점.\newline
+\textbf{대단원 평가 문제 (15분)} --- 대단원 평가 문제 01$\sim$08 중 학급 수준에 맞게 선택하여 모둠 협력 풀이(1$\sim$16차시 전체 개념이 섞여 있어 `어느 차시 개념인지' 스스로 분류해 보게 한다). &
+ATT: 촉진자·평가자\newline ATL: 통합적 사고 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 15분 &
+\textbf{대단원 성찰 (10분)} --- ``이 대단원에서 나에게 가장 어려웠던 순간과, 가장 `아하!'했던 순간은?'' 각자 작성 후 짝과 공유.\newline
+\textbf{성찰 (5분)} --- 감사 일기 + 다음 대단원(Ⅱ. 집합과 명제) 예고. &
+마음공부 · 대단원 성찰 \\
+\bottomrule
+\end{tabularx}
+
+\begin{calloutbox}
+\textbf{지도상의 유의점} --- 대단원 평가 문제는 여러 중단원의 개념이 섞여 나오므로(예: 내분점+원, 직선의 위치관계+대칭이동), 학생이 문제를 어느 개념으로 풀지 스스로 판단하는 훈련 자체가 이 차시의 핵심 목표임을 강조한다.
+\end{calloutbox}
+
+\section{형성평가 답안 (도형의 이동 중단원 마무리, 지도서 원문 01$\sim$06번)}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{1.4cm}X@{}}
+\toprule
+01 & 점$(2,-1)\to(-5,2)$ 평행이동 $\to$ $a=-7$, $b=3$ \\
+02 & $(6,-2)$만큼 평행이동: ⑴ $2x+3y-7=0$ \; ⑵ $(x-6)^2+(y+1)^2=9$ \\
+03 & 점$(-4,3)$ 대칭이동: ⑴ $(-4,-3)$ ⑵ $(4,3)$ ⑶ $(4,-3)$ ⑷ $(3,-4)$ \\
+04 & 원$(x+5)^2+(y-4)^2=1$ 대칭이동: ⑴ $(x+5)^2+(y+4)^2=1$ ⑵ $(x-5)^2+(y-4)^2=1$ ⑶ $(x-5)^2+(y+4)^2=1$ ⑷ $(x-4)^2+(y+5)^2=1$ \\
+05 & 점$(4,-5)$를 $(-2,4)$만큼 평행이동한 점이 $x-ay+3=0$ 위 $\to$ $a=-5$ \\
+06 & 원을 평행이동 후 $y=x$ 대칭 $\to$ $(x-5)^2+(y-6)^2=9$ \\
+\bottomrule
+\end{tabularx}
+
+\section{대단원 Ⅰ 평가 문제 답안 (선택 활용, 지도서 원문 01, 03, 04, 08번)}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{1.4cm}X@{}}
+\toprule
+02 & 직선 $3x-y-8=0$에 평행, 점$(3,-3)$ 지남 $\to$ $y=3x-12$. 점$(\frac23,k)$ 지날 때 $k=-10$ \\
+03 & $2x-y+6=0 \perp 2x+ay-3=0$이고 $\parallel (2-b)x+3y+1=0$ $\to$ $ab$의 값 계산 \\
+04 & 두 직선이 이루는 각의 이등분선 중 기울기 음수인 것 \\
+08 & $x^2+y^2+6x-4y+k+1=0$이 원이 될 $k$의 범위 \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 대단원}
+\begin{calloutbox}
+\textbf{Ⅱ. 집합과 명제 (18차시$\sim$).} `도형과 방정식'에서 `논리와 언어'로 무대가 바뀐다. 지금까지 `위치'를 다뤘다면, 이제는 `참과 거짓', `포함과 배제'를 다루게 된다.
+\end{calloutbox}
+\end{document}
