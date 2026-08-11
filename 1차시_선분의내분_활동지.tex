@@ -1,0 +1,194 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅰ. 도형의 방정식 · 01 선분의 내분 · 1/3차시
+% 학생용 활동지 (답안 없음)
+% 컴파일: XeLaTeX (Overleaf 메뉴에서 Menu > Compiler > XeLaTeX 로 지정)
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{kotex}
+\setmainhangulfont{Noto Serif CJK KR}
+\setsanshangulfont{Noto Sans CJK KR}
+
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{writeline}{HTML}{C7CCBA}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}
+  {\normalfont\sffamily\bfseries\large\color{indigoc}}
+  {\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{14pt}{6pt}
+
+% ---------- 재사용 박스 ----------
+\newtcolorbox{goalbox}{
+  enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt,
+  leftrule=3pt, colframe=goldc, arc=2pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt
+}
+\newtcolorbox{sheetbox}{
+  enhanced, breakable, colback=white, colframe=linec, boxrule=0.6pt,
+  arc=3pt, left=11pt, right=11pt, top=9pt, bottom=9pt
+}
+
+% ---------- 줄쳐진 기록 공간 (실제 cm 단위, 0.7cm 줄간격) ----------
+% #1 = 높이(cm)
+\newcommand{\writespace}[1]{%
+  \begin{tikzpicture}
+    \useasboundingbox (0,0) rectangle (\linewidth,-#1 cm);
+    \draw[writeline, rounded corners=2pt] (0,0) rectangle (\linewidth,-#1 cm);
+    \foreach \y in {0.7,1.4,...,#1} {
+      \draw[writeline, dash pattern=on 2pt off 2pt] (0.15,-\y cm) -- (\linewidth-0.15cm,-\y cm);
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\fillblank}[1]{\makebox[#1]{\dotfill}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 다음 시간 --- 02 좌표평면 위의 선분의 내분}
+
+\begin{document}
+
+% ---------- 머리 : 이름/반/번호 + 골드 밑줄 ----------
+\noindent
+\begin{minipage}[b]{0.62\linewidth}
+  {\sffamily\footnotesize\color{indigosoft} 공통수학2 · Ⅰ. 도형의 방정식}\\[2pt]
+  {\sffamily\bfseries\Large 01 선분의 내분 \textperiodcentered\ 1차시}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.36\linewidth}
+  \raggedleft\small\color{inksoft}
+  반\ \fillblank{1.6cm} \quad 번호\ \fillblank{1.6cm}\\[4pt]
+  이름\ \fillblank{3.6cm}
+\end{minipage}
+
+\vspace{4pt}
+\noindent{\color{goldc}\rule{\linewidth}{2.2pt}}
+\vspace{10pt}
+
+\begin{goalbox}
+\textbf{오늘의 목표}\\
+수직선 위에서 `내분'이 무엇인지 이해하고, 두 점을 $m:n$으로 나누는 점의 좌표를 직접 구할 수 있다.
+\vspace{4pt}
+
+\small\color{inksoft}
+$\square$ 자신 있음 \quad $\square$ 조금 헷갈림 \quad $\square$ 처음 봄 \hfill (수업 전 나의 상태에 표시)
+\end{goalbox}
+
+\section{생각 열기 --- 일직선 도로 위의 세 지점}
+
+\begin{sheetbox}
+아래는 창원대로(우리나라에서 가장 긴 직선 도로)의 일부를 한 눈금 1\,km로 하여 수직선 위에 나타낸 것이다.
+A는 버스 터미널, B는 올림픽 공원, C는 성산구청 근처의 한 지점이다.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.78, every node/.style={font=\small}]
+  % 실제 값에서 계산한 눈금: 0~9, 10개
+  \draw[thick, indigosoft] (0,0) -- (9,0);
+  \foreach \x in {0,...,9} {
+    \draw[inksoft] (\x,-0.14) -- (\x,0.14);
+    \node[below=1pt, font=\tiny, inksoft] at (\x,-0.16) {\x};
+  }
+  \filldraw[goldc] (1,0) circle (3.6pt);
+  \node[above=4pt] at (1,0) {\textbf{A}};
+  \node[below=13pt, font=\footnotesize] at (1,-0.16) {터미널};
+  \filldraw[goldc] (3,0) circle (3.6pt);
+  \node[above=4pt] at (3,0) {\textbf{B}};
+  \node[below=13pt, font=\footnotesize] at (3,-0.16) {올림픽공원};
+  \filldraw[goldc] (8,0) circle (3.6pt);
+  \node[above=4pt] at (8,0) {\textbf{C}};
+  \node[below=13pt, font=\footnotesize] at (8,-0.16) {성산구청};
+\end{tikzpicture}\\
+{\footnotesize\color{inksoft} 한 눈금 = 1\,km \quad\textperiodcentered\quad A는 1번 눈금, B는 3번 눈금, C는 8번 눈금 위에 있다}
+\end{center}
+
+\begin{enumerate}[leftmargin=1.4em, itemsep=2pt]
+  \item 두 점 A, B 사이의 거리와 두 점 B, C 사이의 거리를 각각 구해 보자.
+  \item $\overline{AB}:\overline{BC}$를 가장 간단한 자연수의 비로 나타내 보자.
+\end{enumerate}
+\writespace{2.1}
+
+\vspace{6pt}
+\textbf{확장 질문} --- 우리가 사는 지평선 지역(김제·만경 일대)에도 이렇게 곧게 뻗은 길이나 둑길이 있을까? 있다면 어떤 길인지, 실제로 어떻게 확인할 수 있을지 적어 보자.
+\writespace{1.1}
+\end{sheetbox}
+
+\section{개념 정리 --- 내분이란?}
+
+\begin{sheetbox}
+선분 AB 위의 점 P에 대하여
+\[
+\overline{AP} : \overline{PB} = m : n \quad (m>0,\ n>0)
+\]
+일 때, 점 P는 선분 AB를 \fillblank{1.2cm} : \fillblank{1.2cm}으로 \fillblank{2.4cm}한다고 하며,
+점 P를 선분 AB의 \fillblank{2.4cm}이라고 한다.
+
+\vspace{8pt}
+\textbf{함께 채우기} --- 수직선 위의 두 점 A($x_1$), B($x_2$) ($x_1<x_2$)에서 선분 AB를 $m:n$으로 내분하는 점 P의 좌표를 $x$라 하면,
+
+\[
+\overline{AP} = x - \fillblank{1.2cm}\,,\qquad
+\overline{PB} = \fillblank{1.2cm} - x
+\]
+\[
+(x-x_1):(x_2-x) = m:n \quad\Rightarrow\quad x = \fillblank{4.5cm}
+\]
+\end{sheetbox}
+
+\section{연습 문제}
+
+\begin{sheetbox}
+\textbf{1.} 다음 두 점 사이의 거리를 구하시오.\\
+\hspace*{1.6em}⑴ A($-3$), B($3$) \qquad ⑵ A($6$), B($-2$)
+\writespace{1.6}
+
+\vspace{8pt}
+\textbf{2.} 두 점 A($-6$), B($8$)에 대하여 다음 점의 좌표를 구하시오.\\
+\hspace*{1.6em}⑴ 선분 AB를 $2:5$로 내분하는 점 \qquad ⑵ 선분 AB의 중점
+\writespace{2.4}
+\end{sheetbox}
+
+\section{사고의 가시화 --- See · Think · Wonder}
+
+\noindent{\footnotesize\color{inksoft} 오늘 배운 `내분'을 떠올리며 아래 세 칸을 채워 보자.}\\[6pt]
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\textbf{\footnotesize\color{indigoc} See --- 무엇을 보았나?} &
+\textbf{\footnotesize\color{indigoc} Think --- 무엇을 생각했나?} &
+\textbf{\footnotesize\color{indigoc} Wonder --- 무엇이 궁금한가?} \\[4pt]
+\end{tabularx}
+\noindent
+\begin{minipage}[t]{0.32\linewidth}\writespace{2.6}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{2.6}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{2.6}\end{minipage}
+
+\section{마무리 성찰}
+
+\begin{sheetbox}
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 오늘 배운 것을 한 문장으로}
+\writespace{1.1}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 감사 일기 / 유념 한 줄}
+\writespace{1.1}
+\end{minipage}
+\end{sheetbox}
+
+\end{document}

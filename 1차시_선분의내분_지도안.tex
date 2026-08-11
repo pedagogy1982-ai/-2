@@ -1,0 +1,213 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅰ. 도형의 방정식 · 01 선분의 내분 · 1/3차시
+% 교사용 지도안
+% 컴파일: XeLaTeX (Overleaf 메뉴에서 Menu > Compiler > XeLaTeX 로 지정)
+
+\documentclass[11pt,a4paper]{article}
+
+% ---------- 한글 ----------
+\usepackage{kotex}
+\setmainhangulfont{Noto Serif CJK KR}
+\setsanshangulfont{Noto Sans CJK KR}
+
+% ---------- 레이아웃 ----------
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+% ---------- 색: 지평선(황혼 인디고 + 들녘 골드) ----------
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{goodbg}{HTML}{E7EEE0}
+\definecolor{inksoft}{HTML}{52604F}
+
+% ---------- 절 제목 ----------
+\titleformat{\section}
+  {\normalfont\sffamily\bfseries\large\color{indigoc}}
+  {\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+
+% ---------- 재사용 박스 ----------
+\newtcolorbox{ideabox}{
+  enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt,
+  leftrule=3pt, colframe=goldc, arc=2pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt
+}
+\newtcolorbox{calloutbox}{
+  enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt,
+  leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt
+}
+\newtcolorbox{notebox}{
+  enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt,
+  leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt
+}
+\newtcolorbox{answerbox}{
+  enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt,
+  arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt
+}
+
+% ---------- 제목 배너 (황혼 인디고 + 들녘 골드 경계선) ----------
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc,
+    boxrule=0pt, arc=0pt, left=14pt, right=14pt, top=14pt, bottom=10pt,
+    borderline south={2.4pt}{0pt}{goldc},
+    fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]
+    {\sffamily\bfseries\Large #2}\\[3pt]
+    {\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+
+\lessonbanner{공통수학2 · Ⅰ. 도형의 방정식 · 1. 평면좌표와 직선의 방정식}%
+  {01 선분의 내분 --- 1/3차시}%
+  {수직선 위의 선분의 내분 · 교사용 지도안 (2026학년도 2학기)}
+
+\vspace{10pt}
+
+\noindent
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 10 · 전개 30 · 정리 10) \\
+성취기준 & 선분의 내분을 이해하고 내분점의 좌표를 구할 수 있다. \\
+선행 학습 & 중1 좌표평면과 그래프 · 중2 일차함수 \\
+\bottomrule
+\end{tabularx}
+
+\section{학습 목표 \& Big Idea}
+
+\begin{ideabox}
+\textbf{\color{goldstrong}영속적 이해 (Big Idea)}\\
+직선 위 두 지점 사이의 ``관계''는 비(比)로 압축해서 나타낼 수 있고,
+이 비는 위치를 정확히 계산해 내는 도구가 된다.
+\vspace{4pt}
+
+\small\color{inksoft}
+핵심개념: \textbf{비례} \quad\textbullet\quad 핵심개념: \textbf{위치} \quad\textbullet\quad
+일반화: \textbf{관계의 수량화}
+\end{ideabox}
+
+\begin{calloutbox}
+\textbf{차시 학습 목표}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt, topsep=4pt]
+  \item 선분의 내분의 뜻을 설명할 수 있다.
+  \item 수직선 위의 두 점 사이의 거리를 구할 수 있다.
+  \item 수직선 위에서 선분을 $m:n$으로 내분하는 점(과 중점)의 좌표를 계산할 수 있다.
+\end{itemize}
+\end{calloutbox}
+
+\section{질문의 연결}
+
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}\small}p{2.4cm}X@{}}
+사실적 질문 & 수직선 위의 두 점 A, B 사이의 거리는 어떻게 구할까? \\[6pt]
+개념적 질문 & 한 점이 선분을 `나눈다'는 것을 어떻게 숫자(비)로 표현할 수 있을까? \\[6pt]
+논쟁적 질문 & 위치를 굳이 수와 비율로 바꾸어 표현하는 것은 우리 삶에 어떤 의미가 있을까? --- 지도, 내비게이션, 지역 축제의 부지 배치까지 \\
+\end{tabularx}
+
+\section{수업 흐름}
+
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 10분 &
+\textbf{마음공부 · 유무념 대조 (2분)} --- ``오늘 등굣길, 나는 어떤 두 지점 사이에 있었는가?''를 한 줄로 적기.\newline
+\textbf{생각 열기 (5분)} --- 창원대로 위 세 지점 A(터미널)·B(올림픽공원)·C(성산구청) 자료를 제시. ``A$\sim$B, B$\sim$C 거리를 구하고 비를 말해 보자.''\newline
+\textbf{전이 발문 (3분)} --- ``우리 지평선 지역에도 이런 일직선 도로나 둑길이 있을까?'' (학생이 직접 조사하는 열린 과제로 둠 --- 임의의 지역 거리값을 교사가 단정하지 않는다.) &
+ATL: 의사소통\newline VTR: See-Think-Wonder 도입 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{개념 형성 (10분)} --- 두 점 사이의 거리 $|x_2-x_1|$ 확인 $\to$ 문제 1 개별 풀이 $\to$ 짝 확인.\newline
+\textbf{함께하기 (10분)} --- 내분점 공식 $x=\dfrac{mx_2+nx_1}{m+n}$ 유도를 빈칸 채우기로 함께 완성.\newline
+\textbf{적용 (10분)} --- 보기(1:3 내분) 확인 $\to$ 문제 2 짝 활동 $\to$ 무작위 지목 공유. &
+ATT: 촉진자 역할\newline ATL: 사고·협업\newline VTR: Connect-Extend-Challenge \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{개념 연결 질문 (5분)} --- ``선분의 중점은 몇 : 몇으로 내분한 걸까?'' $\to$ $1:1$ 도출.\newline
+\textbf{성찰 (5분)} --- 감사 일기 1문장 + 다음 차시 예고. &
+마음공부 · 감사 일기 \\
+\bottomrule
+\end{tabularx}
+
+\vspace{8pt}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{calloutbox}
+\textbf{지도상의 유의점}
+\begin{itemize}[leftmargin=1.2em, itemsep=2pt, topsep=4pt]
+  \item 내분은 순서(A$\to$B)가 정해져 있음을 강조 --- $\overline{BA}$를 내분하는 점과 $\overline{AB}$를 내분하는 점은 일반적으로 다르다.
+  \item $m, n$은 항상 양수임을 짚는다.
+  \item 공식 암기보다 $\overline{A'P'}:\overline{P'B'}=\overline{AP}:\overline{PB}$ 평행선 비례에서 유도되는 과정을 눈으로 따라가게 한다.
+\end{itemize}
+\end{calloutbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{notebox}
+\textbf{인문학적 탐구 연결}\\
+``내분''은 두 존재 사이의 관계를 비율로 정의한다는 점에서, 사람과 사람 사이의 `적당한 거리'에 대한 질문으로 확장할 수 있다. 정리 단계의 성찰 문장에 자연스럽게 녹여 사용할 것.
+\end{notebox}
+\end{minipage}
+
+\section{형성평가 \& 답안}
+
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 1} --- 두 점 사이의 거리\\
+\small ⑴ A($-3$), B($3$) \quad ⑵ A($6$), B($-2$)\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $6$ \quad ⑵ $8$
+\end{answerbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 2} --- 내분점과 중점\\
+\small A($-6$), B($8$)에서 ⑴ $2{:}5$ 내분점 \quad ⑵ 중점\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $-2$ \quad ⑵ $1$
+\end{answerbox}
+\end{minipage}
+
+\vspace{6pt}
+\begin{calloutbox}
+\textbf{함께하기 (빈칸 채우기) 답}\\
+$x_1<x_2$일 때 $\overline{AP}=x-x_1,\ \overline{PB}=x_2-x$ $\to$
+$(x-x_1):(x_2-x)=m:n$ $\to$ $x=\dfrac{mx_2+nx_1}{m+n}$
+\end{calloutbox}
+
+\section{성취수준 (이 차시 범위)}
+
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{0.9cm}X@{}}
+\toprule
+A & 내분의 뜻을 설명하고, 수직선 위 내분점·중점의 좌표를 구하는 원리를 다른 사람에게 설명할 수 있다. \\
+B & 내분의 뜻을 이해하고, 수직선 위 내분점·중점의 좌표를 정확히 계산할 수 있다. \\
+C & 내분의 뜻을 알고, 공식을 이용해 내분점의 좌표를 계산할 수 있다. \\
+D & 안내에 따라 내분점의 좌표를 계산할 수 있다. \\
+E & 두 점 사이의 거리를 계산할 수 있다. \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 차시}
+
+\begin{calloutbox}
+\textbf{2/3차시 --- 좌표평면 위의 선분의 내분.} 이번 차시의 수직선 공식을 $x$좌표·$y$좌표에 각각 적용하는 방식으로 자연스럽게 확장한다. 학생용 활동지의 See-Think-Wonder 응답을 다음 차시 도입 질문으로 재사용할 것.
+\end{calloutbox}
+
+\end{document}
