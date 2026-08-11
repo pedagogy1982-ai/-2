@@ -1,0 +1,147 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅱ. 집합과 명제 · 1. 집합 · 02 집합 사이의 포함 관계 · 1/1차시
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{notebox}{enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]{\sffamily\bfseries\Large #2}\\[3pt]{\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+\lessonbanner{공통수학2 · Ⅱ. 집합과 명제 · 1. 집합}{02 집합 사이의 포함 관계 --- 1/1차시}{부분집합·진부분집합·서로 같은 집합 · 교사용 지도안 (2026학년도 2학기)}
+\vspace{10pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 10 · 전개 30 · 정리 10) \\
+성취기준 & 두 집합 사이의 포함 관계를 판단할 수 있다. \\
+선행 학습 & 18$\sim$19차시 --- 집합의 뜻과 표현, 원소의 개수 \\
+\bottomrule
+\end{tabularx}
+
+\section{학습 목표 \& Big Idea}
+\begin{ideabox}
+\textbf{\color{goldstrong}영속적 이해 (Big Idea)}\\
+두 집합은 원소와 원소를 하나하나 비교함으로써 `포함' 또는 `같음'이라는 관계를 정확히 판별할 수 있다. `같다'는 것도 결국 `서로 포함한다'는 두 방향의 관계로 분해된다.
+\vspace{4pt}
+\small\color{inksoft} 핵심개념: \textbf{포함} \quad\textbullet\quad 핵심개념: \textbf{같음 = 상호 포함} \quad\textbullet\quad 일반화: \textbf{복잡한 관계도 단순한 관계 두 개로 분해될 수 있다}
+\end{ideabox}
+\begin{calloutbox}
+\textbf{차시 학습 목표}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt, topsep=4pt]
+  \item 부분집합의 뜻을 알고, 두 집합 사이의 포함 관계를 기호로 나타낼 수 있다.
+  \item 서로 같은 집합과 진부분집합의 뜻을 이해하고 판단할 수 있다.
+\end{itemize}
+\end{calloutbox}
+
+\section{질문의 연결}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}\small}p{2.4cm}X@{}}
+사실적 질문 & 집합 $A$가 집합 $B$의 부분집합이려면 어떤 조건을 만족해야 할까? \\[6pt]
+개념적 질문 & 두 집합이 `서로 같다'는 것을, 왜 `$A\subset B$이고 $B\subset A$'라는 두 개의 포함 관계로 나누어 확인할까? \\[6pt]
+논쟁적 질문 & 정사각형은 마름모의 진부분집합에 속한다 --- 부분이면서도 `다르다'는 것은 무엇을 의미할까? \\
+\end{tabularx}
+
+\section{수업 흐름}
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 10분 &
+\textbf{마음공부 (2분)} --- 유무념 대조.\newline
+\textbf{생각 열기 (8분)} --- 피아노 삼중주 악기 집합 $A=\{$피아노,바이올린,첼로$\}$, 피아노 사중주 악기 집합 $B=\{$피아노,바이올린,비올라,첼로$\}$ 제시 $\to$ $A$의 모든 원소가 $B$에 속하는지 확인. &
+ATL: 사고(비교)\newline VTR: See-Think-Wonder \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{개념 형성 (12분)} --- 부분집합 $A\subset B$, $A\not\subset B$ 정의 $\to$ 공집합과 자기 자신은 항상 부분집합임을 직관적으로 수용 $\to$ 문제 1.\newline
+\textbf{심화 (18분)} --- 서로 같음($A=B \Leftrightarrow A\subset B$이고 $B\subset A$) $\to$ 문제 2 $\to$ 진부분집합 정의 $\to$ 사각형 분류(평행사변형·직사각형·마름모·정사각형) 활동으로 포함관계 체계 확인 $\to$ 문제 3(부분집합·진부분집합 모두 나열). &
+ATT: 촉진자 역할\newline ATL: 사고·분류 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{개념 연결 질문 (5분)} --- ``원소와 집합 사이의 기호($\in,\notin$)와 집합과 집합 사이의 기호($\subset,\not\subset$)를 헷갈리지 않으려면?''\newline
+\textbf{성찰 (5분)} --- 감사 일기 1문장 + 다음 차시 예고(교집합과 합집합). &
+마음공부 · 감사 일기 \\
+\bottomrule
+\end{tabularx}
+
+\begin{calloutbox}
+\textbf{지도상의 유의점} --- $A=\{a,b\}$일 때 $\{a\}\subset A$로 써야 하며 $\{a\}\in A$나 $a\subset A$로 쓰지 않도록 기호 사용을 명확히 구분시킨다. 공집합의 진부분집합은 없음을 짚어 준다(공집합 자신 외에 더 작은 부분집합이 없으므로).
+\end{calloutbox}
+
+\section{형성평가 \& 답안}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 1}\\
+\small ⑴ $\{2,3,5\}$ vs $\{x\mid x$는 10 이하 소수$\}$\\
+⑵ $\{0,1\}$ vs $\{x\mid x^2+x=0\}$\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $\subset$ \quad ⑵ $\not\subset$
+\end{answerbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 2}\\
+\small ⑴ $\{2,4,6\}$ vs $\{x\mid x$는 8 이하 짝수$\}$\\
+⑵ $\{x\mid x^2-1=0\}$ vs $\{-1,1\}$\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $\neq$ \quad ⑵ $=$
+\end{answerbox}
+\end{minipage}
+
+\vspace{6pt}
+\begin{answerbox}
+\textbf{문제 3} \quad $A=\{a,b,c\}$의 부분집합·진부분집합\\
+\textbf{\color{goldstrong}답} \; 부분집합(8개): $\varnothing,\{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\{a,b,c\}$ / 진부분집합(7개): 위에서 $\{a,b,c\}$ 제외
+\end{answerbox}
+
+\section{성취수준 (이 차시 범위)}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{0.9cm}X@{}}
+\toprule
+A & 두 집합 사이의 포함 관계를 판단하여 기호로 표현하고, 이유를 설명할 수 있다. \\
+B & 두 집합 사이의 포함 관계를 판단하여 기호로 표현할 수 있다. \\
+C & 간단한 두 집합 사이의 포함 관계를 판단하여 기호로 표현할 수 있다. \\
+D & 간단한 두 집합 사이의 포함 관계를 판단할 수 있다. \\
+E & 안내에 따라 간단한 포함 관계를 판단할 수 있다. \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 차시}
+\begin{calloutbox}
+\textbf{03 교집합과 합집합 --- 1/2차시.} `01 집합', `02 집합 사이의 포함 관계'가 여기서 마무리된다. 다음 시간부터는 두 집합을 조합해 새로운 집합을 만드는 연산을 다룬다.
+\end{calloutbox}
+\end{document}
