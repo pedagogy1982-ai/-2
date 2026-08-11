@@ -1,0 +1,122 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅰ. 도형의 방정식 · 2. 원의 방정식 · 중단원 마무리 (13차시)
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]{\sffamily\bfseries\Large #2}\\[3pt]{\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+\lessonbanner{공통수학2 · Ⅰ. 도형의 방정식}{2. 원의 방정식 --- 중단원 마무리 (13차시)}{교사용 지도안 (2026학년도 2학기)}
+\vspace{10pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 5 · 전개 35 · 정리 10) \\
+목적 & 9$\sim$12차시(원의 방정식, 원과 직선의 위치 관계)를 종합 정리하고 형성평가로 점검한다. \\
+\bottomrule
+\end{tabularx}
+
+\section{개념 지도 총정리}
+\begin{ideabox}
+9$\sim$12차시 전체를 관통하는 흐름: \textbf{원의 정의(일정한 거리) $\to$ 방정식으로 번역 $\to$ 직선과의 관계를 판별식/거리로 판단 $\to$ 접선(경계의 순간)을 구하는 세 가지 전략}.
+\end{ideabox}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\small}p{5cm}X@{}}
+\toprule
+\textbf{개념} & \textbf{핵심 공식} \\
+\midrule
+원의 방정식(표준형) & $(x-a)^2+(y-b)^2=r^2$ \\
+원의 방정식(일반형) & $x^2+y^2+Ax+By+C=0$ \ ($A^2+B^2-4C>0$) \\
+원과 직선의 위치 관계 & 판별식 $D$: $D>0$(두 점), $D=0$(접함), $D<0$(안 만남) \\
+기울기가 주어진 접선 & $y=mx\pm r\sqrt{m^2+1}$ \\
+원 위의 점에서의 접선 & $x_1x+y_1y=r^2$ \\
+\bottomrule
+\end{tabularx}
+
+\section{수업 흐름}
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 5분 &
+\textbf{마음공부 (2분)} --- 중단원 전체 유무념 대조.\newline
+\textbf{개념 지도 확인 (3분)} --- 위 표 빈칸형으로 복습. &
+ATL: 자기관리(복습 전략) \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 35분 &
+\textbf{기본 (15분)} --- 마무리 문제 01$\sim$04(원의 방정식, 일반형 변형, 원과 직선 위치 관계, 접선 구하기) 개별 풀이 후 짝 교차 채점.\newline
+\textbf{표준 (10분)} --- 05, 06(반지름 조건, $x$축·$y$축에 동시 접하는 원)을 모둠 협력으로 해결.\newline
+\textbf{도전 (10분)} --- 서술형 07$\sim$09와 발전 10, 11(거리의 최댓값·최솟값, 접선 조건, 정삼각형 넓이) 중 학급 수준에 맞게 선택하여 시범 풀이. &
+ATT: 촉진자·평가자\newline ATL: 협업·자기점검 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{자기 평가 (5분)} --- 성취수준 체크리스트.\newline
+\textbf{성찰 (5분)} --- 감사 일기 + 다음 중단원(도형의 이동) 예고. &
+마음공부 · 자기평가 \\
+\bottomrule
+\end{tabularx}
+
+\begin{calloutbox}
+\textbf{지도상의 유의점} --- 오답이 나온 문제가 9$\sim$12차시 중 어느 차시 개념인지 학생 스스로 표시하게 하여 개인별 보충 지점을 시각화한다.
+\end{calloutbox}
+
+\section{형성평가 답안 (지도서 원문 01$\sim$11번)}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{1.4cm}X@{}}
+\toprule
+01 & ⑴ $(x-1)^2+(y-2)^2=7$ \quad ⑵ $(x-2)^2+(y-2)^2=10$ \\
+02 & 중심 $(-3,4)$, 반지름 $4$ $\to$ $a+b+r=5$ \\
+03 & $x^2+y^2=5$와 $y=-3x+k$: ⑴ $-5\sqrt2<k<5\sqrt2$ ⑵ $k=\pm5\sqrt2$ ⑶ $k<-5\sqrt2$ 또는 $k>5\sqrt2$ \\
+04 & ⑴ $y=\frac13x\pm12$ \quad ⑵ $4x-y=-17$ \\
+05 & 반지름 $\sqrt2$ 이상인 원이 되는 자연수 $k$의 개수 $=3$ \\
+06 & $x$축·$y$축에 동시 접하고 점$(2,1)$ 지남 $\to$ $(x-1)^2+(y-1)^2=1$ 또는 $(x-5)^2+(y-5)^2=25$ \\
+07 & 원 위의 점과 직선 사이 거리의 최댓값 $6$, 최솟값 $2$ \\
+08 & 접선이 다른 원과도 접할 때 $k=70$ \\
+09 & 점 P$(-2,4)$에서 그은 두 접선과 $y$축이 만드는 삼각형 PAB의 넓이 $=12$ \\
+10 & 원이 $x$축과 만나는 두 점 사이 거리 $8$일 때 $k=-7$ \\
+11 & 정삼각형 ABC 넓이의 최댓값 $\dfrac{50\sqrt3}{3}$, 최솟값 $\dfrac{2\sqrt3}{3}$ \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 중단원}
+\begin{calloutbox}
+\textbf{3. 도형의 이동 (14차시$\sim$).} 점과 도형을 `옮기는' 새로운 조작 --- 평행이동과 대칭이동 --- 을 다룬다. 지금까지 배운 방정식이 이동에 따라 어떻게 변하는지가 핵심이다.
+\end{calloutbox}
+\end{document}
