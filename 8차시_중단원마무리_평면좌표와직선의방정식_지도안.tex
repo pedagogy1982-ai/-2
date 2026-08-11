@@ -1,0 +1,150 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅰ. 도형의 방정식 · 1. 평면좌표와 직선의 방정식 · 중단원 마무리 (8차시)
+% 교사용 지도안
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{notebox}{enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]
+    {\sffamily\bfseries\Large #2}\\[3pt]
+    {\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+
+\lessonbanner{공통수학2 · Ⅰ. 도형의 방정식}%
+  {1. 평면좌표와 직선의 방정식 --- 중단원 마무리 (8차시)}%
+  {교사용 지도안 (2026학년도 2학기)}
+
+\vspace{10pt}
+
+\noindent
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 5 · 전개 35 · 정리 10) \\
+목적 & 1$\sim$7차시(선분의 내분, 직선의 위치 관계, 점과 직선 사이의 거리)를 종합하여 정리하고, 형성평가를 통해 성취 수준을 스스로 점검한다. \\
+\bottomrule
+\end{tabularx}
+
+\section{개념 지도 (Big Idea 총정리)}
+
+\begin{ideabox}
+1$\sim$7차시 전체를 관통하는 하나의 흐름: \textbf{점 사이의 관계(비례) $\to$ 직선 사이의 관계(기울기) $\to$ 점과 직선 사이의 관계(수선)}. 매번 새로운 대상이 등장했지만, 도구는 항상 같았다 --- 좌표, 거리 공식, 피타고라스 정리.
+\end{ideabox}
+
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\small}p{4.6cm}X@{}}
+\toprule
+\textbf{개념} & \textbf{핵심 공식} \\
+\midrule
+수직선 위 두 점 사이의 거리 & $\overline{\text{AB}}=|x_2-x_1|$ \\
+수직선 위 내분점 & $\dfrac{mx_2+nx_1}{m+n}$ \\
+좌표평면 위 두 점 사이의 거리 & $\overline{\text{AB}}=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$ \\
+좌표평면 위 내분점, 중점 & $\left(\dfrac{mx_2+nx_1}{m+n},\dfrac{my_2+ny_1}{m+n}\right)$, $\left(\dfrac{x_1+x_2}{2},\dfrac{y_1+y_2}{2}\right)$ \\
+삼각형의 무게중심 & $\left(\dfrac{x_1+x_2+x_3}{3},\dfrac{y_1+y_2+y_3}{3}\right)$ \\
+한 점과 기울기로 만든 직선 & $y-y_1=m(x-x_1)$ \\
+두 직선의 평행 조건 & $m=m'$, $n\neq n'$ \\
+두 직선의 수직 조건 & $mm'=-1$ \\
+점과 직선 사이의 거리 & $\dfrac{|ax_1+by_1+c|}{\sqrt{a^2+b^2}}$ \\
+\bottomrule
+\end{tabularx}
+
+\section{수업 흐름}
+
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 5분 &
+\textbf{마음공부 (2분)} --- 이 중단원 전체를 돌아보며 유무념 대조.\newline
+\textbf{개념 지도 확인 (3분)} --- 위 표를 함께 훑으며 빈칸을 채우는 방식으로 복습(학생용 활동지는 빈칸형). &
+ATL: 자기관리(복습 전략) \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 35분 &
+\textbf{기본 문제 (15분)} --- 마무리 문제 01$\sim$06(거리, 내분점, 평행·수직 조건, 점과 직선 거리, 직각삼각형 판별, 무게중심 활용)을 개별 풀이 후 짝과 교차 채점.\newline
+\textbf{표준 문제 (10분)} --- 07, 08(무게중심으로 미지수 구하기, 평행선 사이 거리로 미지수 구하기)을 모둠별로 협력하여 해결.\newline
+\textbf{도전 문제 (10분)} --- 서술형 09, 10과 발전 11(두 직선의 교점, 제1사분면 조건, 각의 이등분선) 중 학급 수준에 맞게 선택하여 시범 풀이 또는 모둠 활동. &
+ATT: 촉진자·평가자\newline ATL: 협업·자기점검 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{자기 평가 (5분)} --- 성취수준 체크리스트에 스스로 표시.\newline
+\textbf{성찰 (5분)} --- 감사 일기 + 다음 중단원(원의 방정식) 예고. &
+마음공부 · 자기평가 \\
+\bottomrule
+\end{tabularx}
+
+\begin{calloutbox}
+\textbf{지도상의 유의점} --- 이 차시는 새 개념을 가르치는 시간이 아니라 진단·정리의 시간이다. 오답이 나온 문제는 어느 차시(1$\sim$7차시 중)의 개념인지 학생 스스로 표시하게 하여, 개인별 보충 지점을 시각화한다.
+\end{calloutbox}
+
+\section{형성평가 답안 (지도서 원문 01$\sim$11번)}
+
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{1.4cm}X@{}}
+\toprule
+01 & ⑴ $\overline{\text{AB}}=10$ \quad ⑵ $\sqrt{34}$ \\
+02 & ⑴ 내분점 좌표 $4$ \quad ⑵ $(3,1)$ \\
+03 & ⑴ $y=-3x-7$ \quad ⑵ $y=-\dfrac12 x-\dfrac52$ \\
+04 & 점$(4,2)$와 직선 $3x-4y+11=0$ 사이의 거리 $=3$ \\
+05 & 세 점 A$(-4,5)$, B$(-2,-3)$, C$(1,a)$가 $\angle$C$=90^\circ$인 직각삼각형 $\to$ $a=0$ 또는 $a=2$ \\
+06 & 선분 AB를 $2:3$으로 내분하는 점이 $y=\frac12x+k$ 위 $\to$ $k=-1$ \\
+07 & 무게중심 $(1,1)$일 때 $a+b=-3$ \\
+08 & 평행선 $2x+3y-1=0$, $2x+3y-k=0$ 사이 거리 $\sqrt{13}$ $\to$ $k=-12$ 또는 $14$ \\
+09 & 두 직선의 교점 $(1,2)$를 지나고 $6x+3y+1=0$에 평행 $\to$ $y=-2x+4$ \\
+10 & $y=-x+3$과 $y=kx+3k+2$가 제1사분면에서 만나는 $k$의 범위 $\to$ $-\dfrac13<k<\dfrac13$ \\
+11 & $4x+y-5=0$과 $x-4y+3=0$이 이루는 각의 이등분선 $\to$ $3x+5y-8=0$ 또는 $5x-3y-2=0$ \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 중단원}
+
+\begin{calloutbox}
+\textbf{2. 원의 방정식 (9차시$\sim$).} 점과 직선을 다뤘던 도구(거리 공식, 수직 조건)가 이번엔 `원'이라는 새로운 도형을 정의하고 분석하는 데 그대로 쓰인다.
+\end{calloutbox}
+
+\end{document}

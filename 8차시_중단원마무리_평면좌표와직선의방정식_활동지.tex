@@ -1,0 +1,143 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅰ. 도형의 방정식 · 1. 평면좌표와 직선의 방정식 · 중단원 마무리 (8차시)
+% 학생용 활동지 (답안 없음)
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{writeline}{HTML}{C7CCBA}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{14pt}{6pt}
+
+\newtcolorbox{goalbox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{sheetbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.6pt, arc=3pt, left=11pt, right=11pt, top=9pt, bottom=9pt}
+
+\newcommand{\writespace}[1]{%
+  \par\nobreak\vspace{3pt}
+  \foreach \n in {1,...,#1} {%
+    \noindent\textcolor{writeline}{\rule{\linewidth}{0.4pt}}\par\vspace{0.62cm}%
+  }
+}
+\newcommand{\fillblank}[1]{\makebox[#1]{\hrulefill}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 다음 시간 --- 2. 원의 방정식}
+
+\begin{document}
+
+\noindent
+\begin{minipage}[b]{0.62\linewidth}
+  {\sffamily\footnotesize\color{indigosoft} 공통수학2 · Ⅰ. 도형의 방정식}\\[2pt]
+  {\sffamily\bfseries\Large 1. 평면좌표와 직선의 방정식 \textperiodcentered\ 중단원 마무리}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.36\linewidth}
+  \raggedleft\small\color{inksoft}
+  반\ \fillblank{1.6cm} \quad 번호\ \fillblank{1.6cm}\\[4pt]
+  이름\ \fillblank{3.6cm}
+\end{minipage}
+
+\vspace{4pt}
+\noindent{\color{goldc}\rule{\linewidth}{2.2pt}}
+\vspace{10pt}
+
+\begin{goalbox}
+\textbf{오늘의 목표}\\
+1$\sim$7차시에서 배운 개념(내분, 평행·수직 조건, 점과 직선 사이의 거리)을 스스로 정리하고 점검한다.
+\end{goalbox}
+
+\section{개념 지도 채우기}
+
+\begin{sheetbox}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\small}p{4.4cm}X@{}}
+\toprule
+\textbf{개념} & \textbf{공식} \\
+\midrule
+수직선 위 두 점 사이의 거리 & \fillblank{6.5cm} \\[6pt]
+수직선 위 내분점 & \fillblank{6.5cm} \\[6pt]
+좌표평면 위 두 점 사이의 거리 & \fillblank{6.5cm} \\[6pt]
+좌표평면 위 내분점 & \fillblank{6.5cm} \\[6pt]
+삼각형의 무게중심 & \fillblank{6.5cm} \\[6pt]
+두 직선의 평행 조건 & \fillblank{6.5cm} \\[6pt]
+두 직선의 수직 조건 & \fillblank{6.5cm} \\[6pt]
+점과 직선 사이의 거리 & \fillblank{6.5cm} \\
+\bottomrule
+\end{tabularx}
+\end{sheetbox}
+
+\section{기본 문제}
+
+\begin{sheetbox}
+\textbf{1.} 두 점 A$(3)$, B$(-7)$ 사이의 거리와 두 점 A$(-5,1)$, B$(-2,6)$ 사이의 거리를 각각 구하시오.
+\writespace{2}
+
+\textbf{2.} 두 점 A$(6,2)$와 B$(-3,-1)$에 대하여 선분 AB를 $1:2$로 내분하는 점의 좌표를 구하시오.
+\writespace{2}
+
+\textbf{3.} 점 $(1,-3)$을 지나고 직선 $y=2x-1$에 수직인 직선의 방정식을 구하시오.
+\writespace{2}
+
+\textbf{4.} 점 $(4,2)$와 직선 $3x-4y+11=0$ 사이의 거리를 구하시오.
+\writespace{2}
+\end{sheetbox}
+
+\section{표준 \& 도전 문제}
+
+\begin{sheetbox}
+\textbf{5.} 세 점 A$(-1,2)$, B$(3,5)$, C$(a,b)$를 꼭짓점으로 하는 삼각형 ABC의 무게중심의 좌표가 $(1,1)$일 때, $a+b$의 값을 구하시오.
+\writespace{3}
+
+\textbf{6.} 평행한 두 직선 $2x+3y-1=0$과 $2x+3y-k=0$ 사이의 거리가 $\sqrt{13}$일 때, 상수 $k$의 값을 모두 구하시오.
+\writespace{3}
+
+\textbf{7. (서술형)} 두 직선 $2x-3y+4=0$과 $3x+y-5=0$의 교점을 지나고 직선 $6x+3y+1=0$과 평행한 직선의 방정식을 구하는 풀이 과정과 답을 쓰시오.
+\writespace{4}
+\end{sheetbox}
+
+\section{마무리 성찰 --- 나의 성취 수준 점검}
+
+\begin{sheetbox}
+아래 항목 중 자신 있게 설명할 수 있는 것에 $\checkmark$ 표시해 보자.
+
+\begin{itemize}[leftmargin=1.6em, itemsep=3pt]
+  \item[$\square$] 수직선·좌표평면 위의 내분점과 중점을 구할 수 있다.
+  \item[$\square$] 삼각형의 무게중심을 구할 수 있다.
+  \item[$\square$] 두 직선의 평행·수직 조건을 설명할 수 있다.
+  \item[$\square$] 점과 직선 사이의 거리를 구할 수 있다.
+  \item[$\square$] 평행선 사이의 거리와 삼각형의 넓이를 구할 수 있다.
+\end{itemize}
+
+\vspace{6pt}
+{\footnotesize\color{inksoft} 가장 보충이 필요한 부분과 그 이유를 적어 보자.}
+\writespace{2}
+\end{sheetbox}
+
+\end{document}
