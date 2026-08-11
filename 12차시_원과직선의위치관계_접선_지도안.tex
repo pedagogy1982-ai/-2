@@ -1,0 +1,151 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅰ. 도형의 방정식 · 2. 원의 방정식 · 02 원과 직선의 위치 관계 · 2/2차시
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{notebox}{enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]{\sffamily\bfseries\Large #2}\\[3pt]{\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+\lessonbanner{공통수학2 · Ⅰ. 도형의 방정식 · 2. 원의 방정식}{02 원과 직선의 위치 관계 --- 2/2차시}{원의 접선의 방정식 · 교사용 지도안 (2026학년도 2학기)}
+\vspace{10pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 10 · 전개 30 · 정리 10) \\
+성취기준 & 원의 접선의 방정식을 구하고, 이를 활용하여 문제를 해결할 수 있다. \\
+선행 학습 & 11차시 --- 판별식으로 원과 직선의 위치 관계 판단 \\
+\bottomrule
+\end{tabularx}
+
+\section{학습 목표 \& Big Idea}
+\begin{ideabox}
+\textbf{\color{goldstrong}영속적 이해 (Big Idea)}\\
+`접한다'는 것($D=0$)은 하나의 사실이지만, 그것을 바라보는 관점(기울기가 주어졌을 때 / 원 위의 점에서 / 원 밖의 점에서)에 따라 전혀 다른 풀이 전략이 필요하다.
+\vspace{4pt}
+\small\color{inksoft} 핵심개념: \textbf{접선} \quad\textbullet\quad 핵심개념: \textbf{조건에 따른 전략} \quad\textbullet\quad 일반화: \textbf{같은 목표도 주어진 조건에 따라 다르게 접근한다}
+\end{ideabox}
+\begin{calloutbox}
+\textbf{차시 학습 목표}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt, topsep=4pt]
+  \item 기울기가 주어졌을 때 원의 접선의 방정식을 구할 수 있다.
+  \item 원 위의 한 점에서의 접선의 방정식을 구할 수 있다.
+  \item 원 밖의 한 점에서 원에 그은 접선의 방정식을 구할 수 있다(항상 2개임을 안다).
+\end{itemize}
+\end{calloutbox}
+
+\section{질문의 연결}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}\small}p{2.4cm}X@{}}
+사실적 질문 & 원의 접선의 방정식을 구하는 세 가지 상황(기울기, 원 위의 점, 원 밖의 점)은 각각 어떤 정보로 시작할까? \\[6pt]
+개념적 질문 & 왜 원 밖의 한 점에서는 접선이 항상 2개일까? \\[6pt]
+논쟁적 질문 & `접한다'는 것 --- 딱 한 점에서만 스치듯 만나는 관계 --- 는 우리 삶의 인간관계에서 어떤 순간과 닮아 있을까? \\
+\end{tabularx}
+
+\section{수업 흐름}
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 10분 &
+\textbf{마음공부 (2분)} --- 유무념 대조.\newline
+\textbf{생각 열기 (8분)} --- ``원 밖의 한 점에서 원에 접선을 그으면 몇 개나 그릴 수 있을까?'' 직접 원과 점을 그려 접선을 그어 보며 예측. &
+ATL: 사고(예측·검증)\newline VTR: See-Think-Wonder \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{기울기가 주어진 접선 (8분)} --- 판별식 $D=0$ 조건으로 $y=mx\pm r\sqrt{m^2+1}$ 유도 $\to$ 문제 3.\newline
+\textbf{원 위의 점에서의 접선 (10분)} --- OP$\perp$접선 조건으로 $x_1x+y_1y=r^2$ 유도 $\to$ 문제 4.\newline
+\textbf{원 밖의 점에서의 접선 (12분)} --- 함께하기(점$(4,0)$에서 원 $x^2+y^2=4$) 빈칸 채우기로 함께 완성 $\to$ 접점을 미지수로 놓고 연립방정식을 세우는 전략 확인 $\to$ 문제 5 짝 활동. &
+ATT: 촉진자 역할\newline ATL: 전략 선택·적용 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{개념 연결 질문 (5분)} --- ``세 가지 상황 중 나에게 가장 자연스러운 전략은? 가장 헷갈리는 것은?''\newline
+\textbf{성찰 (5분)} --- 감사 일기 1문장 + `원과 직선의 위치 관계' 소단원 마무리 + 다음 차시 예고(중단원 마무리). &
+마음공부 · 감사 일기 \\
+\bottomrule
+\end{tabularx}
+
+\begin{calloutbox}
+\textbf{지도상의 유의점} --- 원 밖의 점에서의 접선은 접점 P$(x_1,y_1)$을 미지수로 놓고 (1) P에서의 접선 공식 $x_1x+y_1y=r^2$이 주어진 점을 지난다는 조건과 (2) P가 원 위에 있다는 조건, 두 식을 연립하는 전략임을 명확히 한다. 기울기를 미지수로 놓는 방법(원점이 아닌 경우 복잡해짐)과 비교해 왜 이 전략이 더 편리한지 짚어 준다.
+\end{calloutbox}
+
+\section{형성평가 \& 답안}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 3}\\
+\small ⑴ 원 $x^2+y^2=2$, 기울기 $-1$ \quad ⑵ 원 $x^2+y^2=1$, 직선 $x-2y+1=0$에 수직\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $y=-x\pm2$ \quad ⑵ $y=-2x\pm\sqrt5$
+\end{answerbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 4} \quad 원 $x^2+y^2=9$ 위의 점에서의 접선\\
+\small ⑴ $(2,-\sqrt5)$ \quad ⑵ $(0,-3)$\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $2x-\sqrt5y=9$ \quad ⑵ $y=-3$
+\end{answerbox}
+\end{minipage}
+
+\vspace{6pt}
+\begin{answerbox}
+\textbf{함께하기} \quad 점$(4,0)$에서 원 $x^2+y^2=4$에 그은 접선\\
+\textbf{\color{goldstrong}답} \; 접점 $x_1=1$, $y_1=\pm\sqrt3$ $\to$ $x+\sqrt3y=4$, $x-\sqrt3y=4$
+\end{answerbox}
+\begin{answerbox}
+\textbf{문제 5} \quad 점$(3,-1)$에서 원 $x^2+y^2=5$에 그은 접선\\
+\textbf{\color{goldstrong}답} \; $x-2y=5$, $2x+y=5$
+\end{answerbox}
+
+\section{성취수준 (이 차시 범위)}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{0.9cm}X@{}}
+\toprule
+A & 세 가지 상황의 접선의 방정식을 유도 과정과 함께 구하고, 관련 문제를 해결할 수 있다. \\
+B & 세 가지 상황의 접선의 방정식을 정확히 구할 수 있다. \\
+C & 공식을 이용해 접선의 방정식을 구할 수 있다. \\
+D & 안내에 따라 접선의 방정식을 구할 수 있다. \\
+E & 원 위의 점에서의 접선의 방정식을 구할 수 있다. \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 차시}
+\begin{calloutbox}
+\textbf{중단원 마무리 --- 2. 원의 방정식 (13차시).} 9$\sim$12차시 전체(원의 방정식, 원과 직선의 위치 관계)를 종합 정리한다.
+\end{calloutbox}
+\end{document}
