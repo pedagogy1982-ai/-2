@@ -1,0 +1,187 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅰ. 도형의 방정식 · 03 점과 직선 사이의 거리 · 2/2차시
+% 교사용 지도안
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{notebox}{enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]
+    {\sffamily\bfseries\Large #2}\\[3pt]
+    {\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+
+\lessonbanner{공통수학2 · Ⅰ. 도형의 방정식 · 1. 평면좌표와 직선의 방정식}%
+  {03 점과 직선 사이의 거리 --- 2/2차시}%
+  {평행선 사이의 거리와 삼각형의 넓이 · 교사용 지도안 (2026학년도 2학기)}
+
+\vspace{10pt}
+
+\noindent
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 10 · 전개 30 · 정리 10) \\
+성취기준 & 점과 직선 사이의 거리를 구하고, 관련된 문제를 해결할 수 있다. \\
+선행 학습 & 6차시 --- 점과 직선 사이의 거리 공식 \\
+\bottomrule
+\end{tabularx}
+
+\section{학습 목표 \& Big Idea}
+
+\begin{ideabox}
+\textbf{\color{goldstrong}영속적 이해 (Big Idea)}\\
+하나의 공식(점과 직선 사이의 거리)은 여러 얼굴을 가진다 --- 평행선 사이의 폭을 재는 도구가 되기도 하고, 삼각형의 넓이를 구하는 지름길이 되기도 한다.
+\vspace{4pt}
+
+\small\color{inksoft}
+핵심개념: \textbf{공식의 재활용} \quad\textbullet\quad 핵심개념: \textbf{넓이} \quad\textbullet\quad
+일반화: \textbf{하나의 도구가 여러 문제를 푼다}
+\end{ideabox}
+
+\begin{calloutbox}
+\textbf{차시 학습 목표}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt, topsep=4pt]
+  \item 평행한 두 직선 사이의 거리를 구할 수 있다.
+  \item 원점과 직선 사이의 거리를 이용하여 삼각형의 넓이를 구하는 방법을 설명할 수 있다.
+  \item 조건(평행·수직, 원점에서의 거리)을 만족하는 직선의 방정식을 구할 수 있다.
+\end{itemize}
+\end{calloutbox}
+
+\section{질문의 연결}
+
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}\small}p{2.4cm}X@{}}
+사실적 질문 & 평행한 두 직선 사이의 거리는 어떻게 구할까? \\[6pt]
+개념적 질문 & 세 꼭짓점의 좌표만으로 삼각형의 넓이를 구할 수 있다는 것은 무엇을 의미할까? \\[6pt]
+논쟁적 질문 & 도형을 `그려서' 이해하는 것과 `계산해서' 이해하는 것, 둘 중 하나만 있다면 무엇을 잃게 될까? \\
+\end{tabularx}
+
+\section{수업 흐름}
+
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 10분 &
+\textbf{마음공부 (2분)} --- 유무념 대조.\newline
+\textbf{생각 열기 (8분)} --- ``평행한 두 직선 사이의 거리는 어느 지점에서 재도 같을까?'' 직관적 토론 $\to$ ``그렇다면 어느 점을 골라서 재는 게 가장 쉬울까?'' &
+ATL: 사고(전략 선택)\newline VTR: Connect-Extend-Challenge \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{개념 형성 (10분)} --- 평행한 두 직선 사이의 거리는 한 직선 위의 임의의 한 점과 다른 직선 사이의 거리와 같음을 확인 $\to$ 문제 2 적용.\newline
+\textbf{탐구 활동 (12분)} --- 원점 O, 두 점 A$(x_1,y_1)$, B$(x_2,y_2)$로 이루어진 삼각형의 넓이를, $\overline{AB}$의 길이와 원점에서 직선 AB까지의 거리를 이용해 구하는 과정을 단계별로 탐구(활동 1$\to$2$\to$3) $\to$ $S=\frac12|x_1y_2-x_2y_1|$ 도출.\newline
+\textbf{적용 (8분)} --- 예제 1(조건을 만족하는 평행선 구하기) 함께 풀이 $\to$ 문제 3 짝 활동. &
+ATT: 촉진자 역할\newline ATL: 협업·탐구 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{개념 연결 질문 (5분)} --- ``오늘 배운 넓이 공식이 왜 원점이 꼭짓점일 때 특히 간단해지는가?''\newline
+\textbf{성찰 (5분)} --- 감사 일기 1문장 + `점과 직선 사이의 거리' 소단원 마무리 + 다음 차시 예고(중단원 마무리). &
+마음공부 · 감사 일기 \\
+\bottomrule
+\end{tabularx}
+
+\vspace{8pt}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{calloutbox}
+\textbf{지도상의 유의점}
+\begin{itemize}[leftmargin=1.2em, itemsep=2pt, topsep=4pt]
+  \item 평행선 사이의 거리를 구할 때 `어느 점을 고르든 결과가 같다'는 사실을 강조하되, 계산이 가장 쉬운 점(절편 등)을 고르는 전략적 사고를 함께 짚는다.
+  \item 삼각형 넓이 공식은 한 꼭짓점이 원점일 때만 간단한 형태이며, 원점이 아니면 평행이동을 거쳐야 함을 안내한다(이 차시에서는 원점인 경우만 다룸).
+\end{itemize}
+\end{calloutbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{notebox}
+\textbf{인문학적 탐구 연결}\\
+좌표만으로 넓이를 구할 수 있다는 사실은 `보이지 않아도 계산으로 알 수 있는 것들'에 대한 은유가 될 수 있다. 우리가 직접 보지 못해도 데이터와 논리로 파악할 수 있는 것들은 무엇이 있을지 짧게 나눠 본다.
+\end{notebox}
+\end{minipage}
+
+\section{형성평가 \& 답안}
+
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 2} \quad 평행한 두 직선 $x+2y+1=0$과 $x+2y+6=0$ 사이의 거리\\[4pt]
+\textbf{\color{goldstrong}답} \; $\sqrt{5}$
+\end{answerbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{예제 1} \quad 직선 $x-3y+2=0$에 평행, 원점에서 거리 $\sqrt{10}$\\[4pt]
+\textbf{\color{goldstrong}답} \; $x-3y-10=0$ 또는 $x-3y+10=0$
+\end{answerbox}
+\end{minipage}
+
+\vspace{6pt}
+\begin{answerbox}
+\textbf{문제 3}\\
+\small ⑴ 직선 $3x+4y-5=0$에 평행, 원점에서 거리 $2$ \qquad ⑵ 직선 $2x-y-4=0$에 수직, 점$(2,-1)$에서 거리 $4$\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $3x+4y-10=0$ 또는 $3x+4y+10=0$ \qquad ⑵ $x+2y-4\sqrt5=0$ 또는 $x+2y+4\sqrt5=0$
+\end{answerbox}
+
+\section{성취수준 (이 차시 범위)}
+
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{0.9cm}X@{}}
+\toprule
+A & 평행선 사이의 거리와 삼각형의 넓이 공식을 유도 과정과 함께 설명하고, 관련 문제를 해결할 수 있다. \\
+B & 평행선 사이의 거리와 삼각형의 넓이를 정확히 계산할 수 있다. \\
+C & 공식을 이용해 평행선 사이의 거리를 계산할 수 있다. \\
+D & 안내에 따라 평행선 사이의 거리를 계산할 수 있다. \\
+E & 원점과 직선 사이의 거리를 계산할 수 있다. \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 차시}
+
+\begin{calloutbox}
+\textbf{8차시 --- 중단원 마무리 (평면좌표와 직선의 방정식).} `1. 평면좌표와 직선의 방정식' 전체(1$\sim$7차시)를 종합 정리하는 차시. 중단원 마무리 문제(지도서 원문 01$\sim$11번)를 활용한다.
+\end{calloutbox}
+
+\end{document}
