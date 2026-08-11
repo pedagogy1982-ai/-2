@@ -1,0 +1,189 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅰ. 도형의 방정식 · 02 직선의 위치 관계 · 1/2차시
+% 교사용 지도안
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{goodbg}{HTML}{E7EEE0}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}
+  {\normalfont\sffamily\bfseries\large\color{indigoc}}
+  {\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{notebox}{enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]
+    {\sffamily\bfseries\Large #2}\\[3pt]
+    {\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+
+\lessonbanner{공통수학2 · Ⅰ. 도형의 방정식 · 1. 평면좌표와 직선의 방정식}%
+  {02 직선의 위치 관계 --- 1/2차시}%
+  {두 직선의 평행 조건 · 교사용 지도안 (2026학년도 2학기)}
+
+\vspace{10pt}
+
+\noindent
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 10 · 전개 30 · 정리 10) \\
+성취기준 & 두 직선의 평행 조건을 탐구하고 이해한다. \\
+선행 학습 & 1$\sim$3차시 --- 선분의 내분 \quad / \quad 중2 --- 일차함수와 기울기 \\
+\bottomrule
+\end{tabularx}
+
+\section{학습 목표 \& Big Idea}
+
+\begin{ideabox}
+\textbf{\color{goldstrong}영속적 이해 (Big Idea)}\\
+`점 사이의 관계'를 비로 다뤘던 것처럼, `직선 사이의 관계'는 기울기라는 하나의 수로 압축해서 판단할 수 있다.
+\vspace{4pt}
+
+\small\color{inksoft}
+핵심개념: \textbf{기울기} \quad\textbullet\quad 핵심개념: \textbf{평행} \quad\textbullet\quad
+일반화: \textbf{도형의 관계는 대수적 조건으로 번역된다}
+\end{ideabox}
+
+\begin{calloutbox}
+\textbf{차시 학습 목표}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt, topsep=4pt]
+  \item 두 직선이 평행하기 위한 조건을 설명할 수 있다.
+  \item 한 점을 지나고 주어진 직선에 평행한 직선의 방정식을 구할 수 있다.
+\end{itemize}
+\end{calloutbox}
+
+\section{질문의 연결}
+
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}\small}p{2.4cm}X@{}}
+사실적 질문 & 두 직선 $y=mx+n$, $y=m'x+n'$이 서로 평행하려면 $m,n,m',n'$은 어떤 관계여야 할까? \\[6pt]
+개념적 질문 & 기울기가 같다는 조건 하나만으로 왜 충분하지 않을까? (일치하는 경우와 어떻게 구별할까) \\[6pt]
+논쟁적 질문 & 나란히 가되 결코 만나지 않는 `평행선 같은 관계'도 좋은 관계일 수 있을까? \\
+\end{tabularx}
+
+\section{수업 흐름}
+
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 10분 &
+\textbf{마음공부 (2분)} --- 유무념 대조.\newline
+\textbf{생각 열기 (8분)} --- 건물 에스컬레이터를 좌표평면에 나타낸 그림(직선 $l$: $(0,3),(4,5)$ 지남, 직선 $m$: $(0,1),(2,2)$ 지남) 제시 $\to$ 두 직선의 기울기를 각각 구하고 평행한지 판단. &
+ATL: 사고(패턴 인식)\newline VTR: See-Think-Wonder \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{개념 형성 (12분)} --- 두 직선 $y=mx+n$, $y=m'x+n'$이 평행할 조건($m=m'$, $n\neq n'$)을 그래프로 직관적으로 이해 $\to$ $m=m'$이고 $n=n'$이면 일치함을 구분 $\to$ 문제 1(한 점과 기울기로 직선의 방정식 구하기).\newline
+\textbf{적용 (18분)} --- 문제 2(주어진 직선에 평행한 직선 구하기, 일반형 $ax+by+c=0$도 기울기 형태로 바꾸는 연습 포함) $\to$ 예제 1 함께 풀이 $\to$ 유사 문제 짝 활동. &
+ATT: 촉진자 역할\newline ATL: 사고·적용 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{개념 연결 질문 (5분)} --- ``평행하다''와 ``일치한다''의 차이를 한 문장으로 설명해 보기.\newline
+\textbf{성찰 (5분)} --- 감사 일기 1문장 + 다음 차시 예고(수직 조건). &
+마음공부 · 감사 일기 \\
+\bottomrule
+\end{tabularx}
+
+\vspace{8pt}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{calloutbox}
+\textbf{지도상의 유의점}
+\begin{itemize}[leftmargin=1.2em, itemsep=2pt, topsep=4pt]
+  \item $x$축에 평행한 직선의 기울기는 $0$이지만, $y$축에 평행한 직선은 기울기가 정의되지 않음을 명확히 구분한다 (오개념 주의).
+  \item 일반형 $ax+by+c=0$ 꼴의 직선은 먼저 $y=mx+n$ 꼴로 바꾼 뒤 기울기를 비교하게 한다.
+\end{itemize}
+\end{calloutbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{notebox}
+\textbf{인문학적 탐구 연결}\\
+건축에서 기둥과 기둥, 기둥과 천장의 평행·수직 관계는 구조적 안정성의 핵심이다. 수학적 조건(기울기)이 실제 건축의 안전과 아름다움을 뒷받침한다는 점을 짚어 준다.
+\end{notebox}
+\end{minipage}
+
+\section{형성평가 \& 답안}
+
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 1}\\
+\small ⑴ 점$(3,-4)$, 기울기 $2$ \quad ⑵ 점$(-1,5)$, $x$축에 평행\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $y=2x-10$ \quad ⑵ $y=5$
+\end{answerbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 2}\\
+\small 점$(-2,-4)$를 지나고 ⑴ $y=-2x-1$에 평행 \quad ⑵ $3x-2y+5=0$에 평행\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $y=-2x-8$ \quad ⑵ $y=\dfrac{3}{2}x-1$
+\end{answerbox}
+\end{minipage}
+
+\vspace{6pt}
+\begin{answerbox}
+\textbf{예제 1} \quad 점$(2,3)$을 지나고 직선 $2x-y+1=0$에 평행한 직선의 방정식\\
+\textbf{\color{goldstrong}답} \; $2x-y+1=0$, 즉 $y=2x+1$에서 기울기 $2$ $\to$ $y-3=2(x-2)$ $\to$ $\boldsymbol{y=2x-1}$
+\end{answerbox}
+
+\section{성취수준 (이 차시 범위)}
+
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{0.9cm}X@{}}
+\toprule
+A & 두 직선의 평행 조건을 탐구하여 설명하고, 관련된 문제를 해결할 수 있다. \\
+B & 두 직선의 평행 조건을 설명하고, 관련된 문제를 해결할 수 있다. \\
+C & 두 직선의 평행 조건을 이해하고, 간단한 문제를 해결할 수 있다. \\
+D & 두 직선의 평행 조건을 안다. \\
+E & 안내에 따라 평행한 직선의 방정식을 구할 수 있다. \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 차시}
+
+\begin{calloutbox}
+\textbf{02 직선의 위치 관계 --- 2/2차시.} 두 직선의 수직 조건을 탐구한다. 오늘의 평행 조건과 짝을 이루는 개념으로, 직각삼각형(피타고라스 정리)과 연결지어 도입할 것.
+\end{calloutbox}
+
+\end{document}
