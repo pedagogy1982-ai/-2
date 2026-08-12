@@ -1,0 +1,148 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅱ. 집합과 명제 · 2. 명제 · 02 명제 사이의 관계 · 1/2차시
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{notebox}{enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]{\sffamily\bfseries\Large #2}\\[3pt]{\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+\lessonbanner{공통수학2 · Ⅱ. 집합과 명제 · 2. 명제}{02 명제 사이의 관계 --- 1/2차시}{역과 대우 · 교사용 지도안 (2026학년도 2학기)}
+\vspace{10pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 10 · 전개 30 · 정리 10) \\
+성취기준 & 명제 $p\to q$의 역과 대우를 구별하고, 그 참·거짓을 판별할 수 있다. \\
+선행 학습 & 27차시 --- `모든', `어떤'을 포함한 명제 \\
+\bottomrule
+\end{tabularx}
+
+\section{학습 목표 \& Big Idea}
+\begin{ideabox}
+\textbf{\color{goldstrong}영속적 이해 (Big Idea)}\\
+명제 $p\to q$가 참이라고 해서 그 역 $q\to p$가 항상 참인 것은 아니다. 그러나 대우 $\sim q\to\sim p$는 원래 명제와 참·거짓이 항상 일치한다 --- 이는 진리집합의 포함 관계 $P\subset Q \iff Q^C\subset P^C$에서 비롯된 논리적 필연이다.
+\vspace{4pt}
+\small\color{inksoft} 핵심개념: \textbf{역과 대우} \quad\textbullet\quad 핵심개념: \textbf{반례} \quad\textbullet\quad 일반화: \textbf{대우는 원래 명제와 논리적으로 동치이다}
+\end{ideabox}
+\begin{calloutbox}
+\textbf{차시 학습 목표}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt, topsep=4pt]
+  \item 명제 $p\to q$의 참·거짓을 진리집합의 포함 관계로 판별할 수 있다.
+  \item 명제의 역과 대우를 구하고, 명제와 대우의 참·거짓이 항상 일치함을 설명할 수 있다.
+\end{itemize}
+\end{calloutbox}
+
+\section{질문의 연결}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}\small}p{2.4cm}X@{}}
+사실적 질문 & 명제 $p\to q$의 역과 대우는 각각 어떻게 만들어질까? \\[6pt]
+개념적 질문 & 왜 명제와 그 대우는 항상 참·거짓이 일치하는데, 명제와 그 역은 그렇지 않을까? \\[6pt]
+논쟁적 질문 & ``교복을 입은 사람은 입장료를 할인받는다''가 참이라고 해서 ``할인받는 사람은 모두 교복을 입었다''(역)도 반드시 참이어야 공평한 걸까? \\
+\end{tabularx}
+
+\section{수업 흐름}
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 10분 &
+\textbf{마음공부 (2분)} --- 새 소단원 시작, 유무념 대조.\newline
+\textbf{생각 열기 (8분)} --- ``$x\le6$이면 $x^2\le36$이다.'' / ``4의 약수는 8의 약수이다.'' 두 명제의 참·거짓을 예측. &
+ATL: 사고(반례 탐색)\newline VTR: See-Think-Wonder \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{명제의 참·거짓 판정 (10분)} --- 진리집합 $P\subset Q$이면 참임을 문제 1로 확인 $\to$ 예제 1(반례 개념: ``소수는 홀수이다''는 $x=2$가 반례).\newline
+\textbf{역과 대우 (10분)} --- 명제 $p\to q$의 역 $q\to p$, 대우 $\sim q\to\sim p$ 정의 $\to$ 보기(``$x=1$이면 $x^2=1$'')로 확인 $\to$ 문제 2.\newline
+\textbf{명제와 대우의 관계 (10분)} --- $P\subset Q \iff Q^C\subset P^C$를 벤 다이어그램으로 스케치하여 명제와 대우의 참·거짓이 항상 일치함을 유도 $\to$ 문제 3(대우를 이용한 참·거짓 판별). &
+ATT: 촉진자 역할\newline ATL: 논리적 유도 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{개념 연결 질문 (5분)} --- ``명제가 참임을 직접 보이기 어려울 때, 왜 대우를 살펴보면 도움이 될까?''\newline
+\textbf{성찰 (5분)} --- 감사 일기 1문장 + 다음 차시 예고(충분조건과 필요조건). &
+마음공부 · 감사 일기 \\
+\bottomrule
+\end{tabularx}
+
+\begin{calloutbox}
+\textbf{지도상의 유의점} --- 학생들이 ``명제가 참이면 역도 참''이라고 오개념을 갖기 쉬우므로, 참인 명제의 역이 거짓인 반례(예: $x^2>1 \Rightarrow x>1$의 역)를 반드시 함께 제시한다. 대우는 원래 명제의 부정을 단순히 나열하는 것이 아니라 ``결론의 부정 $\to$ 가정의 부정'' 순서로 만든다는 점을 강조한다.
+\end{calloutbox}
+
+\section{형성평가 \& 답안}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 1} \quad 참·거짓 판정\\
+\small ⑴ $x\le6$이면 $x^2\le36$이다.\\
+⑵ 4의 약수는 8의 약수이다.\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ 거짓 ($x=-10$이 반례, $P=\{x\le6\}\not\subset Q=\{-6\le x\le6\}$) \quad ⑵ 참 ($P=\{1,2,4\}\subset Q=\{1,2,4,8\}$)
+\end{answerbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 2} \quad 역과 대우\\
+\small ⑴ $a=b$이면 $a^2=b^2$이다.\\
+⑵ $x^2>4$이면 $x>2$이다.\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ 역: $a^2=b^2$이면 $a=b$(거짓) / 대우: $a^2\ne b^2$이면 $a\ne b$(참) \quad ⑵ 역: $x>2$이면 $x^2>4$(참) / 대우: $x\le2$이면 $x^2\le4$(거짓)
+\end{answerbox}
+\end{minipage}
+
+\vspace{6pt}
+\begin{answerbox}
+\textbf{문제 3} \quad 대우를 이용한 참·거짓 판별 --- ``$3a+7$이 홀수이면 $a$는 짝수이다.''\\
+\textbf{\color{goldstrong}답} \; 대우: $a$가 홀수이면 $3a+7$은 짝수이다. $a$가 홀수이면 $3a$도 홀수이므로 $3a+7$은 짝수이다. 따라서 대우가 참이므로 주어진 명제도 참이다.
+\end{answerbox}
+
+\section{성취수준 (이 차시 범위)}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{0.9cm}X@{}}
+\toprule
+A & 명제의 역과 대우를 구하고, 진리집합의 포함 관계를 이용하여 참·거짓을 판별하며 그 이유를 설명할 수 있다. \\
+B & 명제의 역과 대우를 구하고, 참·거짓을 판별할 수 있다. \\
+C & 명제의 역과 대우를 구할 수 있다. \\
+D & 안내에 따라 명제의 역과 대우를 구할 수 있다. \\
+E & 명제의 역과 대우의 뜻을 안다. \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 차시}
+\begin{calloutbox}
+\textbf{02 명제 사이의 관계 --- 2/2차시.} 충분조건과 필요조건, 필요충분조건의 뜻을 진리집합의 포함 관계로 이해하고 판별하는 활동을 다룬다.
+\end{calloutbox}
+\end{document}
