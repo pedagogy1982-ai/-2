@@ -1,0 +1,192 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅲ. 함수와 그래프 · 1. 함수 · 01 함수 · 1/2차시
+% 학생용 활동지 (답안 없음)
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{writeline}{HTML}{C7CCBA}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{14pt}{6pt}
+\newtcolorbox{goalbox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{sheetbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.6pt, arc=3pt, left=11pt, right=11pt, top=9pt, bottom=9pt}
+\newcommand{\writespace}[1]{%
+  \par\nobreak\vspace{3pt}
+  \foreach \n in {1,...,#1} {%
+    \noindent\textcolor{writeline}{\rule{\linewidth}{0.4pt}}\par\vspace{0.62cm}%
+  }
+}
+\newcommand{\fillblank}[1]{\makebox[#1]{\hrulefill}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 다음 시간 --- 01 함수 2/2(그래프, 여러 가지 함수)}
+
+\newcommand{\mapfour}[1]{%
+  \begin{tikzpicture}[scale=0.6, baseline]
+    \draw[thick, indigosoft] (0,0) ellipse (0.9 and 1.6);
+    \draw[thick, indigosoft] (2.6,0) ellipse (0.9 and 1.6);
+    \node[circle, fill=indigoc, inner sep=1.4pt, label=left:{\footnotesize $1$}] (x1) at (0,1) {};
+    \node[circle, fill=indigoc, inner sep=1.4pt, label=left:{\footnotesize $2$}] (x2) at (0,0) {};
+    \node[circle, fill=indigoc, inner sep=1.4pt, label=left:{\footnotesize $3$}] (x3) at (0,-1) {};
+    \node[circle, fill=goldstrong, inner sep=1.4pt, label=right:{\footnotesize $4$}] (y1) at (2.6,1) {};
+    \node[circle, fill=goldstrong, inner sep=1.4pt, label=right:{\footnotesize $5$}] (y2) at (2.6,0) {};
+    \node[circle, fill=goldstrong, inner sep=1.4pt, label=right:{\footnotesize $6$}] (y3) at (2.6,-1) {};
+    \node[above] at (0,1.75) {\footnotesize $X$};
+    \node[above] at (2.6,1.75) {\footnotesize $Y$};
+    #1
+  \end{tikzpicture}}
+
+\begin{document}
+
+\noindent
+\begin{minipage}[b]{0.62\linewidth}
+  {\sffamily\footnotesize\color{indigosoft} 공통수학2 · Ⅲ. 함수와 그래프 · 1. 함수}\\[2pt]
+  {\sffamily\bfseries\Large 01 함수 \textperiodcentered\ 33차시}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.36\linewidth}
+  \raggedleft\small\color{inksoft}
+  반\ \fillblank{1.6cm} \quad 번호\ \fillblank{1.6cm}\\[4pt]
+  이름\ \fillblank{3.6cm}
+\end{minipage}
+
+\vspace{4pt}
+\noindent{\color{goldc}\rule{\linewidth}{2.2pt}}
+\vspace{10pt}
+
+\begin{goalbox}
+\textbf{오늘의 목표}\\
+두 집합 사이의 대응 중에서 함수를 판별하고, 함수의 정의역·공역·치역과 함숫값을 구할 수 있다.
+\vspace{4pt}
+\small\color{inksoft}
+$\square$ 자신 있음 \quad $\square$ 조금 헷갈림 \quad $\square$ 처음 봄 \hfill (수업 전 나의 상태에 표시)
+\end{goalbox}
+
+\section{생각 열기 --- 두 대응의 차이}
+
+\begin{sheetbox}
+우리 반 학생 각자에게 다음 두 가지를 각각 대응시켜 보자.
+
+\begin{enumerate}[leftmargin=1.4em, itemsep=2pt]
+  \item 학생 각자 $\to$ 그 학생의 사물함 번호
+  \item 학생 각자 $\to$ 그 학생이 좋아하는 급식 메뉴 (여러 개를 고를 수도, 하나도 못 고를 수도 있음)
+\end{enumerate}
+
+두 대응은 무엇이 다를까? 어느 쪽이 더 `분명한' 규칙이라고 생각하는지 이유와 함께 써 보자.
+\writespace{3}
+\end{sheetbox}
+
+\section{개념 정리 --- 함수의 뜻}
+
+\begin{sheetbox}
+집합 $X$의 원소 각각에 집합 $Y$의 원소를 하나씩 짝짓는 것을 $X$에서 $Y$로의 \fillblank{2.2cm}이라고 한다.
+
+\vspace{6pt}
+집합 $X$의 \fillblank{2.6cm} 원소에 집합 $Y$의 원소가 \fillblank{2.6cm} 대응할 때, 이 대응을 $X$에서 $Y$로의 함수라 하고 $f:X\to Y$로 나타낸다.
+
+\vspace{8pt}
+\textbf{정의역·공역·치역}\\
+집합 $X$를 함수 $f$의 \fillblank{1.6cm}, 집합 $Y$를 \fillblank{1.6cm}이라 한다.\\
+$X$의 원소 $x$에 대응하는 $Y$의 원소를 $f(x)$로 나타내고 이를 \fillblank{2.2cm}이라 한다.\\
+함숫값 전체의 집합 $f(X)=\{f(x)\mid x\in X\}$를 함수 $f$의 \fillblank{1.6cm}이라 하며, 치역은 항상 공역의 \fillblank{2.4cm}이다.
+
+\vspace{8pt}
+\textbf{예제} --- $X=\{1,2,3\}$, $Y=\{1,2,3,4,5,6\}$, $f(x)=2x$일 때\\
+정의역 $=\fillblank{2.2cm}$, \quad 공역 $=\fillblank{2.8cm}$, \quad 치역 $=\fillblank{2.2cm}$, \quad $f(2)=\fillblank{1.2cm}$
+\end{sheetbox}
+
+\section{연습 문제}
+
+\begin{sheetbox}
+\textbf{1.} 다음 네 가지 대응 중 함수인 것을 모두 고르고, 함수가 아닌 것은 그 이유를 쓰시오.
+
+\vspace{6pt}
+\noindent
+\begin{minipage}{0.24\linewidth}\centering
+\mapfour{
+  \draw[->, thick] (x1) -- (y1);
+  \draw[->, thick] (x2) -- (y2);
+  \draw[->, thick] (x3) -- (y2);
+}\\ \footnotesize ①
+\end{minipage}\hfill
+\begin{minipage}{0.24\linewidth}\centering
+\mapfour{
+  \draw[->, thick] (x1) -- (y1);
+  \draw[->, thick] (x3) -- (y3);
+}\\ \footnotesize ②
+\end{minipage}\hfill
+\begin{minipage}{0.24\linewidth}\centering
+\mapfour{
+  \draw[->, thick] (x1) -- (y1);
+  \draw[->, thick] (x1) -- (y2);
+  \draw[->, thick] (x2) -- (y2);
+  \draw[->, thick] (x3) -- (y3);
+}\\ \footnotesize ③
+\end{minipage}\hfill
+\begin{minipage}{0.24\linewidth}\centering
+\mapfour{
+  \draw[->, thick] (x1) -- (y1);
+  \draw[->, thick] (x2) -- (y1);
+  \draw[->, thick] (x3) -- (y3);
+}\\ \footnotesize ④
+\end{minipage}
+\writespace{3}
+
+\vspace{6pt}
+\textbf{2.} $X=\{1,2,3,4\}$, $Y=\{2,4,6,8,10\}$, $f(x)=2x$일 때, 정의역, 공역, 치역을 각각 구하고 $f(3)$의 값을 구하시오.
+\writespace{4}
+
+\vspace{6pt}
+\textbf{3.} $X=\{-1,0,1\}$에서 정의된 두 함수 $f(x)=x^2$, $g(x)=|x|$가 서로 같은 함수인지 판별하시오.
+\writespace{4}
+\end{sheetbox}
+
+\section{사고의 가시화 --- See · Think · Wonder}
+
+\noindent{\footnotesize\color{inksoft} 오늘 배운 `함수의 뜻'을 떠올리며 아래 세 칸을 채워 보자.}\\[6pt]
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\textbf{\footnotesize\color{indigoc} See --- 무엇을 보았나?} &
+\textbf{\footnotesize\color{indigoc} Think --- 무엇을 생각했나?} &
+\textbf{\footnotesize\color{indigoc} Wonder --- 무엇이 궁금한가?} \\[4pt]
+\end{tabularx}
+\noindent
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}
+
+\section{마무리 성찰}
+
+\begin{sheetbox}
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 오늘 배운 `함수의 뜻'을 한 문장으로}
+\writespace{2}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 감사 일기 / 유념 한 줄}
+\writespace{2}
+\end{minipage}
+\end{sheetbox}
+
+\end{document}
