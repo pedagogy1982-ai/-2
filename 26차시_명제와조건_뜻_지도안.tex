@@ -1,0 +1,145 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅱ. 집합과 명제 · 2. 명제 · 01 명제와 조건 · 1/2차시
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{notebox}{enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]{\sffamily\bfseries\Large #2}\\[3pt]{\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+\lessonbanner{공통수학2 · Ⅱ. 집합과 명제 · 2. 명제}{01 명제와 조건 --- 1/2차시}{명제·조건·진리집합 · 교사용 지도안 (2026학년도 2학기)}
+\vspace{10pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 10 · 전개 30 · 정리 10) \\
+성취기준 & 명제와 조건의 뜻을 알고, 이를 이해하고 설명할 수 있다. \\
+선행 학습 & 대단원 Ⅱ-1. 집합 전체 \\
+\bottomrule
+\end{tabularx}
+
+\section{학습 목표 \& Big Idea}
+\begin{ideabox}
+\textbf{\color{goldstrong}영속적 이해 (Big Idea)}\\
+집합에서 배운 `분명한 기준'이 이번엔 `참 또는 거짓을 명확히 판별할 수 있는 문장'(명제)으로 다시 나타난다. 그리고 조건의 `진리집합'은 집합과 명제를 잇는 다리이다.
+\vspace{4pt}
+\small\color{inksoft} 핵심개념: \textbf{참과 거짓} \quad\textbullet\quad 핵심개념: \textbf{진리집합} \quad\textbullet\quad 일반화: \textbf{조건은 집합과 명제 사이를 잇는다}
+\end{ideabox}
+\begin{calloutbox}
+\textbf{차시 학습 목표}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt, topsep=4pt]
+  \item 명제의 뜻을 알고, 명제의 참·거짓과 그 부정을 판별할 수 있다.
+  \item 조건과 진리집합의 뜻을 알고, 조건의 진리집합을 구할 수 있다.
+\end{itemize}
+\end{calloutbox}
+
+\section{질문의 연결}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}\small}p{2.4cm}X@{}}
+사실적 질문 & 어떤 문장이 `명제'가 되려면 어떤 조건을 만족해야 할까? \\[6pt]
+개념적 질문 & 변수를 포함한 문장(조건)이 왜 그 자체로는 명제가 아닐까? 진리집합은 조건을 어떻게 `집합'으로 바꾸어 줄까? \\[6pt]
+논쟁적 질문 & `섬진강은 아름답다'처럼 참·거짓을 판별할 수 없는 문장들이 우리 삶에는 왜 이렇게 많을까? 그런 문장들은 무가치할까? \\
+\end{tabularx}
+
+\section{수업 흐름}
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 10분 &
+\textbf{마음공부 (2분)} --- 새 소단원 시작, 유무념 대조.\newline
+\textbf{생각 열기 (8분)} --- ``백록화은 한라산에 있다.'' / ``한라산은 경기도에 있다.'' / ``한라산은 높은 산이다.'' 세 문장 제시 $\to$ 각각 참·거짓·판별불가로 분류. &
+ATL: 사고(판별)\newline VTR: See-Think-Wonder \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{명제와 부정 (12분)} --- 명제 정의 $\to$ 문제 1(명제 판별) $\to$ 부정 $\sim p$ 정의 $\to$ 문제 2.\newline
+\textbf{정의·정리, 조건과 진리집합 (18분)} --- 정의·정리 구분(문제 3) $\to$ 조건과 진리집합 정의(보기: 짝수 예시) $\to$ 조건의 부정과 그 진리집합 $P^C$ 관계 $\to$ 문제 4. &
+ATT: 촉진자 역할\newline ATL: 개념 연결 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{개념 연결 질문 (5분)} --- ``조건과 명제, 어떻게 다를까? 진리집합은 둘을 어떻게 연결할까?''\newline
+\textbf{성찰 (5분)} --- 감사 일기 1문장 + 다음 차시 예고(`모든', `어떤'을 포함한 명제). &
+마음공부 · 감사 일기 \\
+\bottomrule
+\end{tabularx}
+
+\begin{calloutbox}
+\textbf{지도상의 유의점} --- 명제는 `주관적 판단이 개입된 문장'이 될 수 없음을 강조한다(예: `아름답다', `높다'). 조건의 진리집합은 전체집합이 무엇인지에 따라 달라질 수 있음을 짚어 준다(예: $p:x^2=2$의 진리집합은 전체집합이 유리수면 공집합, 실수면 $\{-\sqrt2,\sqrt2\}$).
+\end{calloutbox}
+
+\section{형성평가 \& 답안}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 1} \quad 명제 판별\\
+\small ⑴ $\pi$는 유리수이다. ⑵ 섬진강은 아름답다. ⑶ $4-1=3$ ⑷ 정삼각형은 이등변삼각형이다.\\[4pt]
+\textbf{\color{goldstrong}답} \; 명제: ⑴,⑶,⑷ (⑴거짓 ⑶참 ⑷참), ⑵는 명제 아님
+\end{answerbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 2} \quad 부정과 참·거짓\\
+\small ⑴ 15의 약수의 개수는 3이다. ⑵ $2\le1+\frac12$\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ 부정 참 (실제 개수 4) \quad ⑵ 부정 거짓
+\end{answerbox}
+\end{minipage}
+
+\vspace{6pt}
+\begin{answerbox}
+\textbf{문제 4} \quad $U=$자연수 전체, $p: x^2>10$의 부정과 진리집합\\
+\textbf{\color{goldstrong}답} \; $\sim p: x^2\le10$, 진리집합 $\{1,2,3\}$
+\end{answerbox}
+
+\section{성취수준 (이 차시 범위)}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{0.9cm}X@{}}
+\toprule
+A & 명제와 조건의 뜻을 이해하고 설명하며, 참·거짓을 판별하고 이유를 설명할 수 있다. \\
+B & 명제와 조건의 뜻을 알고 설명할 수 있다. \\
+C & 명제와 조건의 뜻을 알고, 참·거짓을 판별할 수 있다. \\
+D & 명제의 뜻을 알고, 참·거짓을 판별할 수 있다. \\
+E & 간단한 명제의 참·거짓을 판별할 수 있다. \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 차시}
+\begin{calloutbox}
+\textbf{01 명제와 조건 --- 2/2차시.} `모든'이나 `어떤'을 포함한 명제의 참·거짓 판별과 그 부정을 다룬다.
+\end{calloutbox}
+\end{document}
