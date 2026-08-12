@@ -1,0 +1,130 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅱ. 집합과 명제 · 1. 집합 · 중단원 마무리 (25차시)
+% 학생용 활동지 (답안 없음)
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{writeline}{HTML}{C7CCBA}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{14pt}{6pt}
+\newtcolorbox{goalbox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{sheetbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.6pt, arc=3pt, left=11pt, right=11pt, top=9pt, bottom=9pt}
+\newcommand{\writespace}[1]{%
+  \par\nobreak\vspace{3pt}
+  \foreach \n in {1,...,#1} {%
+    \noindent\textcolor{writeline}{\rule{\linewidth}{0.4pt}}\par\vspace{0.62cm}%
+  }
+}
+\newcommand{\fillblank}[1]{\makebox[#1]{\hrulefill}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 다음 시간 --- 2. 명제}
+
+\begin{document}
+
+\noindent
+\begin{minipage}[b]{0.62\linewidth}
+  {\sffamily\footnotesize\color{indigosoft} 공통수학2 · Ⅱ. 집합과 명제}\\[2pt]
+  {\sffamily\bfseries\Large 1. 집합 \textperiodcentered\ 중단원 마무리}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.36\linewidth}
+  \raggedleft\small\color{inksoft}
+  반\ \fillblank{1.6cm} \quad 번호\ \fillblank{1.6cm}\\[4pt]
+  이름\ \fillblank{3.6cm}
+\end{minipage}
+
+\vspace{4pt}
+\noindent{\color{goldc}\rule{\linewidth}{2.2pt}}
+\vspace{10pt}
+
+\begin{goalbox}
+\textbf{오늘의 목표}\\
+18$\sim$24차시에서 배운 집합 개념 전체를 스스로 정리하고 점검한다.
+\end{goalbox}
+
+\section{개념 지도 채우기}
+
+\begin{sheetbox}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\small}p{4.4cm}X@{}}
+\toprule
+\textbf{개념} & \textbf{공식} \\
+\midrule
+부분집합 & \fillblank{6.5cm} \\[6pt]
+교집합 & \fillblank{6.5cm} \\[6pt]
+합집합 & \fillblank{6.5cm} \\[6pt]
+원소의 개수 공식 & \fillblank{6.5cm} \\[6pt]
+여집합 & \fillblank{6.5cm} \\[6pt]
+차집합 & \fillblank{6.5cm} \\[6pt]
+드모르간의 법칙 & \fillblank{6.5cm} \\
+\bottomrule
+\end{tabularx}
+\end{sheetbox}
+
+\section{기본 문제}
+
+\begin{sheetbox}
+\textbf{1.} 다음 집합을 원소나열법으로 나타내시오.\\
+\hspace*{1.6em}⑴ $\{x\mid x$는 21의 약수$\}$ \qquad ⑵ $\{x\mid x^2-7x+6=0\}$
+\writespace{2}
+
+\textbf{2.} 두 집합 $A$, $B$에 대하여 $n(A)=18$, $n(B)=23$, $n(A\cup B)=30$일 때, $n(A\cap B)$를 구하시오.
+\writespace{2}
+
+\textbf{3.} 전체집합 $U=\{1,2,3,\dots,10\}$의 두 부분집합 $A=\{1,5,9,10\}$, $B=\{x\mid x$는 10의 약수$\}$에 대하여 다음을 구하시오.\\
+\hspace*{1.6em}⑴ $A\cap B$ \quad ⑵ $A\cup B$ \quad ⑶ $A^C$ \quad ⑷ $A-B$
+\writespace{4}
+\end{sheetbox}
+
+\section{표준 \& 도전 문제}
+
+\begin{sheetbox}
+\textbf{4.} 전체집합 $U=\{1,2,3,4,5\}$의 부분집합 중에서 집합 $A=\{1,2,4\}$와 서로소인 집합을 모두 구하시오.
+\writespace{3}
+
+\textbf{5.} 전체집합 $U=\{x\mid x$는 30 이하의 자연수$\}$의 두 부분집합 $A=\{x\mid x$는 6의 배수$\}$, $B=\{x\mid x$는 24의 약수$\}$에 대하여 $n(A^C\cap B^C)$를 구하시오.
+\writespace{4}
+\end{sheetbox}
+
+\section{마무리 성찰 --- 나의 성취 수준 점검}
+
+\begin{sheetbox}
+아래 항목 중 자신 있게 설명할 수 있는 것에 $\checkmark$ 표시해 보자.
+
+\begin{itemize}[leftmargin=1.6em, itemsep=3pt]
+  \item[$\square$] 집합과 원소를 구분하고 세 가지 방법으로 표현할 수 있다.
+  \item[$\square$] 두 집합 사이의 포함 관계를 판단할 수 있다.
+  \item[$\square$] 교집합·합집합을 구하고 원소의 개수 공식을 활용할 수 있다.
+  \item[$\square$] 집합의 연산 법칙(교환·결합·분배)을 안다.
+  \item[$\square$] 여집합·차집합을 구하고 드모르간의 법칙을 활용할 수 있다.
+\end{itemize}
+
+\vspace{6pt}
+{\footnotesize\color{inksoft} 가장 보충이 필요한 부분과 그 이유를 적어 보자.}
+\writespace{2}
+\end{sheetbox}
+
+\end{document}
