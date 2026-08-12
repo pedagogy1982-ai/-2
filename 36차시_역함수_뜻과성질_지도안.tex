@@ -1,0 +1,163 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅲ. 함수와 그래프 · 1. 함수 · 03 역함수 · 1/2차시
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{notebox}{enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]{\sffamily\bfseries\Large #2}\\[3pt]{\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\newcommand{\revmap}[1]{%
+  \begin{tikzpicture}[scale=0.6, baseline]
+    \draw[thick, indigosoft] (0,0) ellipse (0.9 and 1.6);
+    \draw[thick, indigosoft] (2.6,0) ellipse (0.9 and 1.6);
+    \node[circle, fill=indigoc, inner sep=1.4pt, label=left:{\footnotesize $1$}] (x1) at (0,1) {};
+    \node[circle, fill=indigoc, inner sep=1.4pt, label=left:{\footnotesize $2$}] (x2) at (0,0) {};
+    \node[circle, fill=indigoc, inner sep=1.4pt, label=left:{\footnotesize $3$}] (x3) at (0,-1) {};
+    \node[circle, fill=goldstrong, inner sep=1.4pt, label=right:{\footnotesize $1$}] (y1) at (2.6,1) {};
+    \node[circle, fill=goldstrong, inner sep=1.4pt, label=right:{\footnotesize $4$}] (y2) at (2.6,0) {};
+    \node[circle, fill=goldstrong, inner sep=1.4pt, label=right:{\footnotesize $7$}] (y3) at (2.6,-1) {};
+    \node[above] at (0,1.75) {\footnotesize $X$};
+    \node[above] at (2.6,1.75) {\footnotesize $Y$};
+    #1
+  \end{tikzpicture}}
+
+\begin{document}
+\lessonbanner{공통수학2 · Ⅲ. 함수와 그래프 · 1. 함수}{03 역함수 --- 1/2차시}{역함수의 뜻과 성질 · 교사용 지도안 (2026학년도 2학기)}
+\vspace{10pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 10 · 전개 30 · 정리 10) \\
+성취기준 & 역함수의 뜻을 알고, 주어진 함수의 역함수를 구할 수 있다. \\
+선행 학습 & 34$\sim$35차시 --- 일대일대응, 합성함수 \\
+\bottomrule
+\end{tabularx}
+
+\section{학습 목표 \& Big Idea}
+\begin{ideabox}
+\textbf{\color{goldstrong}영속적 이해 (Big Idea)}\\
+대응을 거꾸로 뒤집었을 때 그 결과가 다시 함수가 되려면, 원래 대응이 `빠짐없이, 겹치지 않게' 대응하는 일대일대응이어야 한다. 역함수는 합성했을 때 원래 자리로 돌아오게 하는 `되돌리기' 함수이다.
+\vspace{4pt}
+\small\color{inksoft} 핵심개념: \textbf{역대응} \quad\textbullet\quad 핵심개념: \textbf{존재 조건(일대일대응)} \quad\textbullet\quad 일반화: \textbf{되돌릴 수 있으려면 겹침도 빠짐도 없어야 한다}
+\end{ideabox}
+\begin{calloutbox}
+\textbf{차시 학습 목표}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt, topsep=4pt]
+  \item 함수 $f$가 일대일대응일 때 그 역함수 $f^{-1}$이 존재함을 이해하고, $f^{-1}$을 구할 수 있다.
+  \item 역함수의 성질 $(f^{-1})^{-1}=f$, $f^{-1}\circ f=I_X$, $f\circ f^{-1}=I_Y$, $(g\circ f)^{-1}=f^{-1}\circ g^{-1}$을 설명할 수 있다.
+\end{itemize}
+\end{calloutbox}
+
+\section{질문의 연결}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}\small}p{2.4cm}X@{}}
+사실적 질문 & $y=f(x)$로부터 역함수 $f^{-1}(x)$를 구하는 절차는 무엇일까? \\[6pt]
+개념적 질문 & 왜 일대일대응인 함수만 역함수를 가질 수 있을까? \\[6pt]
+논쟁적 질문 & 자물쇠를 잠그고 여는 것처럼 `되돌릴 수 있는' 과정과, 계란을 삶는 것처럼 `되돌릴 수 없는' 과정 --- 우리 주변에는 어느 쪽이 더 많을까? \\
+\end{tabularx}
+
+\section{수업 흐름}
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 10분 &
+\textbf{마음공부 (2분)} --- 유무념 대조.\newline
+\textbf{생각 열기 (8분)} --- 화살표 그림 두 개(하나는 일대일대응, 하나는 아님)를 제시하고 화살표를 거꾸로 뒤집어 보게 한다. 어느 쪽이 여전히 함수가 되는지 토의. &
+ATL: 사고(역방향 추론)\newline VTR: See-Think-Wonder \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{역함수의 정의 (10분)} --- $f$가 일대일대응일 때 $Y$의 각 원소 $y$에 $f(x)=y$인 $X$의 원소 $x$를 대응시키는 새 함수 $f^{-1}:Y\to X$를 정의 $\to$ 문제 1(역함수가 존재하지 않는 예 --- $f(x)=x^2$).\newline
+\textbf{역함수 구하기 (12분)} --- 절차: $y=f(x)$를 $x=\cdots$꼴로 정리 $\to$ $x$, $y$를 서로 바꾸어 쓰기 $\to$ 예제, 문제 2.\newline
+\textbf{역함수의 성질 (8분)} --- $f^{-1}\circ f=I_X$, $f\circ f^{-1}=I_Y$, $(f^{-1})^{-1}=f$ 확인 $\to$ $(g\circ f)^{-1}=f^{-1}\circ g^{-1}$(순서가 뒤바뀜에 주의) 소개 $\to$ 문제 3, 문제 4. &
+ATT: 촉진자 역할\newline ATL: 대수적 조작·논리적 정당화 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{개념 연결 질문 (5분)} --- ``$f^{-1}(f(x))=x$가 항상 성립하는 이유를 내 말로 설명하면?''\newline
+\textbf{성찰 (5분)} --- 감사 일기 1문장 + 다음 차시 예고(역함수의 그래프). &
+마음공부 · 감사 일기 \\
+\bottomrule
+\end{tabularx}
+
+\begin{calloutbox}
+\textbf{지도상의 유의점} --- $(g\circ f)^{-1}=f^{-1}\circ g^{-1}$에서 순서가 뒤바뀌는 것을 `옷을 입고 벗는 순서'에 비유하면 이해가 쉽다(양말 $\to$ 신발 순서로 신었다면, 벗을 때는 신발 $\to$ 양말 순서). 역함수를 구할 때 $x$, $y$를 바꾸는 단계를 빠뜨리지 않도록 강조한다.
+\end{calloutbox}
+
+\section{형성평가 \& 답안}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 1} \quad $f(x)=x^2$ ($X=\mathbb{R}$)이 역함수를 가질 수 없는 이유를 설명하시오.\\[4pt]
+\textbf{\color{goldstrong}답} \; 일대일함수가 아니기 때문. 예를 들어 $f(1)=f(-1)=1$이므로, $y=1$에 대응하는 $x$가 하나로 정해지지 않아 역함수가 함수가 될 수 없다.
+\end{answerbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 2} \quad $f(x)=3x-2$의 역함수 $f^{-1}(x)$를 구하시오.\\[4pt]
+\textbf{\color{goldstrong}답} \; $y=3x-2 \Rightarrow x=\dfrac{y+2}{3}$, $x,y$ 교환 $\Rightarrow f^{-1}(x)=\dfrac{x+2}{3}$
+\end{answerbox}
+\end{minipage}
+
+\vspace{6pt}
+\begin{answerbox}
+\textbf{문제 3} \quad $f(x)=2x+1$일 때, $f^{-1}(5)$와 $f^{-1}(f(3))$을 각각 구하여 $f^{-1}\circ f=I$임을 확인하시오.\\[4pt]
+\textbf{\color{goldstrong}답} \; $f^{-1}(x)=\dfrac{x-1}{2}$이므로 $f^{-1}(5)=2$. \; $f(3)=7$이고 $f^{-1}(7)=3$, 즉 $f^{-1}(f(3))=3$(원래의 $x$)으로 항등함수와 같은 결과.
+\end{answerbox}
+\begin{answerbox}
+\textbf{문제 4} \quad $f(x)=x+1$, $g(x)=2x$일 때, $(g\circ f)^{-1}(x)$를 ⑴ 직접 구하는 방법과 ⑵ $f^{-1}\circ g^{-1}$을 이용하는 방법으로 각각 구하여 비교하시오.\\[4pt]
+\textbf{\color{goldstrong}답} \; $(g\circ f)(x)=2x+2$이므로 ⑴ $(g\circ f)^{-1}(x)=\dfrac{x-2}{2}$. \; ⑵ $f^{-1}(x)=x-1$, $g^{-1}(x)=\dfrac{x}{2}$이므로 $f^{-1}(g^{-1}(x))=\dfrac{x}{2}-1=\dfrac{x-2}{2}$로 일치.
+\end{answerbox}
+
+\section{성취수준 (이 차시 범위)}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{0.9cm}X@{}}
+\toprule
+A & 역함수의 존재 조건을 근거를 들어 설명하고, 역함수를 구하며 그 성질($f^{-1}\circ f=I$, $(g\circ f)^{-1}=f^{-1}\circ g^{-1}$ 등)을 스스로 확인할 수 있다. \\
+B & 일대일대응인 함수의 역함수를 절차에 따라 구할 수 있다. \\
+C & 안내에 따라 간단한 일차함수의 역함수를 구할 수 있다. \\
+D & 역함수의 뜻을 알고, 주어진 절차를 따라 할 수 있다. \\
+E & 역함수라는 용어를 안다. \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 차시}
+\begin{calloutbox}
+\textbf{03 역함수 --- 2/2차시.} 함수와 그 역함수의 그래프가 직선 $y=x$에 대하여 대칭임을 다룬다.
+\end{calloutbox}
+\end{document}

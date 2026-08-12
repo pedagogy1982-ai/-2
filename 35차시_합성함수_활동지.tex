@@ -1,0 +1,166 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅲ. 함수와 그래프 · 1. 함수 · 02 합성함수 · 1/1차시
+% 학생용 활동지 (답안 없음)
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{writeline}{HTML}{C7CCBA}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{14pt}{6pt}
+\newtcolorbox{goalbox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{sheetbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.6pt, arc=3pt, left=11pt, right=11pt, top=9pt, bottom=9pt}
+\newcommand{\writespace}[1]{%
+  \par\nobreak\vspace{3pt}
+  \foreach \n in {1,...,#1} {%
+    \noindent\textcolor{writeline}{\rule{\linewidth}{0.4pt}}\par\vspace{0.62cm}%
+  }
+}
+\newcommand{\fillblank}[1]{\makebox[#1]{\hrulefill}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 다음 시간 --- 03 역함수 1/2}
+
+\newcommand{\chainmap}[1]{%
+  \begin{tikzpicture}[scale=0.62, baseline]
+    \draw[thick, indigosoft] (0,0) ellipse (0.75 and 1.3);
+    \draw[thick, indigosoft] (2.2,0) ellipse (0.75 and 1.3);
+    \draw[thick, indigosoft] (4.4,0) ellipse (0.75 and 1.3);
+    \node[above] at (0,1.5) {\footnotesize $X$};
+    \node[above] at (2.2,1.5) {\footnotesize $Y$};
+    \node[above] at (4.4,1.5) {\footnotesize $Z$};
+    \node[below] at (1.1,-1.6) {\footnotesize $f$};
+    \node[below] at (3.3,-1.6) {\footnotesize $g$};
+    #1
+  \end{tikzpicture}}
+
+\begin{document}
+
+\noindent
+\begin{minipage}[b]{0.62\linewidth}
+  {\sffamily\footnotesize\color{indigosoft} 공통수학2 · Ⅲ. 함수와 그래프 · 1. 함수}\\[2pt]
+  {\sffamily\bfseries\Large 02 합성함수 \textperiodcentered\ 35차시}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.36\linewidth}
+  \raggedleft\small\color{inksoft}
+  반\ \fillblank{1.6cm} \quad 번호\ \fillblank{1.6cm}\\[4pt]
+  이름\ \fillblank{3.6cm}
+\end{minipage}
+
+\vspace{4pt}
+\noindent{\color{goldc}\rule{\linewidth}{2.2pt}}
+\vspace{10pt}
+
+\begin{goalbox}
+\textbf{오늘의 목표}\\
+합성함수의 뜻을 알고, 두 함수의 합성함수를 구하며 순서를 바꾸면 결과가 달라짐을 확인할 수 있다.
+\vspace{4pt}
+\small\color{inksoft}
+$\square$ 자신 있음 \quad $\square$ 조금 헷갈림 \quad $\square$ 처음 봄 \hfill (수업 전 나의 상태에 표시)
+\end{goalbox}
+
+\section{생각 열기 --- 순서를 바꾸면?}
+
+\begin{sheetbox}
+다음 두 행동의 순서를 비교해 보자.
+
+\begin{enumerate}[leftmargin=1.4em, itemsep=2pt]
+  \item 양말을 신는다 $\to$ 그 위에 신발을 신는다.
+  \item 신발을 신는다 $\to$ 그 위에 양말을 신는다.
+\end{enumerate}
+
+두 순서 중 어느 쪽이 `말이 되는' 순서인가? 이것을 함수를 두 번 잇는 상황과 연결하면 어떤 예감이 드는지 써 보자.
+\writespace{3}
+\end{sheetbox}
+
+\section{개념 정리 --- 합성함수}
+
+\begin{sheetbox}
+두 함수 $f:X\to Y$, $g:Y\to Z$에 대하여, $X$의 각 원소 $x$에 $g(f(x))$를 대응시켜 만든 새로운 함수를 $f$와 $g$의 \fillblank{2.6cm}라 하고, 기호로 \fillblank{2cm}와 같이 나타낸다.
+
+\vspace{6pt}
+\[(g\circ f)(x) = g(\ \fillblank{1.6cm}\ )\]
+
+\vspace{4pt}
+\noindent
+\begin{center}
+\chainmap{}
+\end{center}
+
+\vspace{6pt}
+계산할 때는 \fillblank{1.6cm} 함수를 먼저 적용하고, 그 결과에 \fillblank{1.6cm} 함수를 적용한다.
+
+\vspace{8pt}
+\textbf{예제} --- $f(x)=x+1$, $g(x)=2x$일 때\\
+$(g\circ f)(3) = g(f(3)) = g(\fillblank{1.2cm}) = \fillblank{1.2cm}$
+\end{sheetbox}
+
+\section{연습 문제}
+
+\begin{sheetbox}
+\textbf{1.} $f(x)=2x+1$, $g(x)=x^2$일 때, $(g\circ f)(2)$와 $(f\circ g)(2)$를 각각 구하고, 두 값을 비교하시오.
+\writespace{4}
+
+\vspace{4pt}
+\textbf{2.} $f(x)=x-3$, $g(x)=2x+1$일 때, $(g\circ f)(x)$와 $(f\circ g)(x)$를 각각 구하고, 서로 같은지 판별하시오.
+\writespace{4}
+
+\vspace{4pt}
+\textbf{3.} $f(x)=x+2$, $g(x)=3x$, $h(x)=x^2$일 때, $((h\circ g)\circ f)(x)$와 $(h\circ(g\circ f))(x)$를 각각 구하여 두 식이 같은지 확인하시오.
+\writespace{5}
+
+\vspace{4pt}
+\textbf{4.} $X=\{1,2,3\}$, $Y=\{2,4,6\}$, $Z=\{4,16,36\}$이고 $f:X\to Y$, $f(x)=2x$, $g:Y\to Z$, $g(y)=y^2$일 때, $(g\circ f)(3)$을 구하고, $g\circ f$가 정의될 수 있는 이유를 한 문장으로 설명하시오.
+\writespace{4}
+\end{sheetbox}
+
+\section{사고의 가시화 --- Connect · Extend · Challenge}
+
+\noindent{\footnotesize\color{inksoft} 오늘 배운 `합성함수'를 떠올리며 아래 세 칸을 채워 보자.}\\[6pt]
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\textbf{\footnotesize\color{indigoc} Connect --- 무엇과 연결되나?} &
+\textbf{\footnotesize\color{indigoc} Extend --- 어디까지 확장됐나?} &
+\textbf{\footnotesize\color{indigoc} Challenge --- 아직 궁금한 것은?} \\[4pt]
+\end{tabularx}
+\noindent
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}
+
+\section{마무리 성찰}
+
+\begin{sheetbox}
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} $g\circ f$와 $f\circ g$가 다른 이유를 한 문장으로}
+\writespace{2}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 감사 일기 / 유념 한 줄}
+\writespace{2}
+\end{minipage}
+\end{sheetbox}
+
+\end{document}

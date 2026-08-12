@@ -1,0 +1,139 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅲ. 함수와 그래프 · 중단원(2.유리무리함수)·대단원(Ⅲ) 마무리 · 기말 총정리
+% 학생용 활동지 (답안 없음)
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{writeline}{HTML}{C7CCBA}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{14pt}{6pt}
+\newtcolorbox{goalbox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{sheetbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.6pt, arc=3pt, left=11pt, right=11pt, top=9pt, bottom=9pt}
+\newcommand{\writespace}[1]{%
+  \par\nobreak\vspace{3pt}
+  \foreach \n in {1,...,#1} {%
+    \noindent\textcolor{writeline}{\rule{\linewidth}{0.4pt}}\par\vspace{0.62cm}%
+  }
+}
+\newcommand{\fillblank}[1]{\makebox[#1]{\hrulefill}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 다음 시간 --- 기말고사}
+
+\begin{document}
+
+\noindent
+\begin{minipage}[b]{0.62\linewidth}
+  {\sffamily\footnotesize\color{indigosoft} 공통수학2 · Ⅲ. 함수와 그래프}\\[2pt]
+  {\sffamily\bfseries\Large 중단원(2.유리\ \textperiodcentered\ 무리함수)\textperiodcentered 대단원(Ⅲ) 마무리 \textperiodcentered\ 42차시}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.36\linewidth}
+  \raggedleft\small\color{inksoft}
+  반\ \fillblank{1.6cm} \quad 번호\ \fillblank{1.6cm}\\[4pt]
+  이름\ \fillblank{3.6cm}
+\end{minipage}
+
+\vspace{4pt}
+\noindent{\color{goldc}\rule{\linewidth}{2.2pt}}
+\vspace{10pt}
+
+\begin{goalbox}
+\textbf{오늘의 목표}\\
+함수, 합성함수, 역함수, 유리함수, 무리함수를 종합적으로 점검하고, 대단원 Ⅲ `함수와 그래프'를 마무리하며 기말고사를 준비한다.
+\vspace{4pt}
+\small\color{inksoft}
+$\square$ 자신 있음 \quad $\square$ 조금 헷갈림 \quad $\square$ 처음 봄 \hfill (수업 전 나의 상태에 표시)
+\end{goalbox}
+
+\section{생각 열기 --- 나만의 개념 지도}
+
+\begin{sheetbox}
+`함수와 그래프' 대단원에서 배운 개념들을 자유롭게 적고, 서로 관련 있는 것끼리 화살표로 연결해 보자.\\
+\small\color{inksoft} (예시 개념: 함수의 뜻, 여러 가지 함수, 합성함수, 역함수와 그래프, 유리함수, 무리함수, 평행이동)
+\writespace{6}
+\end{sheetbox}
+
+\section{종합 문제}
+
+\begin{sheetbox}
+\textbf{1.} $X=\{1,2,3\}$, $Y=\{1,2,\ldots,9\}$, $f(x)=x^2$일 때, 정의역·공역·치역을 구하고 일대일함수인지 판별하시오.
+\writespace{3}
+
+\vspace{4pt}
+\textbf{2.} $f(x)=2x-1$, $g(x)=x+2$일 때, $(f\circ g)(x)$와 $(f\circ g)^{-1}(x)$를 각각 구하시오.
+\writespace{4}
+
+\vspace{4pt}
+\textbf{3.} $y=\dfrac{3x-1}{x-2}$를 $y=\dfrac{k}{x-p}+q$ 꼴로 변형하고, 점근선과 정의역을 구하시오.
+\writespace{3}
+
+\vspace{4pt}
+\textbf{4.} $y=\sqrt{3-x}+2$의 정의역과 치역을 구하시오.
+\writespace{3}
+\end{sheetbox}
+
+\section{학기 전체 핵심 공식 채우기 (기말고사 대비)}
+
+\begin{sheetbox}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\small}p{3.4cm}X@{}}
+\toprule
+\textbf{대단원} & \textbf{핵심 공식·개념 (떠오르는 대로 적어 보자)} \\
+\midrule
+Ⅰ. 도형의 방정식 & \fillblank{9cm} \\[10pt]
+Ⅱ. 집합과 명제 & \fillblank{9cm} \\[10pt]
+Ⅲ. 함수와 그래프 & \fillblank{9cm} \\
+\bottomrule
+\end{tabularx}
+\end{sheetbox}
+
+\section{사고의 가시화 --- Connect · Extend · Challenge}
+
+\noindent{\footnotesize\color{inksoft} 대단원 Ⅲ `함수와 그래프' 전체, 나아가 한 학기 전체를 떠올리며 아래 세 칸을 채워 보자.}\\[6pt]
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\textbf{\footnotesize\color{indigoc} Connect --- 무엇과 연결되나?} &
+\textbf{\footnotesize\color{indigoc} Extend --- 어디까지 확장됐나?} &
+\textbf{\footnotesize\color{indigoc} Challenge --- 아직 궁금한 것은?} \\[4pt]
+\end{tabularx}
+\noindent
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}
+
+\section{마무리 성찰}
+
+\begin{sheetbox}
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 대단원 Ⅲ `함수와 그래프'를, 나아가 이번 학기 수학 수업을 마치며 한 문장으로}
+\writespace{2}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 감사 일기 / 유념 한 줄}
+\writespace{2}
+\end{minipage}
+\end{sheetbox}
+
+\end{document}

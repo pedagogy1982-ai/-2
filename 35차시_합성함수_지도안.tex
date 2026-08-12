@@ -1,0 +1,162 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅲ. 함수와 그래프 · 1. 함수 · 02 합성함수 · 1/1차시
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{notebox}{enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]{\sffamily\bfseries\Large #2}\\[3pt]{\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\newcommand{\chainmap}[1]{%
+  \begin{tikzpicture}[scale=0.62, baseline]
+    \draw[thick, indigosoft] (0,0) ellipse (0.75 and 1.3);
+    \draw[thick, indigosoft] (2.2,0) ellipse (0.75 and 1.3);
+    \draw[thick, indigosoft] (4.4,0) ellipse (0.75 and 1.3);
+    \node[above] at (0,1.5) {\footnotesize $X$};
+    \node[above] at (2.2,1.5) {\footnotesize $Y$};
+    \node[above] at (4.4,1.5) {\footnotesize $Z$};
+    \node[below] at (1.1,-1.6) {\footnotesize $f$};
+    \node[below] at (3.3,-1.6) {\footnotesize $g$};
+    #1
+  \end{tikzpicture}}
+
+\begin{document}
+\lessonbanner{공통수학2 · Ⅲ. 함수와 그래프 · 1. 함수}{02 합성함수 --- 1/1차시}{합성함수의 뜻과 계산 · 교사용 지도안 (2026학년도 2학기)}
+\vspace{10pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 10 · 전개 30 · 정리 10) \\
+성취기준 & 합성함수를 이해하고, 두 함수를 합성할 수 있다. \\
+선행 학습 & 33$\sim$34차시 --- 함수의 뜻, 정의역·공역·치역, 여러 가지 함수 \\
+\bottomrule
+\end{tabularx}
+
+\section{학습 목표 \& Big Idea}
+\begin{ideabox}
+\textbf{\color{goldstrong}영속적 이해 (Big Idea)}\\
+두 함수를 이어 붙이면 하나의 새로운 함수가 만들어진다. 그런데 `이어 붙이는 순서'를 바꾸면 일반적으로 전혀 다른 함수가 되므로, 합성은 곱셈처럼 자유롭게 순서를 바꿀 수 있는 연산이 아니다.
+\vspace{4pt}
+\small\color{inksoft} 핵심개념: \textbf{합성} \quad\textbullet\quad 핵심개념: \textbf{비가환성} \quad\textbullet\quad 일반화: \textbf{함수를 잇는 순서는 결과를 바꾼다}
+\end{ideabox}
+\begin{calloutbox}
+\textbf{차시 학습 목표}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt, topsep=4pt]
+  \item 합성함수 $(g\circ f)(x)=g(f(x))$의 뜻을 알고, 주어진 두 함수의 합성함수를 구할 수 있다.
+  \item $g\circ f$와 $f\circ g$가 일반적으로 다름을 확인하고, 결합법칙 $(h\circ g)\circ f=h\circ(g\circ f)$가 성립함을 이해한다.
+\end{itemize}
+\end{calloutbox}
+
+\section{질문의 연결}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}\small}p{2.4cm}X@{}}
+사실적 질문 & $(g\circ f)(x)$의 값은 어떤 순서로 계산해야 할까? \\[6pt]
+개념적 질문 & 왜 $g\circ f$를 계산하려면 $f$의 치역이 $g$의 정의역에 포함되어야 할까? \\[6pt]
+논쟁적 질문 & 양말을 신고 신발을 신는 것과 신발을 신고 양말을 신는 것 --- 순서를 바꾸면 왜 결과(가능함/불가능함)가 달라질까? 수학에서도 이런 예를 찾을 수 있을까? \\
+\end{tabularx}
+
+\section{수업 흐름}
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 10분 &
+\textbf{마음공부 (2분)} --- 유무념 대조.\newline
+\textbf{생각 열기 (8분)} --- ``양말 신기 $\to$ 신발 신기''와 ``신발 신기 $\to$ 양말 신기''를 비교. 순서를 바꾸면 왜 문제가 생기는지 토의하고, `함수도 순서를 바꾸면 달라질 수 있다'는 예감을 갖게 한다. &
+ATL: 사고(순서의 중요성)\newline VTR: See-Think-Wonder \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{합성함수의 정의 (10분)} --- $f:X\to Y$, $g:Y\to Z$일 때 $(g\circ f)(x)=g(f(x))$ 정의, 세 집합 화살표 그림으로 `안쪽 $f$ 먼저, 바깥쪽 $g$ 나중' 순서 강조 $\to$ 문제 1.\newline
+\textbf{합성함수 구하기 \& 비교 (12분)} --- 두 함수의 식으로 합성함수의 식 구하기 $\to$ $g\circ f$와 $f\circ g$를 각각 구해 서로 다름을 확인 $\to$ 문제 2.\newline
+\textbf{결합법칙 (8분)} --- 세 함수의 합성 $(h\circ g)\circ f$와 $h\circ(g\circ f)$를 각각 계산해 같음을 확인(괄호 위치는 바꿔도 되지만 순서는 바꾸면 안 됨) $\to$ 문제 3. &
+ATT: 촉진자 역할\newline ATL: 대수적 조작·비교 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{개념 연결 질문 (5분)} --- ``$g\circ f$와 $f\circ g$가 우연히 같아지는 경우도 있을까? 예를 들어 보자.''\newline
+\textbf{성찰 (5분)} --- 감사 일기 1문장 + 다음 차시 예고(역함수). &
+마음공부 · 감사 일기 \\
+\bottomrule
+\end{tabularx}
+
+\begin{calloutbox}
+\textbf{지도상의 유의점} --- $(g\circ f)(x)=g(f(x))$에서 먼저 계산하는 것은 안쪽에 있는 $f$이며, 표기 순서($g\circ f$)와 계산 순서($f$ 먼저)가 반대라는 점에서 오개념이 자주 발생한다. 또한 합성함수가 정의되려면 $f$의 치역이 $g$의 정의역에 포함되어야 함을 짚어 준다.
+\end{calloutbox}
+
+\section{형성평가 \& 답안}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 1} \quad $f(x)=2x+1$, $g(x)=x^2$일 때, $(g\circ f)(2)$와 $(f\circ g)(2)$를 각각 구하시오.\\[4pt]
+\textbf{\color{goldstrong}답} \; $(g\circ f)(2)=g(5)=25$ \quad $(f\circ g)(2)=f(4)=9$. 두 값이 다르므로 순서가 중요함을 확인.
+\end{answerbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 2} \quad $f(x)=x-3$, $g(x)=2x+1$일 때, $(g\circ f)(x)$와 $(f\circ g)(x)$를 각각 구하고 같은지 판별하시오.\\[4pt]
+\textbf{\color{goldstrong}답} \; $(g\circ f)(x)=2x-5$, \; $(f\circ g)(x)=2x-2$. 서로 다르므로 $g\circ f\neq f\circ g$.
+\end{answerbox}
+\end{minipage}
+
+\vspace{6pt}
+\begin{answerbox}
+\textbf{문제 3} \quad $f(x)=x+2$, $g(x)=3x$, $h(x)=x^2$일 때, $((h\circ g)\circ f)(x)$와 $(h\circ(g\circ f))(x)$를 각각 구하여 같음을 확인하시오.\\[4pt]
+\textbf{\color{goldstrong}답} \; $(g\circ f)(x)=3x+6$이므로 $(h\circ(g\circ f))(x)=(3x+6)^2$. \;\; $(h\circ g)(x)=9x^2$이므로 $((h\circ g)\circ f)(x)=9(x+2)^2=(3x+6)^2$. 두 식이 같으므로 결합법칙 성립.
+\end{answerbox}
+
+\begin{answerbox}
+\textbf{문제 4} \quad $X=\{1,2,3\}$, $Y=\{2,4,6\}$, $Z=\{4,16,36\}$이고 $f:X\to Y$, $f(x)=2x$, $g:Y\to Z$, $g(y)=y^2$일 때, $g\circ f$가 정의될 수 있는 이유를 설명하고 $(g\circ f)(3)$을 구하시오.\\[4pt]
+\textbf{\color{goldstrong}답} \; $f$의 치역 $\{2,4,6\}$이 $g$의 정의역 $Y=\{2,4,6\}$과 일치(포함)하므로 $g\circ f$가 정의된다. $(g\circ f)(3)=g(6)=36$.
+\end{answerbox}
+
+\section{성취수준 (이 차시 범위)}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{0.9cm}X@{}}
+\toprule
+A & 합성함수의 정의역 조건을 설명하고, 합성함수를 정확히 구하며 $g\circ f\neq f\circ g$와 결합법칙을 스스로 확인할 수 있다. \\
+B & 두 함수의 합성함수를 구하고, 함숫값을 계산할 수 있다. \\
+C & 주어진 $x$값에 대한 합성함수의 값을 구할 수 있다. \\
+D & 안내에 따라 합성함수의 값을 구할 수 있다. \\
+E & 합성함수의 뜻을 안다. \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 차시}
+\begin{calloutbox}
+\textbf{03 역함수 --- 1/2차시.} 함수의 대응을 거꾸로 뒤집는 역함수의 뜻과 존재 조건을 다룬다.
+\end{calloutbox}
+\end{document}

@@ -1,0 +1,153 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅲ. 함수와 그래프 · 2. 유리함수와 무리함수 · 01 유리함수 · 1/2차시
+% 학생용 활동지 (답안 없음)
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{writeline}{HTML}{C7CCBA}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{14pt}{6pt}
+\newtcolorbox{goalbox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{sheetbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.6pt, arc=3pt, left=11pt, right=11pt, top=9pt, bottom=9pt}
+\newcommand{\writespace}[1]{%
+  \par\nobreak\vspace{3pt}
+  \foreach \n in {1,...,#1} {%
+    \noindent\textcolor{writeline}{\rule{\linewidth}{0.4pt}}\par\vspace{0.62cm}%
+  }
+}
+\newcommand{\fillblank}[1]{\makebox[#1]{\hrulefill}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 다음 시간 --- 01 유리함수 2/2(그래프)}
+
+\begin{document}
+
+\noindent
+\begin{minipage}[b]{0.62\linewidth}
+  {\sffamily\footnotesize\color{indigosoft} 공통수학2 · Ⅲ. 함수와 그래프 · 2. 유리함수와 무리함수}\\[2pt]
+  {\sffamily\bfseries\Large 01 유리함수 \textperiodcentered\ 39차시}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.36\linewidth}
+  \raggedleft\small\color{inksoft}
+  반\ \fillblank{1.6cm} \quad 번호\ \fillblank{1.6cm}\\[4pt]
+  이름\ \fillblank{3.6cm}
+\end{minipage}
+
+\vspace{4pt}
+\noindent{\color{goldc}\rule{\linewidth}{2.2pt}}
+\vspace{10pt}
+
+\begin{goalbox}
+\textbf{오늘의 목표}\\
+유리함수의 뜻을 알고 정의역을 구하며, $y=\dfrac{ax+b}{cx+d}$ 꼴을 $y=\dfrac{k}{x-p}+q$ 꼴로 변형할 수 있다.
+\vspace{4pt}
+\small\color{inksoft}
+$\square$ 자신 있음 \quad $\square$ 조금 헷갈림 \quad $\square$ 처음 봄 \hfill (수업 전 나의 상태에 표시)
+\end{goalbox}
+
+\section{생각 열기 --- 나눌 수 없는 순간}
+
+\begin{sheetbox}
+피자 한 판을 $n$명이 똑같이 나눠 먹으면 한 사람 몫은 $\dfrac1n$판이다. 아래 표를 완성해 보자.
+
+\vspace{6pt}
+\begin{tabularx}{\linewidth}{@{}XXXXX@{}}
+\toprule
+$n$ & $4$ & $2$ & $1$ & $0$ \\
+\midrule
+$\dfrac1n$ & \fillblank{1.4cm} & \fillblank{1.4cm} & \fillblank{1.4cm} & \fillblank{1.4cm} \\
+\bottomrule
+\end{tabularx}
+
+\vspace{6pt}
+$n=0$일 때 $\dfrac1n$을 구할 수 없는 이유를 한 문장으로 써 보자.
+\writespace{2}
+\end{sheetbox}
+
+\section{개념 정리 --- 유리함수의 뜻과 정의역}
+
+\begin{sheetbox}
+다항식을 다항식으로 나눈 꼴로 나타낸 식을 \fillblank{2.2cm}이라 하고, 유리식으로 나타낸 함수를 \fillblank{2.4cm}라 한다. 다항함수는 분모가 \fillblank{2cm}인 유리함수의 특수한 경우이다.
+
+\vspace{6pt}
+유리함수 $y=\dfrac{f(x)}{g(x)}$의 정의역은 $g(x)\fillblank{1.4cm}$인 실수 $x$ 전체의 집합이다.
+
+\vspace{8pt}
+\textbf{식의 변형} --- $y=\dfrac{ax+b}{cx+d}$ 꼴은 분자를 분모로 나누어 $y=\dfrac{k}{x-\fillblank{1cm}}+\fillblank{1cm}$ 꼴로 바꿀 수 있다.
+
+\vspace{8pt}
+\textbf{예제} --- $y=\dfrac{2x+1}{x-1}$을 변형해 보자.\\
+$2x+1 = 2(x-1) + \fillblank{1cm}$ 이므로 $y = \dfrac{\fillblank{1cm}}{x-1} + \fillblank{1cm}$
+\end{sheetbox}
+
+\section{연습 문제}
+
+\begin{sheetbox}
+\textbf{1.} 다음 중 유리함수인 것을 모두 고르시오.\\
+\hspace*{1.6em}$y=2x+1$, \; $y=\dfrac1x$, \; $y=x^2-3$, \; $y=\dfrac{x+1}{x-2}$, \; $y=\sqrt x$
+\writespace{2}
+
+\vspace{4pt}
+\textbf{2.} 유리함수 $y=\dfrac{3}{x-2}$의 정의역을 구하시오.
+\writespace{2}
+
+\vspace{4pt}
+\textbf{3.} $y=\dfrac{2x+1}{x-1}$을 $y=\dfrac{k}{x-p}+q$ 꼴로 변형하고, 정의역을 구하시오.
+\writespace{3}
+
+\vspace{4pt}
+\textbf{4.} $y=\dfrac{3x-5}{x+2}$를 $y=\dfrac{k}{x-p}+q$ 꼴로 변형하고, 정의역을 구하시오.
+\writespace{3}
+\end{sheetbox}
+
+\section{사고의 가시화 --- See · Think · Wonder}
+
+\noindent{\footnotesize\color{inksoft} 오늘 배운 `유리함수의 뜻과 정의역'을 떠올리며 아래 세 칸을 채워 보자.}\\[6pt]
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\textbf{\footnotesize\color{indigoc} See --- 무엇을 보았나?} &
+\textbf{\footnotesize\color{indigoc} Think --- 무엇을 생각했나?} &
+\textbf{\footnotesize\color{indigoc} Wonder --- 무엇이 궁금한가?} \\[4pt]
+\end{tabularx}
+\noindent
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}
+
+\section{마무리 성찰}
+
+\begin{sheetbox}
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 유리함수의 정의역을 구하는 방법을 한 문장으로}
+\writespace{2}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 감사 일기 / 유념 한 줄}
+\writespace{2}
+\end{minipage}
+\end{sheetbox}
+
+\end{document}
