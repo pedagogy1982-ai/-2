@@ -1,0 +1,141 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅱ. 집합과 명제 · 2. 명제 · 02 명제 사이의 관계 · 2/2차시
+% 학생용 활동지 (답안 없음)
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{writeline}{HTML}{C7CCBA}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{14pt}{6pt}
+\newtcolorbox{goalbox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{sheetbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.6pt, arc=3pt, left=11pt, right=11pt, top=9pt, bottom=9pt}
+\newcommand{\writespace}[1]{%
+  \par\nobreak\vspace{3pt}
+  \foreach \n in {1,...,#1} {%
+    \noindent\textcolor{writeline}{\rule{\linewidth}{0.4pt}}\par\vspace{0.62cm}%
+  }
+}
+\newcommand{\fillblank}[1]{\makebox[#1]{\hrulefill}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 다음 시간 --- 03 명제의 증명(1)}
+
+\begin{document}
+
+\noindent
+\begin{minipage}[b]{0.62\linewidth}
+  {\sffamily\footnotesize\color{indigosoft} 공통수학2 · Ⅱ. 집합과 명제 · 2. 명제}\\[2pt]
+  {\sffamily\bfseries\Large 02 명제 사이의 관계 \textperiodcentered\ 29차시}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.36\linewidth}
+  \raggedleft\small\color{inksoft}
+  반\ \fillblank{1.6cm} \quad 번호\ \fillblank{1.6cm}\\[4pt]
+  이름\ \fillblank{3.6cm}
+\end{minipage}
+
+\vspace{4pt}
+\noindent{\color{goldc}\rule{\linewidth}{2.2pt}}
+\vspace{10pt}
+
+\begin{goalbox}
+\textbf{오늘의 목표}\\
+두 조건의 진리집합 사이의 포함 관계를 이용하여 충분조건, 필요조건, 필요충분조건을 판별할 수 있다.
+\vspace{4pt}
+\small\color{inksoft}
+$\square$ 자신 있음 \quad $\square$ 조금 헷갈림 \quad $\square$ 처음 봄 \hfill (수업 전 나의 상태에 표시)
+\end{goalbox}
+
+\section{생각 열기 --- 두 조건은 어떤 관계일까}
+
+\begin{sheetbox}
+명제 `$a$는 4의 배수이다. $\Rightarrow$ $a$는 2의 배수이다.'는 참이다. 이때 두 조건의 진리집합을 각각 그려 보고, 두 조건이 서로 어떤 관계인지 예측해 보자.
+\writespace{3}
+\end{sheetbox}
+
+\section{개념 정리 --- 충분조건과 필요조건}
+
+\begin{sheetbox}
+명제 $p\to q$가 참일 때, 이것을 기호로 $p\ \fillblank{1.4cm}\ q$와 같이 나타낸다. 이때
+
+\begin{itemize}[leftmargin=1.6em, itemsep=4pt]
+  \item $p$는 $q$이기 위한 \fillblank{2.6cm},
+  \item $q$는 $p$이기 위한 \fillblank{2.6cm}
+\end{itemize}
+이라고 한다.
+
+\vspace{6pt}
+또, $p\Rightarrow q$이고 $q\Rightarrow p$일 때, 이것을 기호로 $p\ \fillblank{1.4cm}\ q$와 같이 나타내고, $p$는 $q$이기 위한 \fillblank{3cm}이라고 한다.
+
+\vspace{8pt}
+두 조건 $p$, $q$의 진리집합을 각각 $P$, $Q$라 할 때, $P\subset Q$이면 $p$는 $q$이기 위한 \fillblank{2.6cm}이고, 특히 $P=Q$이면 $p$는 $q$이기 위한 \fillblank{3cm}이다.
+\end{sheetbox}
+
+\section{연습 문제}
+
+\begin{sheetbox}
+\textbf{1.} 두 조건 $p$, $q$가 다음과 같을 때, $p$는 $q$이기 위한 어떤 조건인지 말하시오.\\
+\hspace*{1.6em}⑴ $p:x$는 3의 배수이다. \quad $q:x$는 9의 배수이다.\\
+\hspace*{1.6em}⑵ $p:x^2\le25$ \quad $q:|x|\le5$
+\writespace{5}
+
+\vspace{6pt}
+\textbf{2.} 두 조건 $p$, $q$가 다음과 같을 때, $p$는 $q$이기 위한 어떤 조건인지 말하시오.\\
+\hspace*{1.6em}⑴ $p:a=0$이고 $b=0$ \quad $q:ab=0$\\
+\hspace*{1.6em}⑵ $p:2x-1<5$ \quad $q:-1<2-x$
+\writespace{5}
+\end{sheetbox}
+
+\section{탐구 활동 --- 벤 다이어그램과 참인 명제}
+
+\begin{sheetbox}
+전체집합 $U$에 대하여 세 조건 $p$, $q$, $r$은 다음을 만족시킨다.
+\begin{center}
+\small $p$는 $q$이기 위한 필요조건 \qquad $r$은 $q$이기 위한 충분조건
+\end{center}
+
+\textbf{활동 1.} 세 조건의 진리집합 $P$, $Q$, $R$ 사이의 포함 관계를 벤 다이어그램으로 나타내 보자.
+\writespace{5}
+
+\textbf{활동 2.} 활동 1의 결과를 이용하여 다음 중 참인 명제를 모두 찾아보자.\\
+\hspace*{1.6em}⑴ $r\to p$ \quad ⑵ $q\to\ \sim\!p$ \quad ⑶ $\sim\!q\to\ \sim\!r$ \quad ⑷ $\sim\!p\to r$
+\writespace{4}
+\end{sheetbox}
+
+\section{마무리 성찰}
+
+\begin{sheetbox}
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} `명제 사이의 관계' 소단원을 마치며 한 문장으로}
+\writespace{2}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 감사 일기 / 유념 한 줄}
+\writespace{2}
+\end{minipage}
+\end{sheetbox}
+
+\end{document}
