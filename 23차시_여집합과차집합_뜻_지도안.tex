@@ -1,0 +1,140 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅱ. 집합과 명제 · 1. 집합 · 04 여집합과 차집합 · 1/2차시
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{notebox}{enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]{\sffamily\bfseries\Large #2}\\[3pt]{\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+\lessonbanner{공통수학2 · Ⅱ. 집합과 명제 · 1. 집합}{04 여집합과 차집합 --- 1/2차시}{전체집합·여집합·차집합의 뜻 · 교사용 지도안 (2026학년도 2학기)}
+\vspace{10pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 10 · 전개 30 · 정리 10) \\
+성취기준 & 집합의 연산을 수행하고, 벤 다이어그램을 이용하여 나타낼 수 있다. \\
+선행 학습 & 21$\sim$22차시 --- 교집합과 합집합 \\
+\bottomrule
+\end{tabularx}
+
+\section{학습 목표 \& Big Idea}
+\begin{ideabox}
+\textbf{\color{goldstrong}영속적 이해 (Big Idea)}\\
+`제외한다'는 것도 하나의 명확한 연산이다. 무엇을 `전체'로 정하느냐(전체집합)에 따라 `제외된 것'(여집합)의 의미가 완전히 달라진다.
+\vspace{4pt}
+\small\color{inksoft} 핵심개념: \textbf{기준(전체집합)} \quad\textbullet\quad 핵심개념: \textbf{제외} \quad\textbullet\quad 일반화: \textbf{`무엇을 기준으로 하는가'가 답을 바꾼다}
+\end{ideabox}
+\begin{calloutbox}
+\textbf{차시 학습 목표}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt, topsep=4pt]
+  \item 전체집합과 여집합의 뜻을 알고, 여집합을 구할 수 있다.
+  \item 차집합의 뜻을 알고, 구할 수 있다.
+\end{itemize}
+\end{calloutbox}
+
+\section{질문의 연결}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}\small}p{2.4cm}X@{}}
+사실적 질문 & 전체집합 $U$의 부분집합 $A$에 대하여 여집합 $A^C$는 무엇일까? \\[6pt]
+개념적 질문 & 같은 집합 $A$라도 전체집합 $U$가 달라지면 왜 $A^C$가 달라질까? \\[6pt]
+논쟁적 질문 & 검색 엔진의 `제외 검색' 기능처럼, 무언가를 `뺀다'는 행위는 정보를 얻는 데 왜 유용할까? \\
+\end{tabularx}
+
+\section{수업 흐름}
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 10분 &
+\textbf{마음공부 (2분)} --- 유무념 대조.\newline
+\textbf{생각 열기 (8분)} --- 태양계 행성 전체 집합 $U$ 제시, 지구보다 태양에 가까운 행성의 집합 $A$ $\to$ $U$의 원소 중 $A$에 속하지 않는 것을 모두 찾아보게 한다. &
+ATL: 사고(제외 개념)\newline VTR: See-Think-Wonder \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{여집합 (12분)} --- 전체집합 $U$, 여집합 $A^C=\{x\mid x\in U$ 그리고 $x\notin A\}$ 정의 $\to$ 문제 1.\newline
+\textbf{차집합 (18분)} --- $A-B=\{x\mid x\in A$ 그리고 $x\notin B\}$ 정의(오개념: `빼기'가 아니라 `공통부분 제외') $\to$ 문제 2(차집합의 비교환성 확인, $A-B\neq B-A$) $\to$ 문제 3(성질 확인: $(A^C)^C=A$, $A\cup A^C=U$, $A\cap A^C=\varnothing$). &
+ATT: 촉진자 역할\newline ATL: 개념 구별 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{개념 연결 질문 (5분)} --- ``$A-B$와 $B-A$가 같지 않은 이유를 그림으로 설명하면?''\newline
+\textbf{성찰 (5분)} --- 감사 일기 1문장 + 다음 차시 예고(여집합·차집합의 성질, 드모르간의 법칙). &
+마음공부 · 감사 일기 \\
+\bottomrule
+\end{tabularx}
+
+\begin{calloutbox}
+\textbf{지도상의 유의점} --- $A-B$는 `$A$에서 $B$를 빼는 것'이 아니라 `$A$와 $B$의 공통 부분을 $A$에서 제외하는 것'임을 강조한다($A-B=A\cap B^C$). 여집합은 반드시 전체집합이 전제된 상황에서만 논할 수 있음을 짚어 준다. 차집합에는 교환법칙이 성립하지 않는다($A-B\neq B-A$).
+\end{calloutbox}
+
+\section{형성평가 \& 답안}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 1} \quad $U=\{x\mid x$는 10 이하 자연수$\}$\\
+\small ⑴ $A=\{1,2,3,6\}$ ⑵ $B=\{x\mid x$는 9의 약수$\}$\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $A^C=\{4,5,7,8,9,10\}$ \quad ⑵ $B^C=\{2,4,5,6,7,8,10\}$
+\end{answerbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 2}\\
+\small ⑴ $A=\{2,3,5,7,9\}$, $B=\{3,9\}$\\
+⑵ $A=\{x\mid x$는 18의 약수$\}$, $B=\{x\mid x$는 12의 약수$\}$\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ $A-B=\{2,5,7\}$, $B-A=\varnothing$ \quad ⑵ $A-B=\{9,18\}$, $B-A=\{4,12\}$
+\end{answerbox}
+\end{minipage}
+
+\section{성취수준 (이 차시 범위)}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{0.9cm}X@{}}
+\toprule
+A & 여집합과 차집합의 연산을 체계적으로 수행하고 벤 다이어그램으로 나타낼 수 있다. \\
+B & 여집합과 차집합의 연산을 수행하고 벤 다이어그램으로 나타낼 수 있다. \\
+C & 여집합과 차집합의 연산을 수행하고, 벤 다이어그램으로 나타낼 수 있다. \\
+D & 간단한 여집합과 차집합의 연산을 수행할 수 있다. \\
+E & 간단한 두 집합의 여집합과 차집합의 연산을 수행할 수 있다. \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 차시}
+\begin{calloutbox}
+\textbf{04 여집합과 차집합 --- 2/2차시.} 여집합·차집합의 성질, 그리고 드모르간의 법칙을 다룬다.
+\end{calloutbox}
+\end{document}
