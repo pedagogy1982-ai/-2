@@ -1,0 +1,141 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅱ. 집합과 명제 · 2. 명제 · 01 명제와 조건 · 2/2차시
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{notebg}{HTML}{FBF3E3}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{16pt}{8pt}
+\newtcolorbox{ideabox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{calloutbox}{enhanced, breakable, colback=white, colframe=indigosoft, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{notebox}{enhanced, breakable, colback=notebg, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newtcolorbox{answerbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.5pt, arc=2pt, left=10pt, right=10pt, top=7pt, bottom=7pt}
+\newcommand{\lessonbanner}[3]{%
+  \begin{tcolorbox}[enhanced, colback=indigoc, colframe=indigoc, boxrule=0pt, arc=0pt,
+    left=14pt, right=14pt, top=14pt, bottom=10pt, borderline south={2.4pt}{0pt}{goldc}, fontupper=\color{white}]
+    {\sffamily\footnotesize\color{white!85!black} #1}\\[4pt]{\sffamily\bfseries\Large #2}\\[3pt]{\sffamily\small\color{white!88!black} #3}
+  \end{tcolorbox}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 교사용 지도안 -- 배포 금지}
+
+\begin{document}
+\lessonbanner{공통수학2 · Ⅱ. 집합과 명제 · 2. 명제}{01 명제와 조건 --- 2/2차시}{`모든'과 `어떤'을 포함한 명제 · 교사용 지도안 (2026학년도 2학기)}
+\vspace{10pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}}p{2.6cm}X@{}}
+\toprule
+대상 & 고1 · 2개 반 · 반당 13명 \\
+차시 & 50분 (도입 10 · 전개 30 · 정리 10) \\
+성취기준 & `모든', `어떤'을 포함한 명제를 이해하고 설명할 수 있다. \\
+선행 학습 & 26차시 --- 명제와 조건의 뜻 \\
+\bottomrule
+\end{tabularx}
+
+\section{학습 목표 \& Big Idea}
+\begin{ideabox}
+\textbf{\color{goldstrong}영속적 이해 (Big Idea)}\\
+그 자체로는 참·거짓을 알 수 없는 조건도, `모든'이나 `어떤'이라는 수식어가 붙는 순간 명제가 된다. 이 두 단어는 진리집합이 전체집합과 같은지, 아니면 비어 있지 않은지를 각각 묻는다.
+\vspace{4pt}
+\small\color{inksoft} 핵심개념: \textbf{전칭·존재} \quad\textbullet\quad 핵심개념: \textbf{반례} \quad\textbullet\quad 일반화: \textbf{양화사가 조건을 명제로 바꾼다}
+\end{ideabox}
+\begin{calloutbox}
+\textbf{차시 학습 목표}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt, topsep=4pt]
+  \item `모든 $x$에 대하여 $p$이다', `어떤 $x$에 대하여 $p$이다' 형태 명제의 참·거짓을 진리집합으로 판별할 수 있다.
+  \item 이 두 형태 명제의 부정을 구할 수 있다.
+\end{itemize}
+\end{calloutbox}
+
+\section{질문의 연결}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{indigoc}\small}p{2.4cm}X@{}}
+사실적 질문 & `모든 $x$에 대하여 $p$이다'가 참이려면 진리집합 $P$는 어떤 조건을 만족해야 할까? \\[6pt]
+개념적 질문 & 왜 `모든'의 부정은 `어떤 $\sim p$'가 되고, `어떤'의 부정은 `모든 $\sim p$'가 될까? \\[6pt]
+논쟁적 질문 & `모든 식물은 꽃이 핀다'는 거짓이지만 `어떤 식물은 꽃이 핀다'는 참이다 --- 하나의 반례가 `모든' 명제를 무너뜨리는 것은 논리적으로 공정할까? \\
+\end{tabularx}
+
+\section{수업 흐름}
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}p{1.6cm}X>{\raggedright\arraybackslash\small}p{3.1cm}@{}}
+\toprule
+\textbf{단계} & \textbf{활동 \& 발문} & \textbf{ATL / VTR} \\
+\midrule
+\textcolor{goldstrong}{\textbf{도입}}\newline\footnotesize 10분 &
+\textbf{마음공부 (2분)} --- 유무념 대조.\newline
+\textbf{생각 열기 (8분)} --- ``모든 유리수는 양수이다'' / ``어떤 유리수는 양수이다'' / ``모든 식물은 꽃이 핀다'' / ``어떤 식물은 꽃이 핀다'' 네 문장의 참·거짓을 예측. &
+ATL: 사고(반례 찾기)\newline VTR: See-Think-Wonder \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{전개}}\newline\footnotesize 30분 &
+\textbf{개념 형성 (15분)} --- 진리집합 $P$를 이용해 `모든'($P=U$)과 `어떤'($P\neq\varnothing$) 명제의 참·거짓 판정법 도출 $\to$ 문제 5.\newline
+\textbf{부정 (15분)} --- `모든'의 부정은 `어떤 $\sim p$', `어떤'의 부정은 `모든 $\sim p$'임을 $P=U \leftrightarrow P^C=\varnothing$ 논리로 유도 $\to$ 문제 6(반례 찾기 포함). &
+ATT: 촉진자 역할\newline ATL: 논리적 유도 \\
+\addlinespace
+\textcolor{goldstrong}{\textbf{정리}}\newline\footnotesize 10분 &
+\textbf{개념 연결 질문 (5분)} --- ```모든' 명제가 거짓임을 보이려면 무엇을 하나 찾으면 될까?''\newline
+\textbf{성찰 (5분)} --- 감사 일기 1문장 + `명제와 조건' 소단원 마무리 + 다음 차시 예고(명제 사이의 관계: 역, 대우). &
+마음공부 · 감사 일기 \\
+\bottomrule
+\end{tabularx}
+
+\begin{calloutbox}
+\textbf{지도상의 유의점} --- ``모든 $x$에 대하여 $p$이다''는 반례가 단 하나라도 있으면 거짓이 됨을, ``어떤 $x$에 대하여 $p$이다''는 만족하는 사례가 하나만 있어도 참이 됨을 구체적 예로 반복 확인시킨다.
+\end{calloutbox}
+
+\section{형성평가 \& 답안}
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 5}\\
+\small ⑴ 모든 실수 $x$에 대하여 $|x|\ge0$이다.\\
+⑵ 어떤 실수 $x$에 대하여 $x^2-4x+5=0$이다.\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ 참 \quad ⑵ 거짓 (판별식 $D<0$)
+\end{answerbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{answerbox}
+\textbf{문제 6}\\
+\small ⑴ 모든 마름모는 정사각형이다.\\
+⑵ 어떤 실수 $x$에 대하여 $|x|=1$이다.\\[4pt]
+\textbf{\color{goldstrong}답} \; ⑴ 부정: 어떤 마름모는 정사각형이 아니다(참) \quad ⑵ 부정: 모든 실수 $x$에 대하여 $|x|\neq1$이다(거짓, $x=1$이 반례)
+\end{answerbox}
+\end{minipage}
+
+\section{성취수준 (이 차시 범위)}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{goldstrong}}p{0.9cm}X@{}}
+\toprule
+A & `모든', `어떤'을 포함한 명제의 참·거짓을 판별하고 이유를 설명할 수 있다. \\
+B & `모든', `어떤'을 포함한 명제의 참·거짓을 판별할 수 있다. \\
+C & 명제와 조건의 뜻을 알고, 참·거짓을 판별할 수 있다. \\
+D & 명제의 뜻을 알고, 참·거짓을 판별할 수 있다. \\
+E & 간단한 명제의 참·거짓을 판별할 수 있다. \\
+\bottomrule
+\end{tabularx}
+
+\section{다음 차시}
+\begin{calloutbox}
+\textbf{02 명제 사이의 관계 --- 1/2차시.} `01 명제와 조건'이 여기서 마무리된다. 다음 시간부터는 명제 $p\to q$의 역과 대우, 참·거짓 관계를 다룬다.
+\end{calloutbox}
+\end{document}
