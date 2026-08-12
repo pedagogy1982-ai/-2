@@ -1,0 +1,139 @@
+% !TEX program = xelatex
+% 공통수학2 · Ⅱ. 집합과 명제 · 2. 명제 · 03 명제의 증명 · 1/2차시
+% 학생용 활동지 (답안 없음)
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{iftex}
+\ifPDFTeX\else
+  \setmainhangulfont{Noto Serif CJK KR}
+  \setsanshangulfont{Noto Sans CJK KR}
+\fi
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{goldc}{HTML}{B07C22}
+\definecolor{goldstrong}{HTML}{8A5F16}
+\definecolor{indigoc}{HTML}{2B3B57}
+\definecolor{indigosoft}{HTML}{6E82A6}
+\definecolor{linec}{HTML}{D6DACB}
+\definecolor{surface2}{HTML}{E4E8DC}
+\definecolor{writeline}{HTML}{C7CCBA}
+\definecolor{inksoft}{HTML}{52604F}
+
+\titleformat{\section}{\normalfont\sffamily\bfseries\large\color{indigoc}}{\thesection}{0.6em}{}
+\titlespacing{\section}{0pt}{14pt}{6pt}
+\newtcolorbox{goalbox}{enhanced, breakable, colback=white, colframe=goldc, boxrule=0.5pt, leftrule=3pt, arc=2pt, left=10pt, right=10pt, top=8pt, bottom=8pt}
+\newtcolorbox{sheetbox}{enhanced, breakable, colback=white, colframe=linec, boxrule=0.6pt, arc=3pt, left=11pt, right=11pt, top=9pt, bottom=9pt}
+\newcommand{\writespace}[1]{%
+  \par\nobreak\vspace{3pt}
+  \foreach \n in {1,...,#1} {%
+    \noindent\textcolor{writeline}{\rule{\linewidth}{0.4pt}}\par\vspace{0.62cm}%
+  }
+}
+\newcommand{\fillblank}[1]{\makebox[#1]{\hrulefill}}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize\color{inksoft} 공통수학2 · 2026학년도 2학기 · 지평선고등학교}
+\fancyfoot[R]{\footnotesize\color{inksoft} 다음 시간 --- 03 명제의 증명(2)}
+
+\begin{document}
+
+\noindent
+\begin{minipage}[b]{0.62\linewidth}
+  {\sffamily\footnotesize\color{indigosoft} 공통수학2 · Ⅱ. 집합과 명제 · 2. 명제}\\[2pt]
+  {\sffamily\bfseries\Large 03 명제의 증명 \textperiodcentered\ 30차시}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.36\linewidth}
+  \raggedleft\small\color{inksoft}
+  반\ \fillblank{1.6cm} \quad 번호\ \fillblank{1.6cm}\\[4pt]
+  이름\ \fillblank{3.6cm}
+\end{minipage}
+
+\vspace{4pt}
+\noindent{\color{goldc}\rule{\linewidth}{2.2pt}}
+\vspace{10pt}
+
+\begin{goalbox}
+\textbf{오늘의 목표}\\
+대우를 이용한 증명법과 귀류법을 이해하고, 관련된 명제를 증명할 수 있다.
+\vspace{4pt}
+\small\color{inksoft}
+$\square$ 자신 있음 \quad $\square$ 조금 헷갈림 \quad $\square$ 처음 봄 \hfill (수업 전 나의 상태에 표시)
+\end{goalbox}
+
+\section{생각 열기 --- 놀이공원 할인}
+
+\begin{sheetbox}
+어느 놀이공원에서는 그 지역 주민 또는 교복을 입은 사람에게 입장료를 할인해 준다.
+
+\begin{enumerate}[leftmargin=1.4em, itemsep=2pt]
+  \item `교복을 입은 사람은 입장료를 할인받는다.'가 참인 문장인지 말해 보자.
+  \item `입장료를 할인받지 못한 사람은 교복을 입고 있지 않다.'가 참인 문장인지 말해 보자.
+\end{enumerate}
+\writespace{3}
+\end{sheetbox}
+
+\section{개념 정리 --- 대우를 이용한 증명법과 귀류법}
+
+\begin{sheetbox}
+어떤 명제가 참이면 그 \fillblank{2.2cm}도 참이고, 대우가 참이면 처음의 명제도 참이다. 따라서 어떤 명제가 참임을 증명하는 대신 그 \fillblank{2.2cm}가 참임을 증명해도 된다.
+
+\vspace{8pt}
+\textbf{예제} --- `자연수 $n$에 대하여 $n^2$이 짝수이면 $n$도 짝수이다.'를 대우로 증명하시오.\\
+증명: 주어진 명제의 대우는 `자연수 $n$에 대하여 $n$이 홀수이면 $n^2$도 홀수이다.'이다. $n$이 홀수이면 $n=2k-1$($k$는 자연수)로 나타낼 수 있다. 이때\\
+\hspace*{2em}$n^2=(2k-1)^2=4k^2-4k+1=2(2k^2-2k+1)-1$\\
+이므로 $n^2$도 홀수이다. 따라서 대우가 참이므로 주어진 명제도 참이다.
+
+\vspace{8pt}
+어떤 명제가 참임을 증명할 때, 그 명제의 부정이 참이라고 가정하면 이미 알려진 사실에 \fillblank{2.2cm}이 생긴다는 것을 보이는 방법을 \fillblank{2.6cm}이라고 한다.
+\end{sheetbox}
+
+\section{연습 문제}
+
+\begin{sheetbox}
+\textbf{1.} 대우를 이용하여 다음 명제가 참임을 증명하시오.\\
+\hspace*{1.6em}`자연수 $n$에 대하여 $n^2$이 3의 배수이면 $n$도 3의 배수이다.'\\
+\small(힌트: $n$이 3의 배수가 아니면 $n=3k-2$ 또는 $n=3k-1$로 나타낼 수 있다.)
+\writespace{7}
+
+\vspace{6pt}
+\textbf{2.} 귀류법을 이용하여 다음 명제가 참임을 증명하시오.\\
+\hspace*{1.6em}`$1+\sqrt2$는 유리수가 아니다.'
+\writespace{6}
+\end{sheetbox}
+
+\section{사고의 가시화 --- Connect · Extend · Challenge}
+
+\noindent{\footnotesize\color{inksoft} 오늘 배운 `대우를 이용한 증명법과 귀류법'을 떠올리며 아래 세 칸을 채워 보자.}\\[6pt]
+\begin{tabularx}{\linewidth}{@{}XXX@{}}
+\textbf{\footnotesize\color{indigoc} Connect --- 무엇과 연결되나?} &
+\textbf{\footnotesize\color{indigoc} Extend --- 어디까지 확장됐나?} &
+\textbf{\footnotesize\color{indigoc} Challenge --- 아직 궁금한 것은?} \\[4pt]
+\end{tabularx}
+\noindent
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\writespace{3}\end{minipage}
+
+\section{마무리 성찰}
+
+\begin{sheetbox}
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 오늘 배운 것을 한 문장으로}
+\writespace{2}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+{\footnotesize\color{inksoft} 감사 일기 / 유념 한 줄}
+\writespace{2}
+\end{minipage}
+\end{sheetbox}
+
+\end{document}
